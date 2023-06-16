@@ -20,29 +20,29 @@ f-131
 --ecoSave--
 
 ## Ürün Açıklaması
-EcoSave, bir uygulama olarak sürdürülebilirliği teşvik etmeyi ve sürdürülebilir alışkanlıklar kazandırmayı hedefleyen bir platformdur. Ayrıca, mağaza bölümü aracılığıyla kullanıcıları sürdürülebilir ürünler üreten markalarla ödüllendirme sistemi sunmayı amaçlamaktadır. Alışkanlık kazanma bilimine göre, bir alışkanlığı gerçekleştirmek için işaret, istek ve tepki olmak üzere 3 adım gereklidir. Ancak sürdürülebilir bir alışkanlık kazanmak için işaret, istek, tepki ve ödül olmak üzere 4 adıma ihtiyaç duyulmaktadır. Bu nedenle sürdürülebilirlik alışkanlığı kazandırmak için ödülsüz bir uygulama sunmak yerine, bu ürünleri üreten firmalar ve kullanıcılar arasında bir platform olmayı tercih ettik.
+EcoSave, sürdürülebilirliği teşvik etmeyi ve sürdürülebilir alışkanlıklar kazandırmayı hedefleyen bir uygulamadır. Mağaza bölümü aracılığıyla kullanıcıları, sürdürülebilir ürünler üreten markalarla ödüllendirme sistemi sunmayı amaçlar. Alışkanlık kazanma sürecinde, işaret, istek, tepki ve ödül olmak üzere dört adıma ihtiyaç duyulur. Sürdürülebilir bir alışkanlık kazanmak için bu adımları bir araya getiren bir platform olmayı tercih ediyoruz.
 
 
-## Ürün Özellikleri
-1.	Uygulama:
+## Ürün Özellikleri	
+#Uygulama:
 •	Mobil uygulama olarak sunulacak.
 •	Kullanıcı dostu arayüz ve kullanım kolaylığı sağlayacak.
 •	Görevlerin ve ödüllerin görsel olarak sunulacağı bir tasarım.
-2.	Görevler:
+#Görevler:
 •	Günlük ve ek görevler olacak.
 •	Görevlerin açıklamaları, puanları ve tamamlanma durumu gösterilecek.
 •	Görevlerin tamamlanması için fotoğraf kanıtı gönderme özelliği olacak.
 •	Görevlerin çeşitliliği ve sürdürülebilirlikle ilgili konulara odaklanacak.
-3.	Ödül Sistemi / Shop:
+#Ödül Sistemi / Shop:
 •	İndirim kuponları sunulacak.
 •	Kazanılan puanlarla indirimli ürünlerin görüntüleneceği bir shop alanı olacak.
 •	Markaların ürünlerinin detayları, fiyatları ve indirimler sunulacak.
 •	Affiliate marketing sistemi kullanılarak markaların sayfalarına yönlendirme yapılacak.
-4.	Profil Sayfası:
+#Profil Sayfası:
 •	Kullanıcıların profil bilgileri görüntülenebilecek ve düzenlenebilecek.
 •	Kazanılan puanlar, tamamlanan görev sayısı ve seviye gösterilecek.
 •	Kullanıcının sahip olduğu indirim kodları görüntülenebilecek.
-5.	Bildirimler:
+#Bildirimler:
 •	Kullanıcılara görev onaylandığında ve diğer önemli bildirimlerde bildirimler gönderilecek.
 
 
