@@ -24,25 +24,25 @@ EcoSave, sürdürülebilirliği teşvik etmeyi ve sürdürülebilir alışkanlı
 
 
 ## Ürün Özellikleri	
-#Uygulama:
+# Uygulama:
 •	Mobil uygulama olarak sunulacak.
 •	Kullanıcı dostu arayüz ve kullanım kolaylığı sağlayacak.
 •	Görevlerin ve ödüllerin görsel olarak sunulacağı bir tasarım.
-#Görevler:
+# Görevler:
 •	Günlük ve ek görevler olacak.
 •	Görevlerin açıklamaları, puanları ve tamamlanma durumu gösterilecek.
 •	Görevlerin tamamlanması için fotoğraf kanıtı gönderme özelliği olacak.
 •	Görevlerin çeşitliliği ve sürdürülebilirlikle ilgili konulara odaklanacak.
-#Ödül Sistemi / Shop:
+# Ödül Sistemi / Shop:
 •	İndirim kuponları sunulacak.
 •	Kazanılan puanlarla indirimli ürünlerin görüntüleneceği bir shop alanı olacak.
 •	Markaların ürünlerinin detayları, fiyatları ve indirimler sunulacak.
 •	Affiliate marketing sistemi kullanılarak markaların sayfalarına yönlendirme yapılacak.
-#Profil Sayfası:
+# Profil Sayfası:
 •	Kullanıcıların profil bilgileri görüntülenebilecek ve düzenlenebilecek.
 •	Kazanılan puanlar, tamamlanan görev sayısı ve seviye gösterilecek.
 •	Kullanıcının sahip olduğu indirim kodları görüntülenebilecek.
-#Bildirimler:
+# Bildirimler:
 •	Kullanıcılara görev onaylandığında ve diğer önemli bildirimlerde bildirimler gönderilecek.
 
 
