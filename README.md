@@ -4,7 +4,7 @@ F-131
 
 # Ürün İle İlgili Bilgiler
 # ecoSave
-- "ecoSave" uygulaması, kullanıcılarına sürdürülebilirlik alanında bilinç ve farkındalık kazandırmayı amaçlayan bir platformdur. Kullanıcılar, görevleri tamamlayarak çevresel sorumluluklarını yerine getirir ve puanlar kazanır. Bu puanlar, indirimler ve özel tekliflerle ödüllendirilerek çevre dostu yaşam tarzlarını teşvik eder.
+"ecoSave" uygulaması, kullanıcılarına sürdürülebilirlik alanında bilinç ve farkındalık kazandırmayı amaçlayan bir platformdur. Kullanıcılar, görevleri tamamlayarak çevresel sorumluluklarını yerine getirir ve puanlar kazanır. Bu puanlar, indirimler ve özel tekliflerle ödüllendirilerek çevre dostu yaşam tarzlarını teşvik eder.
 
 
 ## Takım Elemanları
@@ -30,7 +30,7 @@ Uygulama
 - Görevlerin ve ödüllerin görsel olarak sunulacağı bir tasarım.
 
   
-  Görevler
+Görevler
 - Günlük ve ek görevler olacak.
 - Görevlerin açıklamaları, puanları ve tamamlanma durumu gösterilecek.
 - Görevlerin tamamlanması için fotoğraf kanıtı gönderme özelliği olacak.
