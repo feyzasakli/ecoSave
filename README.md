@@ -1,6 +1,6 @@
 # **Takım İsmi**
 
-f-131
+F-131
 
 # Ürün İle İlgili Bilgiler
 # ecoSave
@@ -24,34 +24,34 @@ EcoSave, sürdürülebilirliği teşvik etmeyi ve sürdürülebilir alışkanlı
 
 
 ## Ürün Özellikleri	
-# Uygulama:
-•	Mobil uygulama olarak sunulacak.
-•	Kullanıcı dostu arayüz ve kullanım kolaylığı sağlayacak.
-•	Görevlerin ve ödüllerin görsel olarak sunulacağı bir tasarım.
-# Görevler:
-•	Günlük ve ek görevler olacak.
-•	Görevlerin açıklamaları, puanları ve tamamlanma durumu gösterilecek.
-•	Görevlerin tamamlanması için fotoğraf kanıtı gönderme özelliği olacak.
-•	Görevlerin çeşitliliği ve sürdürülebilirlikle ilgili konulara odaklanacak.
-# Ödül Sistemi / Shop:
-•	İndirim kuponları sunulacak.
-•	Kazanılan puanlarla indirimli ürünlerin görüntüleneceği bir shop alanı olacak.
-•	Markaların ürünlerinin detayları, fiyatları ve indirimler sunulacak.
-•	Affiliate marketing sistemi kullanılarak markaların sayfalarına yönlendirme yapılacak.
-# Profil Sayfası:
-•	Kullanıcıların profil bilgileri görüntülenebilecek ve düzenlenebilecek.
-•	Kazanılan puanlar, tamamlanan görev sayısı ve seviye gösterilecek.
-•	Kullanıcının sahip olduğu indirim kodları görüntülenebilecek.
-# Bildirimler:
-•	Kullanıcılara görev onaylandığında ve diğer önemli bildirimlerde bildirimler gönderilecek.
+Uygulama
+- Mobil uygulama olarak sunulacak.
+- Kullanıcı dostu arayüz ve kullanım kolaylığı sağlayacak.
+- Görevlerin ve ödüllerin görsel olarak sunulacağı bir tasarım.
+Görevler
+- Günlük ve ek görevler olacak.
+- Görevlerin açıklamaları, puanları ve tamamlanma durumu gösterilecek.
+- Görevlerin tamamlanması için fotoğraf kanıtı gönderme özelliği olacak.
+- Görevlerin çeşitliliği ve sürdürülebilirlikle ilgili konulara odaklanacak.
+Ödül Sistemi / Shop
+- İndirim kuponları sunulacak.
+- Kazanılan puanlarla indirimli ürünlerin görüntüleneceği bir shop alanı olacak.
+- Markaların ürünlerinin detayları, fiyatları ve indirimler sunulacak.
+- Affiliate marketing sistemi kullanılarak markaların sayfalarına yönlendirme yapılacak.
+Profil Sayfası
+- Kullanıcıların profil bilgileri görüntülenebilecek ve düzenlenebilecek.
+- Kazanılan puanlar, tamamlanan görev sayısı ve seviye gösterilecek.
+- Kullanıcının sahip olduğu indirim kodları görüntülenebilecek.
+Bildirimler
+- Kullanıcılara görev onaylandığında ve diğer önemli bildirimlerde bildirimler gönderilecek.
 
 
 ## Hedef Kitle
-1.	Sürdürülebilirlik konusunda farkındalığı olan ve bu alanda adımlar atmaya istekli olan bireyler.
-2.	Çevre dostu ürünleri kullanmaya özen gösteren ve sürdürülebilir alışkanlıklar kazanmak isteyen bireyler.
-3.	Kendi çevresinde sürdürülebilirlik konusunda etkileşimde bulunmak ve toplumda fark yaratmak isteyen bireyler.
-4.	Ekonomik faydaların yanı sıra çevresel faydaları da önemseyen ve sürdürülebilir ürünlere erişmek isteyen bireyler.
-5.	Sürdürülebilir markaların ürünlerine erişmek ve bu markaları desteklemek isteyen bireyler.
+1. Sürdürülebilirlik konusunda farkındalığı olan ve bu alanda adımlar atmaya istekli olan bireyler.
+2. Çevre dostu ürünleri kullanmaya özen gösteren ve sürdürülebilir alışkanlıklar kazanmak isteyen bireyler.
+3. Kendi çevresinde sürdürülebilirlik konusunda etkileşimde bulunmak ve toplumda fark yaratmak isteyen bireyler.
+4. Ekonomik faydaların yanı sıra çevresel faydaları da önemseyen ve sürdürülebilir ürünlere erişmek isteyen bireyler.
+5. Sürdürülebilir markaların ürünlerine erişmek ve bu markaları desteklemek isteyen bireyler.
 
 
 ## Product Backlog URL
