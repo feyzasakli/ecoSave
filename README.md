@@ -98,13 +98,23 @@ https://trello.com/b/QeXDpgyY/ecosave
 
 
 - **Sprint Review**: 
-Alınan kararlar: Veritabanı oluşturması email ile toplanacak veriler için gerekli görülmüştür. Fakat bir yandan da veritabanı form sayfası için gerekli olmamıştır. O sebeple PBI bir sonraki sprint'e aktarılmıştır. Çıkan ürünün çalışmasında ve testlerinde bir problem görülmemiştir. Ekstra koyulması gereken özellikler belirlenmiştir. Sprint Review katılımcıları: ......
+Alınan kararlar:
+EcoSave uygulaması, sürdürülebilirlik alışkanlıkları kazandırmayı ve kullanıcıları sürdürülebilir ürünler üreten markalarla ödüllendirmeyi hedefleyen bir mobil uygulama olarak altyapısı başarıyla oluşturuldu. Kullanıcılar için zorunlu ve ek görevler oluşturuldu. Kullanıcılar görevleri tamamladıktan sonra fotoğraf kanıtlarını gönderebilecekleri bir sistem oluşturulması gerekiyor, kullanıcı bilgilerini toplamak amacıyla bir veritabanı oluşturulması kararlaştırıldı.
+
+
+
+
 
 - **Sprint Retrospective:**
-  - Takım içindeki görev dağılımıyla ilgili düzenleme yapılması kararı alınmıştır
-  - Tahmin puanları gözden geçirilmeli ve sprint planlama toplantılarında gerekli geri bildirimlerin developer'lar tarafından verildiğine emin olunmalı
-  - Unit test'ler için ayrılan efor/saat arttırılmalı 
+Görev Dağılımı: Takım içindeki görev dağılımını inceledik ve neleri başarılı bir şekilde tamamladığımızı ve karşılaştığımız zorlukları tartıştık. Dengeyi sağlamak için düzenlemeler yapma gerekliliğini değerlendirdik.
 
+Hedeflerin Tamamlanması: Günlük hedeflerin ne kadarını başardığımızı değerlendirdik ve daha gerçekçi hedefler belirlemek için bilgi sahibi olduk.
+
+Ödül Sistemi: Sürdürülebilir alışkanlıkları teşvik etmek için ödül sisteminin etkinliğini gözden geçirdik. Ödüllerin kullanıcıları ne kadar teşvik ettiğini ve iyileştirme önerilerini tartıştık.
+
+Geri Bildirim: Takım üyeleri arasındaki geri bildirim sürecini değerlendirdik ve iletişimi daha etkili hale getirmek için önerilerde bulunduk.
+
+Bu toplantıda takım verimliliğini artırmak ve sürdürülebilirlik hedeflerine daha iyi odaklanmak için görev dağılımı, hedeflerin tamamlanması, ödül sistemi ve geri bildirim konularını ele aldık.
 
 
 ---
