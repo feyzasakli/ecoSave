@@ -85,8 +85,14 @@ Story'ler yapılacak işlere (task'lere) bölünmüştür. Trello'da gözüken k
 - **Sprint board update**: Sprint board screenshotları: 
 
 - **Ürün Durumu**: Ekran görüntüleri:
- <img width="216" alt="login" src="https://github.com/feyzasakli/ecoSave/assets/113036134/742df62a-d84b-49b7-bfa4-63a21643a75c"><img width="210" alt="görev" src="https://github.com/feyzasakli/ecoSave/assets/113036134/f1ab448f-bc37-4020-bf48-7e46355c2630"><img width="214" alt="profil" <img width="214" alt="shop" src="https://github.com/feyzasakli/ecoSave/assets/113036134/131bb5da-76d5-412a-8226-35fc2a1f87fe">
-src="https://github.com/feyzasakli/ecoSave/assets/113036134/b73e267f-25f3-4002-a9b5-8af6fa855ff0"><img width="214" alt="ayarlar" src="https://github.com/feyzasakli/ecoSave/assets/113036134/f9355ed9-8f8a-4d34-9b80-61cc5a8f195c">
+
+<img width="216" alt="login" src="https://github.com/feyzasakli/ecoSave/assets/113036134/4996f315-309d-4caa-8eb6-21c09d7c2808">
+<img width="147" alt="home page" src="https://github.com/feyzasakli/ecoSave/assets/113036134/da82ba2d-5f54-423f-b4a7-9716a593f8cf">
+<img width="210" alt="görev" src="https://github.com/feyzasakli/ecoSave/assets/113036134/ac077f58-b46c-4ace-b5ea-a2a0e9a0d9fa">
+<img width="214" alt="shop" src="https://github.com/feyzasakli/ecoSave/assets/113036134/ca5ab516-40df-4ce5-a29f-5af081a36a53">
+<img width="214" alt="profil" src="https://github.com/feyzasakli/ecoSave/assets/113036134/f93e9ffc-f7a0-4475-bce0-204f33ad0300">
+<img width="214" alt="ayarlar" src="https://github.com/feyzasakli/ecoSave/assets/113036134/44d580f5-963d-4019-8acf-56952e467df8">
+
 
 
 
