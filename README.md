@@ -85,6 +85,9 @@ Story'ler yapılacak işlere (task'lere) bölünmüştür. Trello'da gözüken k
 - **Sprint board update**: Sprint board screenshotları: 
 
 - **Ürün Durumu**: Ekran görüntüleri:
+- <img width="216" alt="login" src="https://github.com/feyzasakli/ecoSave/assets/113036134/742df62a-d84b-49b7-bfa4-63a21643a75c">
+
+
 
 - **Sprint Review**: 
 Alınan kararlar: Veritabanı oluşturması email ile toplanacak veriler için gerekli görülmüştür. Fakat bir yandan da veritabanı form sayfası için gerekli olmamıştır. O sebeple PBI bir sonraki sprint'e aktarılmıştır. Çıkan ürünün çalışmasında ve testlerinde bir problem görülmemiştir. Ekstra koyulması gereken özellikler belirlenmiştir. Sprint Review katılımcıları: ......
