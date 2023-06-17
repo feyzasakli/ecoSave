@@ -82,7 +82,9 @@ Story'ler yapılacak işlere (task'lere) bölünmüştür. Trello'da gözüken k
 
 - **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Slack üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 1 Daily Scrum Chats](https://github.com/OyunveUygulamaAkademisi/BootcampScrumTemplate/blob/main/ProjectManagement/Sprint1Documents/DailyScrumMeetingNotesSprint1.docx?raw=true)
 
-- **Sprint board update**: Sprint board screenshotları: 
+- **Sprint board update**: Sprint board screenshotları:
+  <img width="864" alt="board" src="https://github.com/feyzasakli/ecoSave/assets/113036134/9750ae74-87e5-4e2b-8592-1d11223dcd88">
+
 
 - **Ürün Durumu**: Ekran görüntüleri:
 <img width="769" alt="Ekran görüntüsü 2023-06-17 035855" src="https://github.com/feyzasakli/ecoSave/assets/113036134/5a2c5cf1-6cfd-4f84-9ca5-e5372e41a6b8">
