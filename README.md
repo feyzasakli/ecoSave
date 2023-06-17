@@ -106,13 +106,14 @@ EcoSave uygulaması, sürdürülebilirlik alışkanlıkları kazandırmayı ve k
 
 
 - **Sprint Retrospective:**
-Görev Dağılımı: Takım içindeki görev dağılımını inceledik ve neleri başarılı bir şekilde tamamladığımızı ve karşılaştığımız zorlukları tartıştık. Dengeyi sağlamak için düzenlemeler yapma gerekliliğini değerlendirdik.
 
-Hedeflerin Tamamlanması: Günlük hedeflerin ne kadarını başardığımızı değerlendirdik ve daha gerçekçi hedefler belirlemek için bilgi sahibi olduk.
+1.Görev Dağılımı: Takım içindeki görev dağılımını inceledik ve neleri başarılı bir şekilde tamamladığımızı ve karşılaştığımız zorlukları tartıştık. Dengeyi sağlamak için düzenlemeler yapma gerekliliğini değerlendirdik.
 
-Ödül Sistemi: Sürdürülebilir alışkanlıkları teşvik etmek için ödül sisteminin etkinliğini gözden geçirdik. Ödüllerin kullanıcıları ne kadar teşvik ettiğini ve iyileştirme önerilerini tartıştık.
+2.Hedeflerin Tamamlanması: Günlük hedeflerin ne kadarını başardığımızı değerlendirdik ve daha gerçekçi hedefler belirlemek için bilgi sahibi olduk.
 
-Geri Bildirim: Takım üyeleri arasındaki geri bildirim sürecini değerlendirdik ve iletişimi daha etkili hale getirmek için önerilerde bulunduk.
+3.Ödül Sistemi: Sürdürülebilir alışkanlıkları teşvik etmek için ödül sisteminin etkinliğini gözden geçirdik. Ödüllerin kullanıcıları ne kadar teşvik ettiğini ve iyileştirme önerilerini tartıştık.
+
+4.Geri Bildirim: Takım üyeleri arasındaki geri bildirim sürecini değerlendirdik ve iletişimi daha etkili hale getirmek için önerilerde bulunduk.
 
 Bu toplantıda takım verimliliğini artırmak ve sürdürülebilirlik hedeflerine daha iyi odaklanmak için görev dağılımı, hedeflerin tamamlanması, ödül sistemi ve geri bildirim konularını ele aldık.
 
