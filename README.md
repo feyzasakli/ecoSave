@@ -82,7 +82,8 @@ https://trello.com/b/QeXDpgyY/ecosave
 
 
 - **Sprint board update**: Sprint board screenshotları:
-  <img width="864" alt="board" src="https://github.com/feyzasakli/ecoSave/assets/113036134/9750ae74-87e5-4e2b-8592-1d11223dcd88">
+  <img width="857" alt="yeni board" src="https://github.com/feyzasakli/ecoSave/assets/113036134/847d5164-c6bb-472b-bdba-80c4c25002a9">
+
 
 
 - **Ürün Durumu**: Ekran görüntüleri:
