@@ -1,6 +1,7 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends StatefulWidget {
   final Color backgroundColor;
   final List<Color> gradientColors;
   final String titleText;
@@ -15,23 +16,37 @@ class SettingsPage extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  _SettingsPageState createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  String? selectedFileName;
+
+  Future<void> _selectFile() async {
+    final result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+      setState(() {
+        selectedFileName = result.files.first.name;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: widget.backgroundColor,
         flexibleSpace: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [
-                Color(0xFF17A3A2), // #17A3A2 on the left
-                Color(0xFF52C077), // #52C077 on the right
-              ],
+              colors: widget.gradientColors,
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
             ),
           ),
         ),
-        title: const Text("Ayarlar Sayfası"),
+        title: Text(widget.titleText),
       ),
       body: ListView(
         padding: const EdgeInsets.all(8.0),
@@ -49,7 +64,7 @@ class SettingsPage extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  // Add save functionality here
+                  // Kaydetme işlevselliğini buraya ekleyin
                 },
                 style: ElevatedButton.styleFrom(
                   elevation: 8,
@@ -83,14 +98,18 @@ class SettingsPage extends StatelessWidget {
                   color: Colors.grey[200],
                   borderRadius: BorderRadius.circular(8),
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: const Row(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: Row(
                   children: [
-                    Icon(Icons.upload),
-                    SizedBox(width: 8),
+                    IconButton(
+                      onPressed: _selectFile,
+                      icon: const Icon(Icons.upload),
+                    ),
+                    const SizedBox(width: 8),
                     Text(
-                      'Yükle',
-                      style: TextStyle(
+                      selectedFileName ?? 'Dosya seçin',
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
@@ -122,7 +141,8 @@ class SettingsPage extends StatelessWidget {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    contentPadding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   ),
                 ),
               ),
@@ -150,7 +170,8 @@ class SettingsPage extends StatelessWidget {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    contentPadding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   ),
                 ),
               ),
@@ -178,7 +199,8 @@ class SettingsPage extends StatelessWidget {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    contentPadding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   ),
                 ),
               ),
@@ -206,7 +228,8 @@ class SettingsPage extends StatelessWidget {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    contentPadding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   ),
                 ),
               ),
@@ -234,7 +257,8 @@ class SettingsPage extends StatelessWidget {
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    contentPadding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   ),
                 ),
               ),
