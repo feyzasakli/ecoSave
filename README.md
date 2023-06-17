@@ -97,7 +97,8 @@ https://trello.com/b/QeXDpgyY/ecosave
 
 
 
-- **Sprint Review**: 
+- **Sprint Review**:
+
 Alınan kararlar:
 EcoSave uygulaması, sürdürülebilirlik alışkanlıkları kazandırmayı ve kullanıcıları sürdürülebilir ürünler üreten markalarla ödüllendirmeyi hedefleyen bir mobil uygulama olarak altyapısı başarıyla oluşturuldu. Kullanıcılar için zorunlu ve ek görevler oluşturuldu. Kullanıcılar görevleri tamamladıktan sonra fotoğraf kanıtlarını gönderebilecekleri bir sistem oluşturulması gerekiyor, kullanıcı bilgilerini toplamak amacıyla bir veritabanı oluşturulması kararlaştırıldı.
 
@@ -107,13 +108,13 @@ EcoSave uygulaması, sürdürülebilirlik alışkanlıkları kazandırmayı ve k
 
 - **Sprint Retrospective:**
 
-1.Görev Dağılımı: Takım içindeki görev dağılımını inceledik ve neleri başarılı bir şekilde tamamladığımızı ve karşılaştığımız zorlukları tartıştık. Dengeyi sağlamak için düzenlemeler yapma gerekliliğini değerlendirdik.
+1. Görev Dağılımı: Takım içindeki görev dağılımını inceledik ve neleri başarılı bir şekilde tamamladığımızı ve karşılaştığımız zorlukları tartıştık. Dengeyi sağlamak için düzenlemeler yapma gerekliliğini değerlendirdik.
 
-2.Hedeflerin Tamamlanması: Günlük hedeflerin ne kadarını başardığımızı değerlendirdik ve daha gerçekçi hedefler belirlemek için bilgi sahibi olduk.
+2. Hedeflerin Tamamlanması: Günlük hedeflerin ne kadarını başardığımızı değerlendirdik ve daha gerçekçi hedefler belirlemek için bilgi sahibi olduk.
 
-3.Ödül Sistemi: Sürdürülebilir alışkanlıkları teşvik etmek için ödül sisteminin etkinliğini gözden geçirdik. Ödüllerin kullanıcıları ne kadar teşvik ettiğini ve iyileştirme önerilerini tartıştık.
+3. Ödül Sistemi: Sürdürülebilir alışkanlıkları teşvik etmek için ödül sisteminin etkinliğini gözden geçirdik. Ödüllerin kullanıcıları ne kadar teşvik ettiğini ve iyileştirme önerilerini tartıştık.
 
-4.Geri Bildirim: Takım üyeleri arasındaki geri bildirim sürecini değerlendirdik ve iletişimi daha etkili hale getirmek için önerilerde bulunduk.
+4. Geri Bildirim: Takım üyeleri arasındaki geri bildirim sürecini değerlendirdik ve iletişimi daha etkili hale getirmek için önerilerde bulunduk.
 
 Bu toplantıda takım verimliliğini artırmak ve sürdürülebilirlik hedeflerine daha iyi odaklanmak için görev dağılımı, hedeflerin tamamlanması, ödül sistemi ve geri bildirim konularını ele aldık.
 
