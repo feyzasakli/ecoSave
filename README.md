@@ -85,8 +85,7 @@ Story'ler yapılacak işlere (task'lere) bölünmüştür. Trello'da gözüken k
 - **Sprint board update**: Sprint board screenshotları: 
 
 - **Ürün Durumu**: Ekran görüntüleri:
-<img width="448" alt="1 görsel" src="https://github.com/feyzasakli/ecoSave/assets/113036134/822e50ea-6fcb-409d-a160-9cb7ea5accf8">
-<img width="434" alt="2 görsel" src="https://github.com/feyzasakli/ecoSave/assets/113036134/44738bd6-f68b-456d-9e22-1cc57e8dabb2">
+[denme.pdf](https://github.com/feyzasakli/ecoSave/files/11777542/denme.pdf)
 
 
 
