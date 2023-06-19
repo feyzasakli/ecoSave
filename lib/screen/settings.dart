@@ -36,17 +36,23 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: widget.backgroundColor,
+        backgroundColor: Colors.green,
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: widget.gradientColors,
+              colors: [
+                Color(0xFF17A3A2), // #17A3A2 on the left
+                Color(0xFF52C077), // #52C077 on the right
+              ],
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
             ),
           ),
         ),
-        title: Text(widget.titleText),
+        title: const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [Text("Profil Ayarları")],
+        ),
       ),
       body: ListView(
         padding: const EdgeInsets.all(8.0),

@@ -32,7 +32,51 @@ class _CumartesiPageState extends State<CumartesiPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cumartesi Page'),
+        backgroundColor: Colors.green,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(0xFF17A3A2), // #17A3A2 on the left
+                Color(0xFF52C077), // #52C077 on the right
+              ],
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+            ),
+          ),
+        ),
+        title: const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Icon(Icons.check),
+                SizedBox(width: 5),
+                Text(
+                  'Tamamlanan: 5',
+                  style: TextStyle(fontSize: 16),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Icon(Icons.view_day),
+                SizedBox(width: 5),
+                Text(
+                  'Kalan: 2',
+                  style: TextStyle(fontSize: 16),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Icon(Icons.stars),
+                SizedBox(width: 5),
+                Text('8'),
+              ],
+            ),
+          ],
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(

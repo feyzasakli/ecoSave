@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 class PersembePage extends StatefulWidget {
@@ -28,11 +29,57 @@ class _PersembePageState extends State<PersembePage> {
   int additionalCompletedTasks = 0;
   int additionalTotalPoints = 0;
 
+  bool isFileSelected = false; // Flag to track if a file is selected
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Perşembe Page'),
+        backgroundColor: Colors.green,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(0xFF17A3A2), // #17A3A2 on the left
+                Color(0xFF52C077), // #52C077 on the right
+              ],
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+            ),
+          ),
+        ),
+        title: const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Icon(Icons.check),
+                SizedBox(width: 5),
+                Text(
+                  'Tamamlanan: 5',
+                  style: TextStyle(fontSize: 16),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Icon(Icons.view_day),
+                SizedBox(width: 5),
+                Text(
+                  'Kalan: 2',
+                  style: TextStyle(fontSize: 16),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Icon(Icons.stars),
+                SizedBox(width: 5),
+                Text('8'),
+              ],
+            ),
+          ],
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -142,6 +189,21 @@ class _PersembePageState extends State<PersembePage> {
                                 style: const TextStyle(
                                     fontSize: 14, color: Colors.white),
                               ),
+                              Align(
+                                alignment: Alignment.centerRight,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    if (!isFileSelected) {
+                                      selectFile(); // Open file picker
+                                    }
+                                  },
+                                  child: Text(
+                                    isFileSelected
+                                        ? 'Dosya Seçildi'
+                                        : 'Dosya Yükle',
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -190,8 +252,8 @@ class _PersembePageState extends State<PersembePage> {
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
                         colors: [
-                          Color(0xFF00ADB5),
-                          Color(0xFF4DC3C5),
+                          Color(0xFFE69832),
+                          Color(0xFFF0A500),
                         ],
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
@@ -230,7 +292,7 @@ class _PersembePageState extends State<PersembePage> {
                       title: Text(
                         task.title,
                         style:
-                            const TextStyle(fontSize: 16, color: Colors.white),
+                            const TextStyle(fontSize: 18, color: Colors.white),
                       ),
                       children: [
                         Padding(
@@ -258,10 +320,39 @@ class _PersembePageState extends State<PersembePage> {
                 );
               },
             ),
+            const SizedBox(height: 20),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  // Handle file submission
+                  if (isFileSelected) {
+                    submitFile(); // Perform file submission
+                  }
+                },
+                child: const Text('Gönder'),
+              ),
+            ),
+            const SizedBox(height: 20),
           ],
         ),
       ),
     );
+  }
+
+  Future<void> selectFile() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+    if (result != null) {
+      setState(() {
+        isFileSelected = true;
+      });
+    }
+  }
+
+  void submitFile() {
+    // Perform file submission logic here
+    setState(() {
+      isFileSelected = false;
+    });
   }
 }
 
@@ -272,4 +363,11 @@ class Task {
   bool isCompleted;
 
   Task(this.title, this.description, this.points, {this.isCompleted = false});
+}
+
+void main() {
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: PersembePage(),
+  ));
 }

@@ -45,52 +45,93 @@ class HomePage extends StatelessWidget {
               Positioned(
                 top: height * 0.12,
                 left: width * 0.22,
-                child: _buildButton(context, 'Pzt', Colors.green,
-                    size: 60, clickable: true, page: const PazartesiPage()),
+                child: _buildButton(
+                  context,
+                  'Pzt',
+                  1,
+                  Colors.green,
+                  size: 60,
+                  clickable: true,
+                  page: const PazartesiPage(),
+                ),
               ),
               Positioned(
                 top: height * 0.12,
                 left: width * 0.70,
-                child: _buildButton(context, 'Sal', Colors.green,
-                    size: 60, clickable: true, page: const SaliPage()),
+                child: _buildButton(
+                  context,
+                  'Sal',
+                  2,
+                  Colors.green,
+                  size: 60,
+                  clickable: true,
+                  page: const SaliPage(),
+                ),
               ),
               Positioned(
                 top: height * 0.35,
                 left: width * 0.5,
-                child: _buildButton(context, 'Çar', Colors.green,
-                    size: 60, clickable: true, page: const CarsambaPage()),
+                child: _buildButton(
+                  context,
+                  'Çar',
+                  3,
+                  Colors.green,
+                  size: 60,
+                  clickable: true,
+                  page: const PersembePage(),
+                ),
               ),
               Positioned(
                 top: height * 0.6,
                 left: width * 0.22,
-                child: _buildButton(context, 'Per', Colors.green,
-                    size: 60,
-                    clickable: currentDate.weekday >= 4,
-                    page: const PersembePage()),
+                child: _buildButton(
+                  context,
+                  'Per',
+                  4,
+                  Colors.green,
+                  size: 60,
+                  clickable: currentDate.weekday >= 4,
+                  page: const PersembePage(),
+                ),
               ),
               Positioned(
                 top: height * 0.6,
                 left: width * 0.70,
-                child: _buildButton(context, 'Cum', Colors.green,
-                    size: 60,
-                    clickable: currentDate.weekday >= 5,
-                    page: const CumaPage()),
+                child: _buildButton(
+                  context,
+                  'Cum',
+                  5,
+                  Colors.green,
+                  size: 60,
+                  clickable: currentDate.weekday >= 5,
+                  page: const CumaPage(),
+                ),
               ),
               Positioned(
                 top: height * 0.82,
                 left: width * 0.70,
-                child: _buildButton(context, 'Cmt', Colors.green,
-                    size: 60,
-                    clickable: currentDate.weekday >= 6,
-                    page: const CumartesiPage()),
+                child: _buildButton(
+                  context,
+                  'Cmt',
+                  6,
+                  Colors.green,
+                  size: 60,
+                  clickable: currentDate.weekday >= 6,
+                  page: const CumartesiPage(),
+                ),
               ),
               Positioned(
                 top: height * 0.82,
                 left: width * 0.22,
-                child: _buildButton(context, 'Paz', Colors.green,
-                    size: 60,
-                    clickable: currentDate.weekday >= 7,
-                    page: const PazarPage()),
+                child: _buildButton(
+                  context,
+                  'Paz',
+                  7,
+                  Colors.green,
+                  size: 60,
+                  clickable: currentDate.weekday >= 7,
+                  page: const PazarPage(),
+                ),
               ),
             ],
           );
@@ -102,22 +143,26 @@ class HomePage extends StatelessWidget {
   Widget _buildButton(
     BuildContext context,
     String day,
+    int dayNumber,
     Color color, {
     double size = 80,
     bool clickable = true,
     StatefulWidget? page,
   }) {
+    final isActive = currentDate.weekday >= dayNumber;
+    final buttonColor = isActive ? color : Colors.grey;
+
     return Container(
       width: size,
       height: size,
       decoration: BoxDecoration(
-        color: color,
+        color: buttonColor,
         shape: BoxShape.circle,
       ),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: clickable
+          onTap: clickable && isActive
               ? () {
                   Navigator.push(
                     context,
