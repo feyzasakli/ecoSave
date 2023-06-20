@@ -311,6 +311,21 @@ class _PersembePageState extends State<PersembePage> {
                                 style: const TextStyle(
                                     fontSize: 14, color: Colors.white),
                               ),
+                              Align(
+                                alignment: Alignment.centerRight,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    if (!isFileSelected) {
+                                      selectFile(); // Open file picker
+                                    }
+                                  },
+                                  child: Text(
+                                    isFileSelected
+                                        ? 'Dosya Seçildi'
+                                        : 'Dosya Yükle',
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),

@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 class SaliPage extends StatefulWidget {
@@ -27,6 +28,8 @@ class _SaliPageState extends State<SaliPage> {
 
   int additionalCompletedTasks = 0;
   int additionalTotalPoints = 0;
+
+  bool isFileSelected = false; // Flag to track if a file is selected
 
   @override
   Widget build(BuildContext context) {
@@ -186,6 +189,21 @@ class _SaliPageState extends State<SaliPage> {
                                 style: const TextStyle(
                                     fontSize: 14, color: Colors.white),
                               ),
+                              Align(
+                                alignment: Alignment.centerRight,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    if (!isFileSelected) {
+                                      selectFile(); // Open file picker
+                                    }
+                                  },
+                                  child: Text(
+                                    isFileSelected
+                                        ? 'Dosya Seçildi'
+                                        : 'Dosya Yükle',
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -234,8 +252,8 @@ class _SaliPageState extends State<SaliPage> {
                     decoration: BoxDecoration(
                       gradient: const LinearGradient(
                         colors: [
-                          Color(0xFF00ADB5),
-                          Color(0xFF4DC3C5),
+                          Color(0xFFE69832),
+                          Color(0xFFF0A500),
                         ],
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
@@ -274,7 +292,7 @@ class _SaliPageState extends State<SaliPage> {
                       title: Text(
                         task.title,
                         style:
-                            const TextStyle(fontSize: 16, color: Colors.white),
+                            const TextStyle(fontSize: 18, color: Colors.white),
                       ),
                       children: [
                         Padding(
@@ -293,6 +311,21 @@ class _SaliPageState extends State<SaliPage> {
                                 style: const TextStyle(
                                     fontSize: 14, color: Colors.white),
                               ),
+                              Align(
+                                alignment: Alignment.centerRight,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    if (!isFileSelected) {
+                                      selectFile(); // Open file picker
+                                    }
+                                  },
+                                  child: Text(
+                                    isFileSelected
+                                        ? 'Dosya Seçildi'
+                                        : 'Dosya Yükle',
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -302,10 +335,39 @@ class _SaliPageState extends State<SaliPage> {
                 );
               },
             ),
+            const SizedBox(height: 20),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  // Handle file submission
+                  if (isFileSelected) {
+                    submitFile(); // Perform file submission
+                  }
+                },
+                child: const Text('Gönder'),
+              ),
+            ),
+            const SizedBox(height: 20),
           ],
         ),
       ),
     );
+  }
+
+  Future<void> selectFile() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+    if (result != null) {
+      setState(() {
+        isFileSelected = true;
+      });
+    }
+  }
+
+  void submitFile() {
+    // Perform file submission logic here
+    setState(() {
+      isFileSelected = false;
+    });
   }
 }
 
@@ -316,4 +378,11 @@ class Task {
   bool isCompleted;
 
   Task(this.title, this.description, this.points, {this.isCompleted = false});
+}
+
+void main() {
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: SaliPage(),
+  ));
 }
