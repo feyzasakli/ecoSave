@@ -2,7 +2,7 @@ import 'package:eco/login/login.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatelessWidget {
-  const SignUp({super.key});
+  const SignUp({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,10 +10,11 @@ class SignUp extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
+          height: MediaQuery.of(context).size.height,
           child: Column(
             children: <Widget>[
               Container(
-                height: 200,
+                height: MediaQuery.of(context).size.height * 0.2,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('images/sude2.png'),

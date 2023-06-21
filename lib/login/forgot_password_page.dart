@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
-  const ForgotPasswordPage({super.key});
+  const ForgotPasswordPage({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Container(
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
               Container(
-                height: 400,
+                height: MediaQuery.of(context).size.height * 0.4,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('images/sude3.png'),

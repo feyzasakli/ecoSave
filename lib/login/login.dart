@@ -1,22 +1,23 @@
 import 'package:eco/login/sign_up.dart';
-import 'package:eco/screen/homepage.dart';
+import 'package:eco/main.dart';
 import 'package:flutter/material.dart';
 
 import 'forgot_password_page.dart';
 
 class Login extends StatelessWidget {
-  const Login({super.key});
+  const Login({Key? key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Container(
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
               Container(
-                height: 400,
+                height: MediaQuery.of(context).size.height * 0.4,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('images/sude.png'),
@@ -102,7 +103,7 @@ class Login extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ForgotPasswordPage(),
+                              builder: (context) => const ForgotPasswordPage(),
                             ),
                           );
                         },
@@ -117,13 +118,8 @@ class Login extends StatelessWidget {
                     const SizedBox(height: 10),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                HomePage(), // Yönlendirilecek sayfanın adını burada belirtin
-                          ),
-                        );
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => MyStatefulWidget()));
                       },
                       child: Container(
                         height: 50,

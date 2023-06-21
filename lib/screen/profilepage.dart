@@ -35,7 +35,7 @@ class ProfilePage extends StatelessWidget {
                   bottom: 110.0,
                   child: GestureDetector(
                     onTap: () {
-                      // Düzenlemeee ikonuna basıldığında gerçekleştirilecek işlemler
+                      // Düzenleme ikonuna basıldığında gerçekleştirilecek işlemler
                     },
                     child: Container(
                       decoration: const BoxDecoration(

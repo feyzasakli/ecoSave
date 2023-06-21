@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: _title,
-      home: MyStatefulWidget(),
+      home: Login(),
     );
   }
 }
@@ -32,10 +32,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-     const ShopPage(),
+    const ShopPage(),
     const ProfilePage(),
-    Login(),
-
   ];
 
   void _onItemTapped(int index) {
@@ -121,10 +119,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: 'Profil',
-            ),
-               BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'home',
             ),
           ],
           currentIndex: _selectedIndex,

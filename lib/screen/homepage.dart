@@ -1,4 +1,3 @@
-import 'package:eco/day/carsamba.dart';
 import 'package:eco/day/cuma.dart';
 import 'package:eco/day/cumartesi.dart';
 import 'package:eco/day/pazar.dart';
@@ -78,7 +77,7 @@ class HomePage extends StatelessWidget {
                   Colors.green,
                   size: 60,
                   clickable: true,
-                  page: const CarsambaPage(),
+                  page: const PersembePage(),
                 ),
               ),
               Positioned(

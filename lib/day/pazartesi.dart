@@ -336,18 +336,6 @@ class _PazartesiPageState extends State<PazartesiPage> {
               },
             ),
             const SizedBox(height: 20),
-            Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  // Handle file submission
-                  if (isFileSelected) {
-                    submitFile(); // Perform file submission
-                  }
-                },
-                child: const Text('Gönder'),
-              ),
-            ),
-            const SizedBox(height: 20),
           ],
         ),
       ),
