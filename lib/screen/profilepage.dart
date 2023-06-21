@@ -20,7 +20,7 @@ class ProfilePage extends StatelessWidget {
                 Container(
                   width: 150.0,
                   height: 150.0,
-                  padding: const EdgeInsets.only(top: 10.0, right: 1.0),
+                  padding: const EdgeInsets.only(top: 5.0, right: 1.0),
                   decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.white,
@@ -75,7 +75,8 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
           Positioned(
-            right: 210.0,
+            right: 200.0,
+            top: 140.0,
             child: Text(
               '@$username',
               style: GoogleFonts.dosis(
@@ -87,7 +88,7 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 200.0,
+            top: 280.0,
             left: 220.0,
             child: Container(
               width: 200.0,
@@ -115,7 +116,7 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 350.0,
+            top: 280.0,
             left: 10.0,
             child: Container(
               width: 200.0,
@@ -143,7 +144,7 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 570.0,
+            top: 500.0,
             left: 220.0,
             child: Container(
               width: 200.0,
@@ -171,7 +172,7 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 570.0,
+            top: 500.0,
             left: 10.0,
             child: Container(
               width: 200.0,
