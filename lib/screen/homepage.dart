@@ -1,4 +1,3 @@
-import 'package:eco/day/carsamba.dart';
 import 'package:eco/day/cuma.dart';
 import 'package:eco/day/cumartesi.dart';
 import 'package:eco/day/pazar.dart';
@@ -47,7 +46,7 @@ class HomePage extends StatelessWidget {
                 left: width * 0.22,
                 child: _buildButton(
                   context,
-                  'Pzt',
+                  'Pztj',
                   1,
                   Colors.green,
                   size: 60,
