@@ -1,3 +1,5 @@
+import 'package:eco/login/forgot_password_page.dart';
+import 'package:eco/login/login.dart';
 import 'package:eco/screen/homepage.dart';
 import 'package:eco/screen/profilepage.dart';
 import 'package:eco/screen/shoppage.dart';
@@ -33,6 +35,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     HomePage(),
      const ShopPage(),
     const ProfilePage(),
+    Login(),
+
   ];
 
   void _onItemTapped(int index) {
@@ -118,6 +122,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: 'Profil',
+            ),
+               BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'home',
             ),
           ],
           currentIndex: _selectedIndex,
