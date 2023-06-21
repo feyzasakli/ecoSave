@@ -73,7 +73,7 @@ class Login extends StatelessWidget {
                             child: TextField(
                               decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: "Email or Phone number",
+                                hintText: "E-mail",
                                 hintStyle: TextStyle(
                                   color: Colors.grey[400],
                                 ),
@@ -85,7 +85,7 @@ class Login extends StatelessWidget {
                             child: TextField(
                               decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: "Password",
+                                hintText: "Şifre",
                                 hintStyle: TextStyle(
                                   color: Colors.grey[400],
                                 ),
@@ -108,7 +108,7 @@ class Login extends StatelessWidget {
                           );
                         },
                         child: const Text(
-                          'Forgot Password?',
+                          'Parolanızı mı unuttunuz?',
                           style: TextStyle(
                             color: Color.fromRGBO(239, 31, 112, 1),
                           ),
@@ -134,7 +134,7 @@ class Login extends StatelessWidget {
                         ),
                         child: const Center(
                           child: Text(
-                            "Login",
+                            "Giriş",
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -155,7 +155,7 @@ class Login extends StatelessWidget {
                           );
                         },
                         child: const Text(
-                          'Do not Have an Account? Sign Up',
+                          'Bir hesabınız yok mu? Üye ol',
                           style: TextStyle(
                             color: Color.fromRGBO(239, 31, 112, 1),
                           ),

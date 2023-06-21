@@ -74,6 +74,26 @@ class ForgotPasswordPage extends StatelessWidget {
                       child: Column(
                         children: <Widget>[
                           Container(
+                            child: const Text(
+                              'Şifremi Unuttum',
+                              style: TextStyle(
+                                  color: Color.fromRGBO(239, 31, 112, 1),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          const SizedBox(height: 4),
+                          Container(
+                            child: const Text(
+                              'Şifrenizi sıfırlamak için lütfen kayıtlı e-posta adresinizi girin. ',
+                              style: TextStyle(
+                                color: Color.fromRGBO(239, 31, 112, 1),
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          Container(
                             padding: const EdgeInsets.all(8.0),
                             decoration: const BoxDecoration(
                               border: Border(
@@ -84,35 +104,6 @@ class ForgotPasswordPage extends StatelessWidget {
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: " E-mail",
-                                hintStyle: TextStyle(
-                                  color: Colors.grey[400],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(8.0),
-                            decoration: const BoxDecoration(
-                              border: Border(
-                                bottom: BorderSide(color: Colors.grey),
-                              ),
-                            ),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: " New Password",
-                                hintStyle: TextStyle(
-                                  color: Colors.grey[400],
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.all(8.0),
-                            child: TextField(
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Confirm New Password",
                                 hintStyle: TextStyle(
                                   color: Colors.grey[400],
                                 ),
@@ -137,8 +128,9 @@ class ForgotPasswordPage extends StatelessWidget {
                       ),
                       child: const Center(
                         child: Text(
-                          "Submit",
+                          "Gönder",
                           style: TextStyle(
+                            fontSize: 20,
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),

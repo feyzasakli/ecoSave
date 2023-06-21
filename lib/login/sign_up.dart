@@ -46,6 +46,26 @@ class SignUp extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Container(
+                      child: const Text(
+                        'Üyelik',
+                        style: TextStyle(
+                            color: Color.fromRGBO(239, 31, 112, 1),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Container(
+                      child: const Text(
+                        'Üye olmak için bilgilerinizi giriniz',
+                        style: TextStyle(
+                          color: Color.fromRGBO(239, 31, 112, 1),
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Container(
                       padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -70,7 +90,7 @@ class SignUp extends StatelessWidget {
                             child: TextField(
                               decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: "Username",
+                                hintText: "Kullanıcı Adı",
                                 hintStyle: TextStyle(
                                   color: Colors.grey[400],
                                 ),
@@ -104,7 +124,7 @@ class SignUp extends StatelessWidget {
                             child: TextField(
                               decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: "Password",
+                                hintText: "Şifre",
                                 hintStyle: TextStyle(
                                   color: Colors.grey[400],
                                 ),
@@ -116,7 +136,7 @@ class SignUp extends StatelessWidget {
                             child: TextField(
                               decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: "Confirm Password",
+                                hintText: "Şifreyi Onayla",
                                 hintStyle: TextStyle(
                                   color: Colors.grey[400],
                                 ),
@@ -141,7 +161,7 @@ class SignUp extends StatelessWidget {
                       ),
                       child: const Center(
                         child: Text(
-                          "Sign Up",
+                          "Kayıt Ol",
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -156,12 +176,12 @@ class SignUp extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Login(),
+                              builder: (context) => const Login(),
                             ),
                           );
                         },
                         child: const Text(
-                          'Already Have an Account? Sign in',
+                          'Zaten hesabınız var mı? Giriş Yap',
                           style: TextStyle(
                             color: Color.fromRGBO(239, 31, 112, 1),
                           ),
