@@ -119,7 +119,7 @@ class Login extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => MyStatefulWidget()));
+                            builder: (context) => const MyStatefulWidget()));
                       },
                       child: Container(
                         height: 50,
@@ -161,6 +161,36 @@ class Login extends StatelessWidget {
                           ),
                         ),
                       ),
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Bir hesabınız yok mu? ',
+                          style: TextStyle(
+                            color: Color.fromRGBO(239, 31, 112, 1),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            // Handle Google icon button tap
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 5),
+                            child: const Icon(
+                              Icons.mail,
+                              color: Color.fromRGBO(239, 31, 112, 1),
+                            ),
+                          ),
+                        ),
+                        const Text(
+                          'Üye ol',
+                          style: TextStyle(
+                            color: Color.fromRGBO(239, 31, 112, 1),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
