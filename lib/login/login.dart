@@ -1,11 +1,60 @@
 import 'package:eco/login/sign_up.dart';
 import 'package:eco/main.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import 'forgot_password_page.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({Key? key});
+
+  @override
+  _LoginState createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  void googleSignIn() async {
+    try {
+      // Google hesabıyla giriş yapmak için GoogleSignIn nesnesini oluşturun
+      final googleSignIn = GoogleSignIn();
+
+      // Google hesabı seçme ekranını açın
+      final account = await googleSignIn.signIn();
+
+      // Eğer hesap seçilmediyse işlemi iptal edin
+      if (account == null) return;
+
+      // Hesap seçildiyse Firebase ile kimlik doğrulama yapın
+      final googleAuth = await account.authentication;
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      // Firebase'e kimlik doğrulama bilgileriyle giriş yapın
+      await FirebaseAuth.instance.signInWithCredential(credential);
+
+      // Seçilen mail adresini Firebase'e kaydedin (istediğiniz şekilde uyarlamanız gerekmektedir)
+      final firebaseUser = FirebaseAuth.instance.currentUser;
+      if (firebaseUser != null) {
+        final email = firebaseUser.email;
+        // Mail adresini Firebase'e kaydedin
+        // Örnek: await Firestore.instance.collection('users').doc(firebaseUser.uid).set({'email': email});
+      }
+
+      // İşlem başarılı olduysa, istediğiniz sayfaya yönlendirin
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const MyStatefulWidget(),
+        ),
+      );
+    } catch (error) {
+      // İşlem sırasında bir hata oluştuğunda hata mesajını gösterin
+      print('Google Sign-In Error: $error');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -167,14 +216,14 @@ class Login extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text(
-                          'Bir hesabınız yok mu? ',
+                          'Diğer giriş seçenekleri ',
                           style: TextStyle(
                             color: Color.fromRGBO(239, 31, 112, 1),
                           ),
                         ),
                         InkWell(
                           onTap: () {
-                            // Handle Google icon button tap
+                            googleSignIn();
                           },
                           child: Container(
                             margin: const EdgeInsets.symmetric(horizontal: 5),
@@ -182,12 +231,6 @@ class Login extends StatelessWidget {
                               Icons.mail,
                               color: Color.fromRGBO(239, 31, 112, 1),
                             ),
-                          ),
-                        ),
-                        const Text(
-                          'Üye ol',
-                          style: TextStyle(
-                            color: Color.fromRGBO(239, 31, 112, 1),
                           ),
                         ),
                       ],

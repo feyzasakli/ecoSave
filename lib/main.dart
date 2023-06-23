@@ -2,9 +2,15 @@ import 'package:eco/login/login.dart';
 import 'package:eco/screen/homepage.dart';
 import 'package:eco/screen/profilepage.dart';
 import 'package:eco/screen/shoppage.dart';
+import 'package:firebase_core/firebase_core.dart'; // Firebase Core eklenmeli
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(); // Firebase'i başlat
+
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   static const String _title = 'Flutter Code Sample';

@@ -39,6 +39,11 @@ dependencies:
   simple_animations: ^5.0.2
   flutter_fadein: ^2.0.0
   google_fonts: ^4.0.4
+  firebase_auth: ^4.6.3
+  firebase_core: ^2.14.0
+  google_sign_in: ^6.1.4
+  cloud_firestore: ^4.8.1
+
 
 
 dev_dependencies:

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "892828558268",
+    "project_id": "ecosave-23295",
+    "storage_bucket": "ecosave-23295.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892828558268:android:fa8cfcfa8c17b1ba3241b9",
+        "android_client_info": {
+          "package_name": "com.example.eco"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "892828558268-27qj97a1g0pujd0odcdldjp6eproh812.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiNgFe_s8nue0nM1jmjqaw07JjfXUsRa8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "892828558268-27qj97a1g0pujd0odcdldjp6eproh812.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
