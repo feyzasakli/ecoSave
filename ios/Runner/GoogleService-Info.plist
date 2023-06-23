@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>892828558268-ujsd76r2kppp52mv7sj107lg0rmgdjjd.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.892828558268-ujsd76r2kppp52mv7sj107lg0rmgdjjd</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>892828558268-54qmfnp4hdl8rjivm8pqkgrj71lvh8be.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDUfoPS2GYuaon6fE_SM_qKv2jq8Tbz9B0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>892828558268</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.eco</string>
+	<key>PROJECT_ID</key>
+	<string>ecosave-23295</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ecosave-23295.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:892828558268:ios:7a2e86ad956637fa3241b9</string>
+</dict>
+</plist>
