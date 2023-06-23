@@ -44,12 +44,8 @@ class _LoginState extends State<Login> {
       }
 
       // İşlem başarılı olduysa, istediğiniz sayfaya yönlendirin
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const MyStatefulWidget(),
-        ),
-      );
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => MyStatefulWidget()));
     } catch (error) {
       // İşlem sırasında bir hata oluştuğunda hata mesajını gösterin
       print('Google Sign-In Error: $error');
@@ -168,7 +164,7 @@ class _LoginState extends State<Login> {
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => const MyStatefulWidget()));
+                            builder: (context) => MyStatefulWidget()));
                       },
                       child: Container(
                         height: 50,
