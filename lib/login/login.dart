@@ -14,6 +14,9 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  String email = '';
+  String password = '';
+
   void googleSignIn() async {
     try {
       // Google hesabıyla giriş yapmak için GoogleSignIn nesnesini oluşturun
@@ -45,10 +48,29 @@ class _LoginState extends State<Login> {
 
       // İşlem başarılı olduysa, istediğiniz sayfaya yönlendirin
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => MyStatefulWidget()));
+          MaterialPageRoute(builder: (context) => const MyStatefulWidget()));
     } catch (error) {
       // İşlem sırasında bir hata oluştuğunda hata mesajını gösterin
       print('Google Sign-In Error: $error');
+    }
+  }
+
+  void loginWithEmail(String email, String password) async {
+    try {
+      // Firebase ile email ve şifre ile kimlik doğrulama yapın
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      // İşlem başarılı olduysa, istediğiniz sayfaya yönlendirin
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const MyStatefulWidget()),
+      );
+    } catch (error) {
+      // İşlem sırasında bir hata oluştuğunda hata mesajını gösterin
+      print('Email Sign-In Error: $error');
     }
   }
 
@@ -116,6 +138,11 @@ class _LoginState extends State<Login> {
                               ),
                             ),
                             child: TextField(
+                              onChanged: (value) {
+                                setState(() {
+                                  email = value;
+                                });
+                              },
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: "E-mail",
@@ -128,6 +155,11 @@ class _LoginState extends State<Login> {
                           Container(
                             padding: const EdgeInsets.all(8.0),
                             child: TextField(
+                              onChanged: (value) {
+                                setState(() {
+                                  password = value;
+                                });
+                              },
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: "Şifre",
@@ -163,8 +195,7 @@ class _LoginState extends State<Login> {
                     const SizedBox(height: 10),
                     GestureDetector(
                       onTap: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => MyStatefulWidget()));
+                        loginWithEmail(email, password);
                       },
                       child: Container(
                         height: 50,
