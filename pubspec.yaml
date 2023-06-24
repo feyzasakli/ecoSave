@@ -43,6 +43,7 @@ dependencies:
   firebase_core: ^2.14.0
   google_sign_in: ^6.1.4
   cloud_firestore: ^4.8.1
+  url_launcher: ^6.1.11
 
 
 
@@ -98,3 +99,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+

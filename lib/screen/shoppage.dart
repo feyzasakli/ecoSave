@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ShopPage extends StatelessWidget {
   const ShopPage({Key? key}) : super(key: key);
@@ -6,7 +7,6 @@ class ShopPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -32,60 +32,59 @@ class ShopPage extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      Image.asset(
-                        'images/ayi.jpeg',
+                      Container(
                         width: 150,
                         height: 150,
-                        fit: BoxFit.scaleDown,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.green,
+                        ),
+                        child: ClipOval(
+                          child: Image.asset(
+                            'images/bep.jpeg',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
                       const SizedBox(height: 10),
-                      const Text('Bozayı Safari Şapka - Bej'), // Added caption for the image
-                      const SizedBox(height: 10),
-                      const Row(
-                        children: [
-                          Icon(Icons.star),
-                          SizedBox(width: 5),
-                          Text('1000'),
-                        ],
-                      ),
                       ElevatedButton(
                         onPressed: () {
-                          // Satın Al butonuna basıldığında yapılacak işlemler buraya gelecek.
+                          _showCouponDialog(context, 'Coupon Code 1');
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green, // Butonun arka plan rengini yeşil olarak ayarlar
+                          backgroundColor: Colors.green,
                         ),
-                        child: const Text('Satın Al'),
+                        child: const Text('Kuponu Görüntüle'),
+
                       ),
                     ],
                   ),
                   const SizedBox(width: 20),
                   Column(
                     children: [
-                      Image.asset(
-                        'images/sincap.jpeg',
+                      Container(
                         width: 150,
                         height: 150,
-                        fit: BoxFit.scaleDown,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.green,
+                        ),
+                        child: ClipOval(
+                          child: Image.asset(
+                            'images/mavi.jpeg',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
                       const SizedBox(height: 10),
-                      const Text('Sincap SuCo. Matara'), // Added caption for the image
-                      const SizedBox(height: 10),
-                      const Row(
-                        children: [
-                          Icon(Icons.star),
-                          SizedBox(width: 5),
-                          Text('1000'),
-                        ],
-                      ),
                       ElevatedButton(
                         onPressed: () {
-                          // Satın Al butonuna basıldığında yapılacak işlemler buraya gelecek.
+                          _showCouponDialog(context, 'Coupon Code 2');
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green, // Butonun arka plan rengini yeşil olarak ayarlar
+                          backgroundColor: Colors.green,
                         ),
-                        child: const Text('Satın Al'),
+                        child: const Text('Kuponu Görüntüle'),
                       ),
                     ],
                   ),
@@ -97,61 +96,58 @@ class ShopPage extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      Image.asset(
-                        'images/yengec.jpeg',
+                      Container(
                         width: 150,
                         height: 150,
-                        fit: BoxFit.scaleDown,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.green,
+                        ),
+                        child: ClipOval(
+                          child: Image.asset(
+                            'images/reclo.jpeg',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
                       const SizedBox(height: 10),
-                      const Text('Yengeç Çorap - Lacivert'), // Added caption for the image
-                      const SizedBox(height: 10),
-                      const Row(
-                        children: [
-                          Icon(Icons.star),
-                          SizedBox(width: 5),
-                          Text('1000'),
-                        ],
-                      ),
                       ElevatedButton(
                         onPressed: () {
-                          // Satın Al butonuna basıldığında yapılacak işlemler buraya gelecek.
+                          _showCouponDialog(context, 'Coupon Code 3');
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green, // Butonun arka plan rengini yeşil olarak ayarlar
+                          backgroundColor: Colors.green,
                         ),
-                        child: const Text('Satın Al'),
+                        child: const Text('Kuponu Görüntüle'),
                       ),
                     ],
                   ),
                   const SizedBox(width: 20),
                   Column(
                     children: [
-                      Image.asset(
-                        'images/zurafa.jpeg',
+                      Container(
                         width: 150,
                         height: 150,
-                        fit: BoxFit.scaleDown,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.green,
+                        ),
+                        child: ClipOval(
+                          child: Image.asset(
+                            'images/wwf.jpeg',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
                       const SizedBox(height: 10),
-                      const Text('Zürafa Oversize T-shirt'), // Removed "- Açık Sarı" from the text
-                      const Text('Açık Sarı'), // Added a separate Text widget for "Açık Sarı"
-                      const SizedBox(height: 10),
-                      const Row(
-                        children: [
-                          Icon(Icons.star),
-                          SizedBox(width: 5),
-                          Text('1000'),
-                        ],
-                      ),
                       ElevatedButton(
                         onPressed: () {
-                          // Satın Al butonuna basıldığında yapılacak işlemler buraya gelecek.
+                          _showCouponDialog(context, 'Coupon Code 4');
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green, // Butonun arka plan rengini yeşil olarak ayarlar
+                          backgroundColor: Colors.green,
                         ),
-                        child: const Text('Satın Al'),
+                        child: const Text('Kuponu Görüntüle'),
                       ),
                     ],
                   ),
@@ -163,5 +159,63 @@ class ShopPage extends StatelessWidget {
       ),
     );
   }
-}
 
+  void _showCouponDialog(BuildContext context, String couponCode) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text('Kupon Kodu: $couponCode'),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () {
+                    Clipboard.setData(ClipboardData(text: couponCode));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Kupon kodu kopyalandı'),
+                      ),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: const Text(
+                    'Kuponu Kopyala',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () {
+                    // Siteye yönlendirme işlemleri burada gerçekleştirilebilir.
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: const Text(
+                    'Siteye Git',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
