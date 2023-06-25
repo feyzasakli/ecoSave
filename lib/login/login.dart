@@ -226,7 +226,7 @@ class _LoginState extends State<Login> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SignUp(),
+                              builder: (context) => const SignUp(),
                             ),
                           );
                         },
