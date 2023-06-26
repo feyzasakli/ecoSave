@@ -1,11 +1,18 @@
+// ignore_for_file: deprecated_member_use, prefer_const_constructors, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
+
+
+
 
 final Uri _url1 = Uri.parse('https://bepeople.co/');
-final Uri _url2 = Uri.parse('https://us.mavi.com/');
+final Uri _url2 = Uri.parse('https://mavi.com/');
 final Uri _url3 = Uri.parse('https://re-clo.com.tr/');
 final Uri _url4 = Uri.parse('https://www.wwf.org.tr/');
+
 
 class ShopPage extends StatelessWidget {
   const ShopPage({Key? key}) : super(key: key);
@@ -19,18 +26,52 @@ class ShopPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: 40,
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    labelText: 'Arama',
+              TypeAheadField(
+                textFieldConfiguration: TextFieldConfiguration(
+                  autofocus: false,
+                  decoration: InputDecoration(
                     prefixIcon: Icon(Icons.search),
+                    hintText: 'Mağaza arayın',
                     border: OutlineInputBorder(),
                   ),
-                  onChanged: (value) {
-                    // Arama çubuğunda değer değiştiğinde yapılacak işlemler buraya gelecek.
-                  },
                 ),
+                suggestionsCallback: (pattern) async {
+                  // Burada mağaza verilerini geri döndürmek için bir API çağrısı yapabilirsiniz
+                  // Örneğin, mağaza adları bir API'den getirilebilir
+                  return [
+                    'BE PEOPLE',
+                    'Mavi',
+                    're-clo',
+                    'WWF',
+                  ].where((store) => store.toLowerCase().contains(pattern.toLowerCase())).toList();
+                },
+                itemBuilder: (context, suggestion) {
+                  return ListTile(
+                    title: Text(suggestion),
+                    onTap: () {
+                      if (suggestion == 'BE PEOPLE') {
+                        _showCouponDialog1(context, suggestion);
+                      } else if (suggestion == 'Mavi') {
+                        _showCouponDialog2(context, suggestion);
+                      } else if (suggestion == 're-clo') {
+                        _showCouponDialog3(context, suggestion);
+                      } else if (suggestion == 'WWF') {
+                        _showCouponDialog4(context, suggestion);
+                      }
+                    },
+                  );
+                },
+                onSuggestionSelected: (String suggestion) {
+                  if (suggestion == 'BE PEOPLE') {
+                    _showCouponDialog1(context, suggestion);
+                  } else if (suggestion == 'Mavi') {
+                    _showCouponDialog2(context, suggestion);
+                  } else if (suggestion == 're-clo') {
+                    _showCouponDialog3(context, suggestion);
+                  } else if (suggestion == 'WWF') {
+                    _showCouponDialog4(context, suggestion);
+                  }
+                },
               ),
               const SizedBox(height: 20),
               Row(
@@ -161,7 +202,7 @@ class ShopPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       const Text(
-                        'wwf',
+                        'WWF',
                         style: TextStyle(fontSize: 16),
                       ),
                       const SizedBox(height: 10),
@@ -185,240 +226,361 @@ class ShopPage extends StatelessWidget {
     );
   }
 
-  void _showCouponDialog1(BuildContext context, String couponCode) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text('Kupon Kodu: $couponCode'),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: () {
-                    Clipboard.setData(ClipboardData(text: couponCode));
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Kupon kodu kopyalandı'),
-                      ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: const Text(
-                    'Kuponu Kopyala',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: _launchUrl1,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: const Text(
-                    'Siteye Git',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
+  Future<void> _launchUrl1() async {
+    if (!await launchUrl(_url1)) {
+      throw Exception('Could not launch $_url1');
+    }
   }
 
-  void _showCouponDialog2(BuildContext context, String couponCode) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text('Kupon Kodu: $couponCode'),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: () {
-                    Clipboard.setData(ClipboardData(text: couponCode));
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Kupon kodu kopyalandı'),
-                      ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: const Text(
-                    'Kuponu Kopyala',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: _launchUrl2,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: const Text(
-                    'Siteye Git',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ],
+
+  void _showCouponDialog1(BuildContext context, String couponCode) {
+    int starCount = 5; // Yıldız simgesindeki sayıyı gerçek değerle değiştirin
+
+    if (starCount >= 10) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Dialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
             ),
-          ),
-        );
-      },
-    );
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('Kupon Kodu: $couponCode'),
+                  const SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      Clipboard.setData(ClipboardData(text: couponCode));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Kupon kodu kopyalandı'),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: const Text(
+                      'Kuponu Kopyala',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      _launchUrl1();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: const Text(
+                      'Siteye Git',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      );
+    } else {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            title: const Text('Uyarı'),
+            content: const Text(
+                'Bu kupon kodunu kullanabilmeniz için toplam puanınız 10\'dan fazla olmalıdır.'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text(
+                  'Tamam',
+                  style: TextStyle(color: Colors.green),
+                ),
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
+
+
+  void _showCouponDialog2(BuildContext context, String couponCode) {
+    int starCount = 8; // Replace with the actual star count
+
+    if (starCount >= 8) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Dialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('Kupon Kodu: $couponCode'),
+                  const SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      Clipboard.setData(ClipboardData(text: couponCode));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Kupon kodu kopyalandı'),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: const Text(
+                      'Kuponu Kopyala',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      _launchUrl2();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: const Text(
+                      'Siteye Git',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      );
+    } else {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            title: const Text('Uyarı'),
+            content: const Text(
+                'Bu kupon kodunu kullanabilmeniz için toplam puanınız 8\'den fazla olmalıdır.'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                style: TextButton.styleFrom(
+                backgroundColor: Colors.green,
+                ),
+                child: const Text('Tamam',
+                  style: TextStyle(color: Colors.white), // Change the button text color to white
+                ),
+
+
+
+
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   void _showCouponDialog3(BuildContext context, String couponCode) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text('Kupon Kodu: $couponCode'),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: () {
-                    Clipboard.setData(ClipboardData(text: couponCode));
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Kupon kodu kopyalandı'),
-                      ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: const Text(
-                    'Kuponu Kopyala',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: _launchUrl3,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: const Text(
-                    'Siteye Git',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ],
+    int starCount = 8; // Replace with the actual star count
+
+    if (starCount >= 8) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Dialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
             ),
-          ),
-        );
-      },
-    );
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('Kupon Kodu: $couponCode'),
+                  const SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      Clipboard.setData(ClipboardData(text: couponCode));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Kupon kodu kopyalandı'),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: const Text(
+                      'Kuponu Kopyala',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      _launchUrl3();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: const Text(
+                      'Siteye Git',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      );
+    } else {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Uyarı'),
+            content: const Text(
+                'Bu kupon kodunu kullanabilmeniz için toplam puanınız 8\'den fazla olmalıdır.'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('Tamam'),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   void _showCouponDialog4(BuildContext context, String couponCode) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text('Kupon Kodu: $couponCode'),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: () {
-                    Clipboard.setData(ClipboardData(text: couponCode));
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Kupon kodu kopyalandı'),
-                      ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: const Text(
-                    'Kuponu Kopyala',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: _launchUrl4,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: const Text(
-                    'Siteye Git',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ],
+    int starCount = 5; // Replace with the actual star count
+
+    if (starCount >= 5) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Dialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
             ),
-          ),
-        );
-      },
-    );
+            child: Container(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('Kupon Kodu: $couponCode'),
+                  const SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      Clipboard.setData(ClipboardData(text: couponCode));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Kupon kodu kopyalandı'),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: const Text(
+                      'Kuponu Kopyala',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      _launchUrl4();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: const Text(
+                      'Siteye Git',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      );
+    } else {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Uyarı'),
+            content: const Text(
+                'Bu kupon kodunu kullanabilmeniz için toplam puanınız 5\'ten fazla olmalıdır.'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('Tamam'),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 }
 
-Future<void> _launchUrl1() async {
-  if (!await launchUrl(_url1)) {
-    throw Exception('Could not launch $_url1');
-  }
-}
 
 Future<void> _launchUrl2() async {
   if (!await launchUrl(_url2)) {
