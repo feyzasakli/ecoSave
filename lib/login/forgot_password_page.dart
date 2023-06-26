@@ -1,7 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
-  const ForgotPasswordPage({Key? key});
+  final TextEditingController _emailController = TextEditingController();
+
+  Future<void> resetPassword(BuildContext context) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(
+        email: _emailController.text,
+      );
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Başarılı'),
+            content: const Text(
+              'Şifre sıfırlama e-postası gönderildi.',
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Tamam'),
+              ),
+            ],
+          );
+        },
+      );
+    } catch (error) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Hata'),
+            content: Text(error.toString()),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Tamam'),
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,11 +117,12 @@ class ForgotPasswordPage extends StatelessWidget {
                         children: <Widget>[
                           Container(
                             child: const Text(
-                              'Şifremi Unuttum',
+                              'Giriş Yaparken Sorun mu Yaşıyorsun?',
                               style: TextStyle(
-                                  color: Color.fromRGBO(239, 31, 112, 1),
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
+                                color: Color.fromARGB(255, 0, 0, 0),
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                           const SizedBox(height: 4),
@@ -88,22 +131,19 @@ class ForgotPasswordPage extends StatelessWidget {
                               'Şifrenizi sıfırlamak için lütfen kayıtlı e-posta adresinizi girin. ',
                               style: TextStyle(
                                 color: Color.fromRGBO(239, 31, 112, 1),
-                                fontSize: 16,
+                                fontSize: 12,
                               ),
                             ),
                           ),
                           const SizedBox(height: 20),
                           Container(
                             padding: const EdgeInsets.all(8.0),
-                            decoration: const BoxDecoration(
-                              border: Border(
-                                bottom: BorderSide(color: Colors.grey),
-                              ),
-                            ),
+                            decoration: const BoxDecoration(),
                             child: TextField(
+                              controller: _emailController,
                               decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: " E-mail",
+                                hintText: "E-mail",
                                 hintStyle: TextStyle(
                                   color: Colors.grey[400],
                                 ),
@@ -115,28 +155,37 @@ class ForgotPasswordPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     const SizedBox(height: 20),
-                    Container(
-                      height: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        gradient: const LinearGradient(
-                          colors: [
-                            Color.fromRGBO(97, 203, 109, 1),
-                            Color.fromRGBO(6, 160, 168, 0.6),
-                          ],
-                        ),
+                    //gönder
+                   Container(
+                    height: 50,
+                    width: double.infinity, // Genişlik tüm ekrana yayılır
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      gradient: const LinearGradient(
+                        colors: [
+                          Color.fromRGBO(97, 203, 109, 1),
+                          Color.fromRGBO(6, 160, 168, 0.6),
+                        ],
                       ),
-                      child: const Center(
-                        child: Text(
-                          "Gönder",
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
+                    ),
+                    child: ElevatedButton(
+                      onPressed: () => resetPassword(context),
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white, backgroundColor: Colors.transparent,
+                        elevation: 0,
+                      ),
+                      child: const Text(
+                        "Gönder",
+                        style: TextStyle(
+                          fontSize: 19,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
+                  ),
+
+
                   ],
                 ),
               ),
