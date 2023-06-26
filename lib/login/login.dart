@@ -38,12 +38,12 @@ class _LoginState extends State<Login> {
       // Firebase'e kimlik doğrulama bilgileriyle giriş yapın
       await FirebaseAuth.instance.signInWithCredential(credential);
 
-      // Seçilen mail adresini Firebase'e kaydedin (istediğiniz şekilde uyarlamanız gerekmektedir)
+      // Seçilen e-posta adresini Firebase'e kaydedin (Firestore veya Realtime Database gibi bir hizmet kullanmanız gerekmektedir)
       final firebaseUser = FirebaseAuth.instance.currentUser;
       if (firebaseUser != null) {
         final email = firebaseUser.email;
-        // Mail adresini Firebase'e kaydedin
-        // Örnek: await Firestore.instance.collection('users').doc(firebaseUser.uid).set({'email': email});
+        // E-posta adresini Firestore veya Realtime Database'e kaydedin
+        // Örnek: await FirebaseFirestore.instance.collection('users').doc(firebaseUser.uid).set({'email': email});
       }
 
       // İşlem başarılı olduysa, istediğiniz sayfaya yönlendirin
@@ -51,18 +51,49 @@ class _LoginState extends State<Login> {
           MaterialPageRoute(builder: (context) => const MyStatefulWidget()));
     } catch (error) {
       // İşlem sırasında bir hata oluştuğunda hata mesajını gösterin
-      print('Google Sign-In Error: $error');
+      print('Google Girişi Hatası: $error');
     }
   }
 
-  void loginWithEmail(String email, String password) async {
+  void emailIleGirisYap(String email, String password) async {
     try {
-      // Firebase ile email ve şifre ile kimlik doğrulama yapın
+      // Firebase ile e-posta ve şifre ile kimlik doğrulama yapın
       final UserCredential userCredential =
           await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
+
+      // Kullanıcının kaydının olup olmadığını kontrol edin
+      if (userCredential.user == null) {
+        // Kullanıcı kaydı bulunamadıysa, hata mesajı gösterin veya uygun bir işlem yapın
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Hata'),
+              content: const Text('Kullanıcı bulunamadı.'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Tamam'),
+                ),
+              ],
+            );
+          },
+        );
+        return;
+      }
+
+      // Firestore veya Realtime Database kullanarak kullanıcının verilerini kaydedin
+      final firebaseUser = userCredential.user;
+      if (firebaseUser != null) {
+        final email = firebaseUser.email;
+        // E-posta adresini Firestore veya Realtime Database'e kaydedin
+        // Örnek: await FirebaseFirestore.instance.collection('users').doc(firebaseUser.uid).set({'email': email});
+      }
 
       // İşlem başarılı olduysa, istediğiniz sayfaya yönlendirin
       Navigator.of(context).pushReplacement(
@@ -70,7 +101,23 @@ class _LoginState extends State<Login> {
       );
     } catch (error) {
       // İşlem sırasında bir hata oluştuğunda hata mesajını gösterin
-      print('Email Sign-In Error: $error');
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Hata'),
+            content: Text('E-posta ile Giriş Hatası: $error'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text('Tamam'),
+              ),
+            ],
+          );
+        },
+      );
     }
   }
 
@@ -145,7 +192,7 @@ class _LoginState extends State<Login> {
                               },
                               decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: "E-mail",
+                                hintText: "E-posta",
                                 hintStyle: TextStyle(
                                   color: Colors.grey[400],
                                 ),
@@ -160,6 +207,7 @@ class _LoginState extends State<Login> {
                                   password = value;
                                 });
                               },
+                              obscureText: true,
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: "Şifre",
@@ -180,7 +228,7 @@ class _LoginState extends State<Login> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const ForgotPasswordPage(),
+                              builder: (context) => ForgotPasswordPage(),
                             ),
                           );
                         },
@@ -195,7 +243,7 @@ class _LoginState extends State<Login> {
                     const SizedBox(height: 10),
                     GestureDetector(
                       onTap: () {
-                        loginWithEmail(email, password);
+                        emailIleGirisYap(email, password);
                       },
                       child: Container(
                         height: 50,
@@ -212,6 +260,7 @@ class _LoginState extends State<Login> {
                           child: Text(
                             "Giriş",
                             style: TextStyle(
+                              fontSize: 19,
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                             ),
@@ -231,7 +280,7 @@ class _LoginState extends State<Login> {
                           );
                         },
                         child: const Text(
-                          'Bir hesabınız yok mu? Üye ol',
+                          'Bir hesabınız yok mu? Üye olun',
                           style: TextStyle(
                             color: Color.fromRGBO(239, 31, 112, 1),
                           ),
@@ -242,22 +291,23 @@ class _LoginState extends State<Login> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
-                          'Diğer giriş seçenekleri ',
-                          style: TextStyle(
-                            color: Color.fromRGBO(239, 31, 112, 1),
-                          ),
-                        ),
                         InkWell(
                           onTap: () {
                             googleSignIn();
                           },
                           child: Container(
                             margin: const EdgeInsets.symmetric(horizontal: 5),
-                            child: const Icon(
-                              Icons.mail,
-                              color: Color.fromRGBO(239, 31, 112, 1),
+                            child: Image.asset(
+                              'images/google.png',
+                              height: 24,
+                              width: 24,
                             ),
+                          ),
+                        ),
+                        const Text(
+                          'Google ile Giriş Yapın ',
+                          style: TextStyle(
+                            color: Color.fromRGBO(239, 31, 112, 1),
                           ),
                         ),
                       ],

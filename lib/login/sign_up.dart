@@ -1,8 +1,169 @@
 import 'package:eco/login/login.dart';
+import 'package:eco/screen/homepage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class SignUp extends StatelessWidget {
+class SignUp extends StatefulWidget {
   const SignUp({Key? key});
+
+  @override
+  _SignUpState createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+  String username = '';
+  String email = '';
+  String password = '';
+  String confirmPassword = '';
+
+  Future<void> signUp(BuildContext context) async {
+    try {
+      if (email.isEmpty || password.isEmpty || username.isEmpty) {
+        // E-posta, şifre veya kullanıcı adı boş ise hata mesajı gösterme
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Hata'),
+              content: const Text('E-posta, şifre veya kullanıcı adı boş olamaz.'),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('Tamam'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+        return;
+      }
+
+      if (password != confirmPassword) {
+        // Şifreler eşleşmiyor ise hata mesajı gösterme
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Hata'),
+              content: const Text('Şifreler eşleşmiyor.'),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('Tamam'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+        return;
+      }
+
+      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      // Kayıt işlemi başarılı olduğunda kullanıcıyı Firebase'e ekler
+
+      // Ana sayfaya yönlendirme
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(),
+        ),
+      );
+
+      // Kayıt başarılı mesajını gösterme
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Kaydınız başarıyla tamamlandı!'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        // Zayıf bir şifre kullanıldığında hata mesajı gösterme
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Hata'),
+              content: const Text('Güçlü bir şifre kullanmalısınız.'),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('Tamam'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      } else if (e.code == 'email-already-in-use') {
+        // E-posta adresi zaten kullanımda ise hata mesajı gösterme
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Hata'),
+              content: const Text('Bu e-posta adresi zaten kullanımda.'),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('Tamam'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      } else {
+        // Diğer hata durumlarında genel hata mesajı gösterme
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Hata'),
+              content: Text('Kayıt hatası: ${e.message}'),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('Tamam'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          },
+        );
+      }
+    } catch (e) {
+      // Kayıt işlemi başarısız olduğunda genel hata mesajı gösterme
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Hata'),
+            content: Text('Kayıt hatası: $e'),
+            actions: <Widget>[
+              TextButton(
+                child: const Text('Tamam'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,23 +204,19 @@ class SignUp extends StatelessWidget {
               padding: const EdgeInsets.all(30.0),
               child: Column(
                 children: <Widget>[
-                  Container(
-                    child: const Text(
-                      'Üyelik',
-                      style: TextStyle(
-                          color: Color.fromRGBO(239, 31, 112, 1),
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                    ),
+                  const Text(
+                    'KAYIT OL',
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 10, 10, 10),
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 4),
-                  Container(
-                    child: const Text(
-                      'Üye olmak için bilgilerinizi giriniz',
-                      style: TextStyle(
-                        color: Color.fromRGBO(239, 31, 112, 1),
-                        fontSize: 14,
-                      ),
+                  const Text(
+                    'Üye olmak için bilgilerinizi giriniz',
+                    style: TextStyle(
+                      color: Color.fromRGBO(239, 31, 112, 1),
+                      fontSize: 14,
                     ),
                   ),
                   const SizedBox(height: 4),
@@ -86,6 +243,11 @@ class SignUp extends StatelessWidget {
                             ),
                           ),
                           child: TextField(
+                            onChanged: (value) {
+                              setState(() {
+                                username = value;
+                              });
+                            },
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: "Kullanıcı Adı",
@@ -103,6 +265,11 @@ class SignUp extends StatelessWidget {
                             ),
                           ),
                           child: TextField(
+                            onChanged: (value) {
+                              setState(() {
+                                email = value;
+                              });
+                            },
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: "E-mail",
@@ -120,6 +287,12 @@ class SignUp extends StatelessWidget {
                             ),
                           ),
                           child: TextField(
+                            onChanged: (value) {
+                              setState(() {
+                                password = value;
+                              });
+                            },
+                            obscureText: true,
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: "Şifre",
@@ -131,10 +304,21 @@ class SignUp extends StatelessWidget {
                         ),
                         Container(
                           padding: const EdgeInsets.all(8.0),
+                          decoration: const BoxDecoration(
+                            border: Border(
+                              bottom: BorderSide(color: Colors.grey),
+                            ),
+                          ),
                           child: TextField(
+                            onChanged: (value) {
+                              setState(() {
+                                confirmPassword = value;
+                              });
+                            },
+                            obscureText: true,
                             decoration: InputDecoration(
                               border: InputBorder.none,
-                              hintText: "Şifreyi Onayla",
+                              hintText: "Şifre Tekrar",
                               hintStyle: TextStyle(
                                 color: Colors.grey[400],
                               ),
@@ -144,12 +328,12 @@ class SignUp extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 4),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 30),
                   Container(
                     height: 50,
+                    width: 300,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
+                      borderRadius: BorderRadius.circular(50),
                       gradient: const LinearGradient(
                         colors: [
                           Color.fromRGBO(97, 203, 109, 1),
@@ -157,34 +341,47 @@ class SignUp extends StatelessWidget {
                         ],
                       ),
                     ),
-                    child: const Center(
-                      child: Text(
-                        "Kayıt Ol",
+                    child: TextButton(
+                      onPressed: () {
+                        signUp(context);
+                      },
+                      child: const Text(
+                        'Kayıt Ol',
                         style: TextStyle(
                           color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
                         ),
                       ),
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Login(),
+                  const SizedBox(height: 30),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      const Text(
+                        'Zaten bir hesabınız var mı?',
+                        style: TextStyle(fontSize: 14),
+                      ),
+                      const SizedBox(width: 5),
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const Login(),
+                            ),
+                          );
+                        },
+                        child: const Text(
+                          'Giriş yap',
+                          style: TextStyle(
+                            color: Color.fromRGBO(239, 31, 112, 1),
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
                           ),
-                        );
-                      },
-                      child: const Text(
-                        'Zaten hesabınız var mı? Giriş Yap',
-                        style: TextStyle(
-                          color: Color.fromRGBO(239, 31, 112, 1),
                         ),
                       ),
-                    ),
+                    ],
                   ),
                 ],
               ),
