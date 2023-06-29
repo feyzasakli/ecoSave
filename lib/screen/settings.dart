@@ -35,6 +35,7 @@ class _SettingsPageState extends State<SettingsPage> {
   void initState() {
     super.initState();
     _firestore = FirebaseFirestore.instance;
+    getDataFromFirestore(); // Firestore'dan verileri çekmek için çağırılıyor
   }
 
   Future<void> saveDataToFirestore(BuildContext context) async {
@@ -70,6 +71,39 @@ class _SettingsPageState extends State<SettingsPage> {
       });
     }
   }
+
+  Future<void> getDataFromFirestore() async {
+    try {
+      DocumentSnapshot snapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .doc('kullanici_id')
+          .get();
+
+      if (snapshot.exists) {
+        var data = snapshot.data() as Map<String, dynamic>;
+        String? ad = data['ad'];
+        String? kullaniciAdi = data['kullanici_adi'];
+        String? eposta = data['eposta'];
+        String? sifre = data['sifre'];
+        String? yeniSifre = data['yeni_sifre'];
+
+        adController.text = ad ?? '';
+        kullaniciAdiController.text = kullaniciAdi ?? '';
+        epostaController.text = eposta ?? '';
+        sifreController.text = sifre ?? '';
+        yeniSifreController.text = yeniSifre ?? '';
+      } else {
+        if (kDebugMode) {
+          print('Belge bulunamadı');
+        }
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Hata: $e');
+      }
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
