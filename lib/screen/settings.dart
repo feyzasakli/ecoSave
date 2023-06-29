@@ -1,5 +1,7 @@
-import 'package:file_picker/file_picker.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:file_picker/file_picker.dart';
 
 class SettingsPage extends StatefulWidget {
   final Color backgroundColor;
@@ -16,11 +18,48 @@ class SettingsPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _SettingsPageState createState() => _SettingsPageState();
 }
 
 class _SettingsPageState extends State<SettingsPage> {
   String? selectedFileName;
+  late FirebaseFirestore _firestore;
+  final adController = TextEditingController();
+  final kullaniciAdiController = TextEditingController();
+  final epostaController = TextEditingController();
+  final sifreController = TextEditingController();
+  final yeniSifreController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _firestore = FirebaseFirestore.instance;
+  }
+
+  Future<void> saveDataToFirestore(BuildContext context) async {
+    try {
+      await _firestore.collection('users').doc('kullanici_id').set({
+        'ad': adController.text,
+        'kullanici_adi': kullaniciAdiController.text,
+        'eposta': epostaController.text,
+        'sifre': sifreController.text,
+        'yeni_sifre': yeniSifreController.text,
+      });
+
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Veri kaydedildi')),
+      );
+    } catch (e) {
+      if (kDebugMode) {
+        print('Hata: $e');
+      }
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Veri kaydedilemedi')),
+      );
+    }
+  }
 
   Future<void> _selectFile() async {
     final result = await FilePicker.platform.pickFiles();
@@ -49,230 +88,126 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
           ),
         ),
-        title: const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [Text("Profil Ayarları")],
+        title: const Text(
+          "Profil Ayarları",
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
-      body: ListView(
+      body: Padding(
         padding: const EdgeInsets.all(8.0),
-        children: [
-          Row(
-            children: [
-              const Expanded(
-                child: Text(
-                  'Hesap',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // Kaydetme işlevselliğini buraya ekleyin
-                },
-                style: ElevatedButton.styleFrom(
-                  elevation: 8,
-                  textStyle: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                child: const Text('Kaydet'),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          GestureDetector(
-            onTap: _selectFile,
-            child: Row(
+        child: ListView(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const SizedBox(width: 16),
-                const Expanded(
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Hesap',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        saveDataToFirestore(context);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        elevation: 8,
+                        backgroundColor: Colors.green,
+                      ),
+                      child: const Text(
+                        'Kaydet',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                Row(
+                  children: [
+                    const Text(
                       'Profil Resmi',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ),
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.upload),
-                      const SizedBox(width: 8),
-                      Text(
-                        selectedFileName ?? 'Dosya seçin',
-                        style: const TextStyle(
-                          fontSize: 16,
+                    const Spacer(),
+                    ElevatedButton(
+                      onPressed: _selectFile,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green,
+                        elevation: 4, // Gölgelendirme
+                      ),
+                      child: const Text(
+                        'Resim Seç',
+                        style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ],
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                if (selectedFileName != null)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text('Seçilen dosya: $selectedFileName'),
                   ),
+                const SizedBox(height: 16),
+                TextField(
+                  controller: adController,
+                  decoration: const InputDecoration(
+                    labelText: 'Ad',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                TextField(
+                  controller: kullaniciAdiController,
+                  decoration: const InputDecoration(
+                    labelText: 'Kullanıcı Adı',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                TextField(
+                  controller: epostaController,
+                  decoration: const InputDecoration(
+                    labelText: 'E-posta',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                TextField(
+                  controller: sifreController,
+                  decoration: const InputDecoration(
+                    labelText: 'Şifre',
+                    border: OutlineInputBorder(),
+                  ),
+                  obscureText: true,
+                ),
+                const SizedBox(height: 8),
+                TextField(
+                  controller: yeniSifreController,
+                  decoration: const InputDecoration(
+                    labelText: 'Yeni Şifre',
+                    border: OutlineInputBorder(),
+                  ),
+                  obscureText: true,
                 ),
               ],
             ),
-          ),
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              const SizedBox(width: 16),
-              const SizedBox(
-                width: 120,
-                child: Text(
-                  'Ad',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    labelText: 'Ad',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              const SizedBox(width: 16),
-              const SizedBox(
-                width: 120,
-                child: Text(
-                  'Kullanıcı adı',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    labelText: 'Kullanıcı adı',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              const SizedBox(width: 16),
-              const SizedBox(
-                width: 120,
-                child: Text(
-                  'E-Posta',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    labelText: 'E-Posta',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              const SizedBox(width: 16),
-              const SizedBox(
-                width: 120,
-                child: Text(
-                  'Şifre',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    labelText: 'Şifre',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              const SizedBox(width: 16),
-              const SizedBox(
-                width: 120,
-                child: Text(
-                  'Yeni Şifre',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    labelText: 'Yeni Şifre',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          const Spacer(),
-        ],
+          ],
+        ),
       ),
     );
   }
