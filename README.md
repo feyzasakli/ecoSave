@@ -1,4 +1,4 @@
-[DailyScrumMeetingNotesSprint2.docx](https://github.com/feyzasakli/ecoSave/files/11927114/DailyScrumMeetingNotesSprint2.docx)# **Takım İsmi**
+**Takım İsmi**
 
 F-131
 
