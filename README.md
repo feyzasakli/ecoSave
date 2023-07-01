@@ -139,7 +139,10 @@ Bu toplantıda takım verimliliğini artırmak ve sürdürülebilirlik hedefleri
 - **Sprint board update**: Sprint board screenshotları:<img width="879" alt="sprint board 2" src="https://github.com/feyzasakli/ecoSave/assets/113036134/e491fdc2-7de5-4302-a6c0-5fc79953eb2d">
 
 
-- **Ürün Durumu**: Ekran görüntüleri:<img width="380" alt="ecoSave ekran gö" src="https://github.com/feyzasakli/ecoSave/assets/113036134/0e775e71-75b6-462e-a937-d89e9d14d8b6">
+- **Ürün Durumu**: Ekran görüntüleri:
+
+
+  <img width="380" alt="ecoSave ekran gö" src="https://github.com/feyzasakli/ecoSave/assets/113036134/0e775e71-75b6-462e-a937-d89e9d14d8b6">
 
   
 
