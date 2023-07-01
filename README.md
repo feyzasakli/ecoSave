@@ -89,7 +89,7 @@ https://trello.com/b/QeXDpgyY/ecosave
 - **Ürün Durumu**: Ekran görüntüleri:
 
 
-  <img width="769" alt="Ekran görüntüsü 2023-06-17 035855" src="https://github.com/feyzasakli/ecoSave/assets/113036134/5a2c5cf1-6cfd-4f84-9ca5-e5372e41a6b8">
+-  <img width="769" alt="Ekran görüntüsü 2023-06-17 035855" src="https://github.com/feyzasakli/ecoSave/assets/113036134/5a2c5cf1-6cfd-4f84-9ca5-e5372e41a6b8">
 
 
 
