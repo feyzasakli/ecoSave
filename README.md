@@ -122,7 +122,45 @@ Bu toplantıda takım verimliliğini artırmak ve sürdürülebilirlik hedefleri
 ---
 
 # Sprint 2
+ **Sprint Notları**: User Story'ler product backlog'ların içine yazılmıştır. Product backlog item'lara tıklandığında hikayelerin detayları okunabilir.
 
+- **Sprint içinde tamamlanması tahmin edilen puan**: 100 Puan
+
+- **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 300 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ilk sprint'in en azından 100 ile başlaması gerektiğine karar verildi.
+
+- **Backlog düzeni ve Story seçimleri**: Backlog'umuz ilk yapılacak story'lere göre düzenlenmiştir. Sprint başına tahmin edilen puan sayısını geçmeyecek şekilde sıradan seçimler yapılmaktadır. Story başına çıkan tahmin puanı, toplam puanın yarısından az tutulmuştur. Story'ler yapılacak işlere (task'lere) bölünmüştür. Trello'da gözüken kırmızı item'lar yapılacak işleri (task) gösterirken, mavi item'lar story'leri temsil etmektedir.
+
+- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Whatsapp üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği word olarak Readme'de tarafımızdan paylaşılmaktadır:
+
+
+- **Sprint board update**: Sprint board screenshotları:<img width="879" alt="sprint board 2" src="https://github.com/feyzasakli/ecoSave/assets/113036134/e491fdc2-7de5-4302-a6c0-5fc79953eb2d">
+
+
+- **Ürün Durumu**: Ekran görüntüleri:<img width="736" alt="uygulama ekran görüntüleri" src="https://github.com/feyzasakli/ecoSave/assets/113036134/ebcff16b-84ef-4356-8c36-dee5a5190a85">
+
+  
+
+- **Sprint Review**:
+Alınan kararlar:
+EcoSave uygulamasında kullanıcıların sürdürülebilirlik alışkanlıklarını geliştirmek ve ödüllendirmek için yapılan çalışmalar devam etti. Kullanıcıların tamamladıkları görevleri fotoğraf kanıtlarıyla paylaşabilecekleri bir sistem başarıyla oluşturuldu. Ayrıca kullanıcı bilgilerini toplamak amacıyla bir veritabanı oluşturuldu ve kullanıcı kaydı ve girişi işlevselliği eklendi.
+
+  
+- **Sprint Retrospective:**
+Bu retrospektif toplantısında, neleri başarıyla tamamladığımızı, karşılaştığımız zorlukları ve yapılacak işlerde nasıl daha iyi bir performans sergileyebileceğimizi gözden geçirdik.
+
+Başarılar:
+Kullanıcı Veritabanı: Kullanıcı bilgilerini toplamak amacıyla bir veritabanı oluşturuldu ve kullanıcı kaydı ve girişi işlevselliği eklendi. Artık kullanıcılar uygulamaya kayıt olarak kişiselleştirilmiş deneyim yaşayabilirler.
+Görevlerin Dağılımı: Takım içindeki görev dağılımını daha iyi organize ettik ve her üyenin yeteneklerine uygun görevleri üstlenmesini sağladık.
+
+Zorluklar:
+Veritabanı Performansı: Veritabanı bazlı işlemlerde performans sorunları yaşandı. Veritabanı sorgularını optimize etme ve daha verimli hale getirme konusunda daha fazla çalışmaya ihtiyacımız var.
+Görevlerin Tamamlanması: Bazı görevleri tamamlamak için beklenenden daha fazla zaman harcadık ve hedeflerimize ulaşmak için daha iyi bir zaman yönetimi planlaması yapmamız gerekiyor.
+
+Öğrenilen Dersler:
+Esneklik ve Uyarlanabilirlik: Bir sprint süresince planlar değişebilir ve beklenmedik zorluklarla karşılaşabiliriz. Ekip olarak daha esnek olmayı ve hızlıca adapte olmayı öğrendik.
+
+Öneriler ve İyileştirme Fırsatları:
+Hedef Belirleme: Daha gerçekçi ve ölçülebilir hedefler belirlemeliyiz.
 
 ---
 
