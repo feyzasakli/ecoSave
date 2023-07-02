@@ -2,8 +2,15 @@ import 'package:eco/screen/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _ProfilePageState createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
   final String username = 'iremozc4n';
   final IconData settingsIcon = Icons.settings;
 
@@ -17,9 +24,8 @@ class ProfilePage extends StatelessWidget {
           ),
           child: IntrinsicHeight(
             child: Stack(
-              children: [ Container(
-                color: Colors.greenAccent, // Arka plan rengi
-              ),
+              children: [
+
                 Align(
                   alignment: const FractionalOffset(0.80, 0.08),
                   child: Stack(
@@ -212,15 +218,17 @@ class ProfilePage extends StatelessWidget {
                 ),
                 Positioned(
                   top: 0.800 * MediaQuery.of(context).size.height,
-                  left: 0.073* MediaQuery.of(context).size.width,
+                  left: 0.073 * MediaQuery.of(context).size.width,
                   child: Container(
                     width: 0.850 * MediaQuery.of(context).size.width,
                     height: 0.300 * MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20.0),
                       color: Colors.blueGrey,
+                    ),
+                  ),
                 )
-                  ) )  ],
+              ],
             ),
           ),
         ),

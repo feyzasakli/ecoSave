@@ -1,7 +1,13 @@
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously, prefer_const_constructors
+
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:file_picker/file_picker.dart';
+
 
 class SettingsPage extends StatefulWidget {
   final Color backgroundColor;
@@ -18,12 +24,12 @@ class SettingsPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _SettingsPageState createState() => _SettingsPageState();
 }
 
 class _SettingsPageState extends State<SettingsPage> {
   String? selectedFileName;
+  String? uploadedImageUrl;
   late FirebaseFirestore _firestore;
   final adController = TextEditingController();
   final kullaniciAdiController = TextEditingController();
@@ -35,8 +41,9 @@ class _SettingsPageState extends State<SettingsPage> {
   void initState() {
     super.initState();
     _firestore = FirebaseFirestore.instance;
-    getDataFromFirestore(); // Firestore'dan verileri çekmek için çağırılıyor
+    getDataFromFirestore();
   }
+
 
   Future<void> saveDataToFirestore(BuildContext context) async {
     try {
@@ -48,7 +55,6 @@ class _SettingsPageState extends State<SettingsPage> {
         'yeni_sifre': yeniSifreController.text,
       });
 
-      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Veri kaydedildi')),
       );
@@ -62,13 +68,46 @@ class _SettingsPageState extends State<SettingsPage> {
     }
   }
 
-  Future<void> _selectFile() async {
+  Future<void> _selectAndUploadFile() async {
     final result = await FilePicker.platform.pickFiles();
 
     if (result != null) {
       setState(() {
-        selectedFileName = result.files.first.name;
+        selectedFileName = result.files.first.path;
       });
+
+      await uploadFileToStorage();
+    }
+  }
+
+  Future<void> uploadFileToStorage() async {
+    if (selectedFileName != null) {
+      try {
+        final File file = File(selectedFileName!);
+        final String fileName = file.path.split('/').last;
+
+        final Reference storageRef = FirebaseStorage.instance
+            .ref()
+            .child('profil_resimleri/$fileName');
+
+        final UploadTask uploadTask = storageRef.putFile(file);
+
+        await uploadTask.whenComplete(() async {
+          final String downloadURL = await storageRef.getDownloadURL();
+
+          setState(() {
+            uploadedImageUrl = downloadURL;
+          });
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Dosya başarıyla yüklendi')),
+          );
+        });
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Dosya yüklenirken bir hata oluştu')),
+        );
+      }
     }
   }
 
@@ -104,7 +143,6 @@ class _SettingsPageState extends State<SettingsPage> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,8 +152,8 @@ class _SettingsPageState extends State<SettingsPage> {
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color(0xFF17A3A2), // #17A3A2 on the left
-                Color(0xFF52C077), // #52C077 on the right
+                Color(0xFF17A3A2),
+                Color(0xFF52C077),
               ],
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
@@ -140,7 +178,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
+                    Text(
                       'Hesap',
                       style: TextStyle(
                         fontSize: 16,
@@ -154,35 +192,42 @@ class _SettingsPageState extends State<SettingsPage> {
                       style: ElevatedButton.styleFrom(
                         elevation: 8,
                         backgroundColor: Colors.green,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
                       ),
-                      child: const Text(
+                      child: Text(
                         'Kaydet',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
+
                         ),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: 8),
                 Row(
                   children: [
-                    const Text(
+                    Text(
                       'Profil Resmi',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const Spacer(),
+                    Spacer(),
                     ElevatedButton(
-                      onPressed: _selectFile,
+                      onPressed: _selectAndUploadFile,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,
-                        elevation: 4, // Gölgelendirme
+                        elevation: 4,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
                       ),
-                      child: const Text(
-                        'Resim Seç',
+                      child: Text(
+                        'Resim Seç ve Yükle',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -190,53 +235,51 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: 8),
                 if (selectedFileName != null)
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Text('Seçilen dosya: $selectedFileName'),
                   ),
-                const SizedBox(height: 16),
+                SizedBox(height: 16),
                 TextField(
                   controller: adController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     labelText: 'Ad',
                     border: OutlineInputBorder(),
                   ),
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: 8),
                 TextField(
                   controller: kullaniciAdiController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     labelText: 'Kullanıcı Adı',
                     border: OutlineInputBorder(),
                   ),
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: 8),
                 TextField(
                   controller: epostaController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     labelText: 'E-posta',
                     border: OutlineInputBorder(),
                   ),
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: 8),
                 TextField(
                   controller: sifreController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     labelText: 'Şifre',
                     border: OutlineInputBorder(),
                   ),
-                  obscureText: true,
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: 8),
                 TextField(
                   controller: yeniSifreController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     labelText: 'Yeni Şifre',
                     border: OutlineInputBorder(),
                   ),
-                  obscureText: true,
                 ),
               ],
             ),

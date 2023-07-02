@@ -46,6 +46,8 @@ dependencies:
   url_launcher: ^6.1.11
   flutter_typeahead: ^4.6.2
   flutter_svg: ^2.0.7
+  firebase_storage: ^11.2.4
+  image_picker: ^1.0.0
 
 
 
