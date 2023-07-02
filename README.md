@@ -148,7 +148,7 @@ Bu toplantıda takım verimliliğini artırmak ve sürdürülebilirlik hedefleri
 
 - **Sprint Review**:
 Alınan kararlar:
-EcoSave uygulamasında kullanıcıların sürdürülebilirlik alışkanlıklarını geliştirmek ve ödüllendirmek için yapılan çalışmalar devam etti. Kullanıcıların tamamladıkları görevleri fotoğraf kanıtlarıyla paylaşabilecekleri bir sistem başarıyla oluşturuldu. Ayrıca kullanıcı bilgilerini toplamak amacıyla bir veritabanı oluşturuldu ve kullanıcı kaydı ve girişi işlevselliği eklendi.
+EcoSave uygulamasında kullanıcıların sürdürülebilirlik alışkanlıklarını geliştirmek ve ödüllendirmek için yapılan çalışmalar devam etti. Kullanıcıların tamamladıkları görevleri fotoğraf kanıtlarıyla paylaşabilecekleri bir sistem oluşturulmaya çalışıyor. Ayrıca kullanıcı bilgilerini toplamak amacıyla bir veritabanı oluşturuldu ve kullanıcı kaydı ve girişi işlevselliği eklendi.
 
   
 - **Sprint Retrospective:**
