@@ -124,13 +124,16 @@ Bu toplantıda takım verimliliğini artırmak ve sürdürülebilirlik hedefleri
 ---
 
 # Sprint 2
- **Sprint Notları**: User Story'ler product backlog'ların içine yazılmıştır. Product backlog item'lara tıklandığında hikayelerin detayları okunabilir.
+ **Sprint Notları**: Sprint 2, ecoSave uygulamasının geliştirilmesi sürecindeki ikinci adımdır. Bu sprintte öncelikli olarak aşağıdaki user story üzerinde çalışılacaktır:
+ 
+Kullanıcı bilgilerini toplamak amacıyla bir veritabanı oluşturulması kararlaştırılmıştır.
 
-- **Sprint içinde tamamlanması tahmin edilen puan**: 100 Puan
+- **Sprint içinde tamamlanması tahmin edilen puan**: Sprint 2 için tahmin edilen tamamlanma puanı yine 100 puandır.
 
-- **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 300 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ilk sprint'in en azından 100 ile başlaması gerektiğine karar verildi.
+- **Puan tamamlama mantığı**: İkinci sprintte de 100 puan tamamlanarak toplamda 200 puan tamamlanmış oldu. Böylece, üçüncü sprintte geri kalan 100 puan tamamlanacaktır. Ekip, planlanan tüm özellikleri ve görevleri tamamlayarak projeyi başarıyla sonuçlandırmak için üçüncü sprintte kalan işlere odaklanacak.
 
-- **Backlog düzeni ve Story seçimleri**: Backlog'umuz ilk yapılacak story'lere göre düzenlenmiştir. Sprint başına tahmin edilen puan sayısını geçmeyecek şekilde sıradan seçimler yapılmaktadır. Story başına çıkan tahmin puanı, toplam puanın yarısından az tutulmuştur. Story'ler yapılacak işlere (task'lere) bölünmüştür. Trello'da gözüken kırmızı item'lar yapılacak işleri (task) gösterirken, mavi item'lar story'leri temsil etmektedir.
+
+- **Backlog düzeni ve Story seçimleri**: Sprint 2 için yapılacak olan görevler ve hedeflenen user story'ler, ürünün tamamlanmasına yönelik bir sıralama ile düzenlenmiştir. Öncelikli ve kritik görevler önce gelmek üzere, diğer görevler bu sıralamaya göre yer almaktadır.
 
 - **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Whatsapp üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği word olarak Readme'de tarafımızdan paylaşılmaktadır: [DailyScrumMeetingNotesSprint2.docx](https://github.com/feyzasakli/ecoSave/files/11927112/DailyScrumMeetingNotesSprint2.docx)
 
