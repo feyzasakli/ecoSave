@@ -304,7 +304,12 @@ class _ProfilePageState extends State<ProfilePage> {
                     height: 0.300 * MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20.0),
-                      color: Colors.white,
+                      color: Colors.white.withOpacity(0.5),
+                      image: DecorationImage(
+                        image: AssetImage('images/nature2.png'),
+                        fit: BoxFit.cover,
+
+                      )
                     ),
                     child: FutureBuilder(
                       future: _getAirPollutionData(),
@@ -318,7 +323,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               'Hava Kirliliği Endeksi: $aqi\nHava Kalitesi: ${getAirQuality(aqi)}',
 
                               style: TextStyle(
-                                color: Color.fromARGB(255, 8, 66, 33),
+                                color: Color.fromARGB(255, 255, 255, 255),
                                 fontSize: 24.0,
                                 fontWeight: FontWeight.bold,
                               ),
