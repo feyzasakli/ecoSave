@@ -1,14 +1,18 @@
 import 'package:eco/screen/settings.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:geolocator/geolocator.dart';
 
+
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  final String uploadedImageUrl;
+
+  const ProfilePage({Key? key, required this.uploadedImageUrl}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _ProfilePageState createState() => _ProfilePageState();
 }
 
@@ -23,24 +27,13 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
     fetchPollutionData();
   }
-  Future<void> _getLocationPermission() async {
-    LocationPermission permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied ||
-        permission == LocationPermission.deniedForever) {
-      permission = await Geolocator.requestPermission();
-    }
 
-    if (permission == LocationPermission.denied ||
-        permission == LocationPermission.deniedForever) {
-      // Konum izni reddedildi, kullanıcıya bir mesaj gösterilebilir
-      print('Konum izni reddedildi');
-    }
-  }
   Future<void> fetchPollutionData() async {
     try {
       // Konumu al
       Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high);
+        desiredAccuracy: LocationAccuracy.high,
+      );
 
       // Hava kirliliği verilerini API'den al
       String apiUrl =
@@ -65,10 +58,13 @@ class _ProfilePageState extends State<ProfilePage> {
       }
 
       setState(() {
-        pollutionData = 'Hava Kirliliği Endeksi: $aqi\nHava Kalitesi: $airQuality\n\n$formattedPollutionData';
+        pollutionData =
+        'Hava Kirliliği Endeksi: $aqi\nHava Kalitesi: $airQuality\n\n$formattedPollutionData';
       });
     } catch (e) {
-      print('Hava kirliliği verileri alınamadı: $e');
+      if (kDebugMode) {
+        print('Hava kirliliği verileri alınamadı: $e');
+      }
     }
   }
 
@@ -100,7 +96,7 @@ class _ProfilePageState extends State<ProfilePage> {
             child: Stack(
               children: [
                 Container(
-                  color: Color.fromARGB(255, 170, 236, 177), // Arka plan rengi
+                  color: const Color.fromARGB(255, 170, 236, 177),
                 ),
                 Align(
                   alignment: const FractionalOffset(0.80, 0.08),
@@ -115,9 +111,9 @@ class _ProfilePageState extends State<ProfilePage> {
                           shape: BoxShape.circle,
                           color: Colors.white,
                         ),
-                        child: const Icon(
-                          Icons.person,
-                          size: 100.0,
+                        child: Image.network(
+                          widget.uploadedImageUrl,
+                          fit: BoxFit.cover,
                         ),
                       ),
                       Positioned(
@@ -171,12 +167,10 @@ class _ProfilePageState extends State<ProfilePage> {
                   top: 0.100 * MediaQuery.of(context).size.height,
                   child: Text(
                     '@$username',
-                    style: GoogleFonts.dosis(
-                      textStyle: const TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
+                    style: const TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
                     ),
                   ),
                 ),
@@ -197,11 +191,11 @@ class _ProfilePageState extends State<ProfilePage> {
                           left: 0.070 * MediaQuery.of(context).size.width,
                           child: Text(
                             'Toplam Puan',
-                            style: GoogleFonts.pacifico(
+                            style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: const Color.fromARGB(255, 8, 66, 33),
-                              fontSize:
-                              0.04 * MediaQuery.of(context).size.width,
+                              fontSize: 0.04 *
+                                  MediaQuery.of(context).size.width,
                             ),
                           ),
                         ),
@@ -226,11 +220,11 @@ class _ProfilePageState extends State<ProfilePage> {
                           left: 0.058 * MediaQuery.of(context).size.width,
                           child: Text(
                             'Günlük Seri',
-                            style: GoogleFonts.pacifico(
+                            style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: const Color.fromARGB(255, 8, 66, 33),
-                              fontSize:
-                              0.04 * MediaQuery.of(context).size.width,
+                              fontSize: 0.04 *
+                                  MediaQuery.of(context).size.width,
                             ),
                           ),
                         ),
@@ -255,11 +249,11 @@ class _ProfilePageState extends State<ProfilePage> {
                           left: 0.080 * MediaQuery.of(context).size.width,
                           child: Text(
                             'Sıralama',
-                            style: GoogleFonts.pacifico(
+                            style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: const Color.fromARGB(255, 8, 66, 33),
-                              fontSize:
-                              0.04 * MediaQuery.of(context).size.width,
+                              fontSize: 0.04 *
+                                  MediaQuery.of(context).size.width,
                             ),
                           ),
                         ),
@@ -284,11 +278,11 @@ class _ProfilePageState extends State<ProfilePage> {
                           left: 0.030 * MediaQuery.of(context).size.width,
                           child: Text(
                             'Tamamlanan Görev',
-                            style: GoogleFonts.pacifico(
+                            style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: const Color.fromARGB(255, 8, 66, 33),
-                              fontSize:
-                              0.04 * MediaQuery.of(context).size.width,
+                              fontSize: 0.04 *
+                                  MediaQuery.of(context).size.width,
                             ),
                           ),
                         ),
@@ -305,11 +299,10 @@ class _ProfilePageState extends State<ProfilePage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20.0),
                       color: Colors.white.withOpacity(0.5),
-                      image: DecorationImage(
+                      image: const DecorationImage(
                         image: AssetImage('images/nature2.png'),
                         fit: BoxFit.cover,
-
-                      )
+                      ),
                     ),
                     child: FutureBuilder(
                       future: _getAirPollutionData(),
@@ -320,32 +313,31 @@ class _ProfilePageState extends State<ProfilePage> {
                           var aqi = data['list'][0]['main']['aqi'];
                           return Center(
                             child: Text(
-                              'Hava Kirliliği Endeksi: $aqi\nHava Kalitesi: ${getAirQuality(aqi)}',
-
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                fontSize: 24.0,
-                                fontWeight: FontWeight.bold,
-                              ),
+                                'Hava Kirliliği Endeksi: $aqi\nHava Kalitesi: ${getAirQuality(aqi)}',
+                                style: const TextStyle(
+                                  color: Color.fromARGB(255, 255, 255, 255),
+                                    fontSize: 24.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                             ),
-                          );
-                        } else if (snapshot.hasError) {
-                          // Handle error
-                          return Center(
+                                );
+                            } else if (snapshot.hasError) {
+                            // Handle error
+                            return const Center(
                             child: Text(
-                              'Failed to fetch air pollution data',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 24.0,
-                                fontWeight: FontWeight.bold,
-                              ),
+                            'Hava kirliliği verileri alınamadı',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.bold,
                             ),
-                          );
+                          ),
+                        );
                         } else {
-                          // Show a loading spinner while waiting for the data
-                          return Center(
-                            child: CircularProgressIndicator(),
-                          );
+                        // Show a loading spinner while waiting for the data
+                        return const Center(
+                        child: CircularProgressIndicator(),
+                        );
                         }
                       },
                     ),
@@ -362,7 +354,8 @@ class _ProfilePageState extends State<ProfilePage> {
   Future<dynamic> _getAirPollutionData() async {
     // Get the current location
     Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.low);
+      desiredAccuracy: LocationAccuracy.low,
+    );
 
     // Make the API request
     String apiKey = 'ef04ae610d6f7c3e159bcc92aea64e15';
@@ -374,5 +367,3 @@ class _ProfilePageState extends State<ProfilePage> {
     return jsonData;
   }
 }
-
-

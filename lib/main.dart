@@ -31,6 +31,7 @@ class MyStatefulWidget extends StatefulWidget {
   const MyStatefulWidget({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
 }
 
@@ -39,7 +40,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static final List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     const ShopPage(),
-    const ProfilePage(),
+    const ProfilePage(uploadedImageUrl: '',),
   ];
 
   void _onItemTapped(int index) {

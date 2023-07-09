@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously, prefer_const_constructors
+// ignore_for_file: use_build_context_synchronously, prefer_const_constructors
 
 import 'dart:io';
 
@@ -7,7 +7,6 @@ import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
 
 class SettingsPage extends StatefulWidget {
   final Color backgroundColor;
@@ -24,6 +23,7 @@ class SettingsPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _SettingsPageState createState() => _SettingsPageState();
 }
 
@@ -31,11 +31,13 @@ class _SettingsPageState extends State<SettingsPage> {
   String? selectedFileName;
   String? uploadedImageUrl;
   late FirebaseFirestore _firestore;
-  final adController = TextEditingController();
-  final kullaniciAdiController = TextEditingController();
-  final epostaController = TextEditingController();
-  final sifreController = TextEditingController();
-  final yeniSifreController = TextEditingController();
+  final TextEditingController adController = TextEditingController();
+  final TextEditingController kullaniciAdiController = TextEditingController();
+  final TextEditingController epostaController = TextEditingController();
+  final TextEditingController sifreController = TextEditingController();
+  final TextEditingController yeniSifreController = TextEditingController();
+
+
 
   @override
   void initState() {
@@ -43,7 +45,6 @@ class _SettingsPageState extends State<SettingsPage> {
     _firestore = FirebaseFirestore.instance;
     getDataFromFirestore();
   }
-
 
   Future<void> saveDataToFirestore(BuildContext context) async {
     try {
@@ -68,19 +69,7 @@ class _SettingsPageState extends State<SettingsPage> {
     }
   }
 
-  Future<void> _selectAndUploadFile() async {
-    final result = await FilePicker.platform.pickFiles();
-
-    if (result != null) {
-      setState(() {
-        selectedFileName = result.files.first.path;
-      });
-
-      await uploadFileToStorage();
-    }
-  }
-
-  Future<void> uploadFileToStorage() async {
+  Future<String> uploadFileToStorage() async {
     if (selectedFileName != null) {
       try {
         final File file = File(selectedFileName!);
@@ -90,25 +79,42 @@ class _SettingsPageState extends State<SettingsPage> {
             .ref()
             .child('profil_resimleri/$fileName');
 
-        final UploadTask uploadTask = storageRef.putFile(file);
+        final TaskSnapshot uploadTask = await storageRef.putFile(file);
 
-        await uploadTask.whenComplete(() async {
-          final String downloadURL = await storageRef.getDownloadURL();
+        final String downloadURL = await uploadTask.ref.getDownloadURL();
 
-          setState(() {
-            uploadedImageUrl = downloadURL;
-          });
 
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Dosya başarıyla yüklendi')),
-          );
-        });
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Dosya başarıyla yüklendi')),
+        );
+
+        return downloadURL;
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Dosya yüklenirken bir hata oluştu')),
         );
       }
     }
+    return '';
+  }
+
+  Future<void> _selectAndUploadFile() async {
+    final result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+      selectedFileName = result.files.first.path!;
+    }
+  }
+
+  Future<void> uploadSelectedFile(BuildContext context) async {
+    await uploadFileToStorage();
+
+    final downloadURL = await uploadFileToStorage();
+    setState(() {
+      uploadedImageUrl = downloadURL;
+    });
+
+
   }
 
   Future<void> getDataFromFirestore() async {
@@ -147,22 +153,19 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: widget.backgroundColor,
         flexibleSpace: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [
-                Color(0xFF17A3A2),
-                Color(0xFF52C077),
-              ],
+              colors: widget.gradientColors,
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
             ),
           ),
         ),
-        title: const Text(
-          "Profil Ayarları",
-          style: TextStyle(
+        title: Text(
+          widget.titleText,
+          style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
@@ -200,7 +203,6 @@ class _SettingsPageState extends State<SettingsPage> {
                         'Kaydet',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-
                         ),
                       ),
                     ),
@@ -227,13 +229,31 @@ class _SettingsPageState extends State<SettingsPage> {
                         ),
                       ),
                       child: Text(
-                        'Resim Seç ve Yükle',
+                        'Resim Seç',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                   ],
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    uploadSelectedFile(context);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    elevation: 4,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: Text(
+                    'Yükle',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
                 SizedBox(height: 8),
                 if (selectedFileName != null)
@@ -244,7 +264,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 SizedBox(height: 16),
                 TextField(
                   controller: adController,
-                  decoration: InputDecoration(
+                  decoration:InputDecoration(
                     labelText: 'Ad',
                     border: OutlineInputBorder(),
                   ),
@@ -283,6 +303,43 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ],
             ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ProfilePage extends StatelessWidget {
+  final String uploadedImageUrl;
+
+  const ProfilePage({Key? key, required this.uploadedImageUrl}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Profil Sayfası'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Profil Resmi',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 16),
+            if (uploadedImageUrl.isNotEmpty)
+              Image.network(
+                uploadedImageUrl,
+                width: 200,
+                height: 200,
+                fit: BoxFit.cover,
+              ),
           ],
         ),
       ),
