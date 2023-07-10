@@ -19,7 +19,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final String username = 'iremozc4n';
+  final String username = 'test';
   final IconData settingsIcon = Icons.settings;
   String? pollutionData;
   String? airQuality;
@@ -65,7 +65,7 @@ class _ProfilePageState extends State<ProfilePage> {
       });
     } catch (e) {
       if (kDebugMode) {
-        print('Hava kirliliği verileri alınamadı: $e');
+        print('Lütfen ayarlardan konum izni verin: $e');
       }
     }
   }
@@ -206,6 +206,19 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                           ),
                         ),
+                        Positioned(
+                          top: 0.045 * MediaQuery.of(context).size.height,
+                          left: 0.085 * MediaQuery.of(context).size.width,
+                          child: Text(
+                            '15',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color:  Colors.black,
+                              fontSize: 0.18 *
+                                  MediaQuery.of(context).size.width,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -240,6 +253,19 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                           ),
                         ),
+                        Positioned(
+                          top: 0.045 * MediaQuery.of(context).size.height,
+                          left: 0.120 * MediaQuery.of(context).size.width,
+                          child: Text(
+                            '1',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color:  Colors.black,
+                              fontSize: 0.18 *
+                                  MediaQuery.of(context).size.width,
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -263,13 +289,26 @@ class _ProfilePageState extends State<ProfilePage> {
                       children: [
                         Positioned(
                           top: 0.180 * MediaQuery.of(context).size.height,
-                          left: 0.080 * MediaQuery.of(context).size.width,
+                          left: 0.090 * MediaQuery.of(context).size.width,
                           child: Text(
                             'Sıralama',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: const Color.fromARGB(255, 0, 0, 0),
                               fontSize: 0.04 *
+                                  MediaQuery.of(context).size.width,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 0.045 * MediaQuery.of(context).size.height,
+                          left: 0.120 * MediaQuery.of(context).size.width,
+                          child: Text(
+                            '3',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color:  Colors.black,
+                              fontSize: 0.18 *
                                   MediaQuery.of(context).size.width,
                             ),
                           ),
@@ -297,13 +336,26 @@ class _ProfilePageState extends State<ProfilePage> {
                       children: [
                         Positioned(
                           top: 0.180 * MediaQuery.of(context).size.height,
-                          left: 0.030 * MediaQuery.of(context).size.width,
+                          left: 0.020 * MediaQuery.of(context).size.width,
                           child: Text(
                             'Tamamlanan Görev',
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: Colors.black,
                               fontSize: 0.04 *
+                                  MediaQuery.of(context).size.width,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 0.045 * MediaQuery.of(context).size.height,
+                          left: 0.120 * MediaQuery.of(context).size.width,
+                          child: Text(
+                            '5',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color:  Colors.black,
+                              fontSize: 0.18 *
                                   MediaQuery.of(context).size.width,
                             ),
                           ),
@@ -347,10 +399,10 @@ class _ProfilePageState extends State<ProfilePage> {
                             // Handle error
                             return const Center(
                             child: Text(
-                            'Hava kirliliği verileri alınamadı',
+                            'Lütfen ayarlardan konum izni verin',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 24.0,
+                              fontSize: 22.0,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
