@@ -165,12 +165,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 Positioned(
-                  right: 0.55 * MediaQuery.of(context).size.width,
+                  right: 0.60 * MediaQuery.of(context).size.width,
                   top: 0.100 * MediaQuery.of(context).size.height,
                   child: Text(
                     '@$username',
                     style: const TextStyle(
-                      fontSize: 30,
+                      fontSize: 40,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
