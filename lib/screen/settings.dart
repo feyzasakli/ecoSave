@@ -157,7 +157,10 @@ class _SettingsPageState extends State<SettingsPage> {
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: widget.gradientColors,
+              colors: const [
+                Color(0xFF17A3A2), // #17A3A2 on the left
+                Color(0xFF52C077), // #52C077 on the right
+              ],
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
             ),
