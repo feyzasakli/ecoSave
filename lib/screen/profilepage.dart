@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:eco/screen/settings.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +19,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final String username = 'iremozc4n';
+  final String username = 'test';
   final IconData settingsIcon = Icons.settings;
   String? pollutionData;
   String? airQuality;
@@ -63,7 +65,7 @@ class _ProfilePageState extends State<ProfilePage> {
       });
     } catch (e) {
       if (kDebugMode) {
-        print('Hava kirliliği verileri alınamadı: $e');
+        print('Lütfen ayarlardan konum izni verin: $e');
       }
     }
   }
@@ -96,7 +98,7 @@ class _ProfilePageState extends State<ProfilePage> {
             child: Stack(
               children: [
                 Container(
-                  color: const Color.fromARGB(255, 170, 236, 177),
+                  color: const Color.fromARGB(255, 255, 255, 255),
                 ),
                 Align(
                   alignment: const FractionalOffset(0.80, 0.08),
@@ -126,12 +128,12 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: Container(
                             decoration: const BoxDecoration(
                               shape: BoxShape.circle,
-                              color: Color.fromRGBO(34, 54, 26, 1),
+                              color: Color.fromRGBO(0, 0, 0, 1.0),
                             ),
                             child: const Icon(
                               Icons.edit,
                               size: 40.0,
-                              color: Colors.white,
+                              color: Colors.green,
                             ),
                           ),
                         ),
@@ -163,12 +165,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 Positioned(
-                  right: 0.55 * MediaQuery.of(context).size.width,
+                  right: 0.60 * MediaQuery.of(context).size.width,
                   top: 0.100 * MediaQuery.of(context).size.height,
                   child: Text(
                     '@$username',
                     style: const TextStyle(
-                      fontSize: 30,
+                      fontSize: 40,
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
@@ -182,7 +184,12 @@ class _ProfilePageState extends State<ProfilePage> {
                     height: 0.380 * MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20.0),
-                      color: Colors.white,
+                      gradient: LinearGradient(
+                        colors: const [
+                          Color(0xFF17A3A2),// Soldaki renk
+                      Color(0xFF52C077), // Sağdaki renk
+                        ],
+                      ),
                     ),
                     child: Stack(
                       children: [
@@ -192,9 +199,22 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: Text(
                             'Toplam Puan',
                             style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: const Color.fromARGB(255, 8, 66, 33),
+                              fontWeight: FontWeight.bold,
+                              color:  Colors.black,
                               fontSize: 0.04 *
+                                  MediaQuery.of(context).size.width,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 0.045 * MediaQuery.of(context).size.height,
+                          left: 0.085 * MediaQuery.of(context).size.width,
+                          child: Text(
+                            '15',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color:  Colors.black,
+                              fontSize: 0.18 *
                                   MediaQuery.of(context).size.width,
                             ),
                           ),
@@ -211,7 +231,12 @@ class _ProfilePageState extends State<ProfilePage> {
                     height: 0.380 * MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20.0),
-                      color: const Color.fromARGB(255, 255, 255, 255),
+                      gradient: LinearGradient(
+                        colors: const [
+                          Color(0xFF17A3A2),// Soldaki renk
+                          Color(0xFF52C077), // Sağdaki renk
+                        ],
+                      ),
                     ),
                     child: Stack(
                       children: [
@@ -221,9 +246,22 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: Text(
                             'Günlük Seri',
                             style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: const Color.fromARGB(255, 8, 66, 33),
+                              fontWeight: FontWeight.bold,
+                              color: const Color.fromARGB(255, 0, 0, 0),
                               fontSize: 0.04 *
+                                  MediaQuery.of(context).size.width,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 0.045 * MediaQuery.of(context).size.height,
+                          left: 0.120 * MediaQuery.of(context).size.width,
+                          child: Text(
+                            '1',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color:  Colors.black,
+                              fontSize: 0.18 *
                                   MediaQuery.of(context).size.width,
                             ),
                           ),
@@ -240,19 +278,37 @@ class _ProfilePageState extends State<ProfilePage> {
                     height: 0.380 * MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20.0),
-                      color: const Color.fromARGB(255, 255, 255, 255),
+                      gradient: LinearGradient(
+                        colors: const [
+                          Color(0xFF17A3A2),// Soldaki renk
+                          Color(0xFF52C077), // Sağdaki renk
+                        ],
+                      ),
                     ),
                     child: Stack(
                       children: [
                         Positioned(
                           top: 0.180 * MediaQuery.of(context).size.height,
-                          left: 0.080 * MediaQuery.of(context).size.width,
+                          left: 0.090 * MediaQuery.of(context).size.width,
                           child: Text(
                             'Sıralama',
                             style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: const Color.fromARGB(255, 8, 66, 33),
+                              fontWeight: FontWeight.bold,
+                              color: const Color.fromARGB(255, 0, 0, 0),
                               fontSize: 0.04 *
+                                  MediaQuery.of(context).size.width,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 0.045 * MediaQuery.of(context).size.height,
+                          left: 0.120 * MediaQuery.of(context).size.width,
+                          child: Text(
+                            '3',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color:  Colors.black,
+                              fontSize: 0.18 *
                                   MediaQuery.of(context).size.width,
                             ),
                           ),
@@ -269,19 +325,37 @@ class _ProfilePageState extends State<ProfilePage> {
                     height: 0.380 * MediaQuery.of(context).size.width,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20.0),
-                      color: Colors.white,
+                      gradient: LinearGradient(
+                        colors: const [
+                          Color(0xFF17A3A2),// Soldaki renk
+                          Color(0xFF52C077), // Sağdaki renk
+                        ],
+                      ),
                     ),
                     child: Stack(
                       children: [
                         Positioned(
                           top: 0.180 * MediaQuery.of(context).size.height,
-                          left: 0.030 * MediaQuery.of(context).size.width,
+                          left: 0.020 * MediaQuery.of(context).size.width,
                           child: Text(
                             'Tamamlanan Görev',
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              color: const Color.fromARGB(255, 8, 66, 33),
+                              color: Colors.black,
                               fontSize: 0.04 *
+                                  MediaQuery.of(context).size.width,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 0.045 * MediaQuery.of(context).size.height,
+                          left: 0.120 * MediaQuery.of(context).size.width,
+                          child: Text(
+                            '5',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color:  Colors.black,
+                              fontSize: 0.18 *
                                   MediaQuery.of(context).size.width,
                             ),
                           ),
@@ -325,10 +399,10 @@ class _ProfilePageState extends State<ProfilePage> {
                             // Handle error
                             return const Center(
                             child: Text(
-                            'Hava kirliliği verileri alınamadı',
+                            'Lütfen ayarlardan konum izni verin',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 24.0,
+                              fontSize: 22.0,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
