@@ -1,4 +1,7 @@
+// ignore_for_file: library_private_types_in_public_api, non_constant_identifier_names
+
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class SaliPage extends StatefulWidget {
@@ -216,6 +219,23 @@ class _SaliPageState extends State<SaliPage> {
       });
     }
   }
+
+  String task_name1 = "Bilinçli Su Tüketimi";
+  String task_description1 = "Su tüketiminizi bugün daha bilinçli bir şekilde yönetin. Dişlerinizi fırçalarken musluğu kapalı tutun, daha az suyla duş alın ve suyu boşa harcamamak için gereksiz yere muslukları açık bırakmaktan kaçının. [Görsel: Dişlerini fırçalarken musluğu kapalı tutan birisi]";
+  String task_name2 = "Sürdürülebilir Ulaşım";
+  String task_description2 = "Bugün toplu taşıma veya bisiklet gibi sürdürülebilir ulaşım yöntemlerini tercih edin. Kullandığınız ulaşım aracının fotoğrafını çekerek görevi tamamlayın. [Görsel: Toplu taşıma aracı veya bisiklet]";
+  String task_name3 = "Çevre Temizliği";
+  String task_description3 = "Bugün çevrenizdeki atıkları temizleyerek doğaya katkıda bulunun. Çevre temizliği yaptığınız bir fotoğraf paylaşın. [Görsel: Çevre temizliği yapılan bir alan]";
+  String task_name4 = "Su İçme Alışkanlığı";
+  String task_description4 = "Plastik şişe yerine tekrar kullanılabilir bir su matarası kullanarak su tüketiminizi daha sürdürülebilir hale getirin. [Görsel: Bir su matarası]";
+  String task_name5 = "Enerji Tasarrufu Şampiyonu";
+  String task_description5 = "Evde enerji tasarruflu alışkanlıklar geliştirin. Daha düşük ısı ayarlarını tercih edin, gereksiz elektronik cihazları kapatın ve kullanmadığınız ışıkları söndürün. Fotoğrafınızı paylaşın. [Görsel: Kapalı olan ışıkların olduğu bir oda]";
+  String task_name6 = "Geri Dönüşüm Bilinci";
+  String task_description6 = "Geri dönüştürülebilir atıkları doğru bir şekilde ayırarak geri dönüşüm bilincinizi gösterin. Geri dönüştürülebilir atıkları ayrıştırma kutularına yerleştirerek bir fotoğraf çekin. [Görsel: Geri dönüştürülebilir atıkların ayrıştırıldığı kutular]";
+  String task_name7 = "Sürdürülebilir Giysi Alışverişi";
+  String task_description7 = "İkinci el mağazalardan veya giysi takas etkinliklerinden alışveriş yaparak sürdürülebilir bir moda seçeneği tercih edin. Sürdürülebilir giysilerin fotoğrafını paylaşın. [Görsel: İkinci el giysi veya giysi takası]";
+  String task_name8 = "Dijital Dönüşüm";
+  String task_description8 = "Faturalarınızı kağıt yerine dijital olarak almayı tercih edin ve gereksiz belge veya kağıt kullanımını azaltın. [Görsel: Bir bilgisayar ekranında dijital fatura]";
 
   @override
   Widget build(BuildContext context) {
@@ -1530,7 +1550,9 @@ class FilePickerDemo extends StatelessWidget {
             if (result != null) {
               List<PlatformFile> files = result.files;
               for (PlatformFile file in files) {
-                print(file.name);
+                if (kDebugMode) {
+                  print(file.name);
+                }
               }
             } else {
               // User canceled the picker

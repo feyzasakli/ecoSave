@@ -1,10 +1,14 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class PersembePage extends StatefulWidget {
   const PersembePage({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _PersembePageState createState() => _PersembePageState();
 }
 
@@ -216,6 +220,23 @@ class _PersembePageState extends State<PersembePage> {
       });
     }
   }
+
+  String task_name1 = "Enerji Tasarruflu Aletler";
+  String task_description1 = "Evinizdeki bazı elektronik cihazları kullanmaktan kaçının veya enerji tasarruflu modda kullanın. Örneğin, çamaşır makinesini veya bulaşık makinesini tamamen dolduktan sonra çalıştırabilir ve daha düşük ısı ayarlarını tercih edebilirsiniz. [Görsel: Enerji tasarruflu bir cihazın kullanılması]";
+  String task_name2 = "Tek Kullanımlık Plastikleri Reddetme";
+  String task_description2 = "Bugün tek kullanımlık plastiklerden kaçının. Dışarıda alışveriş yaparken plastik poşet veya plastik bardak gibi ürünleri kullanmayın ve kendi tekrar kullanılabilir alternatiflerinizi kullanın, örneğin alışveriş için bir bez çanta tercih edebilirsiniz. [Görsel: Kendi tekrar kullanılabilir alışveriş çantanızı kullanmak]";
+  String task_name3 = "Sürdürülebilir Okuma";
+  String task_description3 = "Kitap veya dergi almak yerine kütüphaneleri tercih edin veya dijital olarak okuma yapın. Okuduğunuz bir kitabın fotoğrafını çekerek görevi tamamlayın. [Görsel: Bir kitabın veya dijital okuma cihazının fotoğrafı]";
+  String task_name4 = "Su İçme Alışkanlığı";
+  String task_description4 = "Plastik şişe yerine tekrar kullanılabilir bir su matarası kullanarak su tüketiminizi daha sürdürülebilir hale getirin. [Görsel: Bir su matarası]";
+  String task_name5 = "Dijital Ekoloji";
+  String task_description5 = "Dijital ekoloji konusunda bilgilendirici içerikler okuyun. Örneğin, dijital ortamda daha az enerji tüketen uygulamaları ve çevre dostu dijital alışkanlıklarını deneyimleyebilirsiniz. [Görsel: Bu adımı nasıl gerçekleştirdiğiniz ile ilgili bir görsel paylaşın]";
+  String task_name6 = "Bisikletle Gitme";
+  String task_description6 = "Bugün gideceğiniz bir yere bisikletle gitmeyi deneyin. Ulaşım için bisiklet kullanmak, hem sağlığınıza katkıda bulunur hem de karbon salınımını azaltır. [Görsel: Bir bisiklet sürücüsü]";
+  String task_name7 = "Geri Dönüşüm Eğitimi";
+  String task_description7 = "Kendi evinizde veya çevrenizde geri dönüşüm farkındalığı yaratmak için bugün bir geri dönüşüm eğitimi düzenleyin. Aile üyelerine veya arkadaşlarınıza geri dönüşümün önemini anlatın ve doğru bir şekilde geri dönüşüm yapmayı teşvik edin. [Görsel: Geri dönüşüm kutuları ve geri dönüşüm süreci hakkında bilgilendirici bir sunum]";
+  String task_name8 = "Doğal Yaşam Alanı";
+  String task_description8 = "Ev veya bahçenizde doğal yaşam alanları oluşturun. Kuş evleri, böcek otelleri veya su havuzları gibi doğal yaşam alanlarının fotoğrafını paylaşın. [Görsel: Doğal yaşam alanlarının bulunduğu bir ortam]";
 
   @override
   Widget build(BuildContext context) {
@@ -1530,7 +1551,9 @@ class FilePickerDemo extends StatelessWidget {
             if (result != null) {
               List<PlatformFile> files = result.files;
               for (PlatformFile file in files) {
-                print(file.name);
+                if (kDebugMode) {
+                  print(file.name);
+                }
               }
             } else {
               // User canceled the picker

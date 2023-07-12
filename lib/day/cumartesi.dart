@@ -1,4 +1,7 @@
+// ignore_for_file: library_private_types_in_public_api, non_constant_identifier_names
+
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CumartesiPage extends StatefulWidget {
@@ -216,7 +219,22 @@ class _CumartesiPageState extends State<CumartesiPage> {
       });
     }
   }
-
+  String task_name1 = "Tek Kullanımlık Plastikleri Reddetme";
+  String task_description1 = "Bugün tek kullanımlık plastiklerden kaçının. Dışarıda alışveriş yaparken plastik poşet veya plastik bardak gibi ürünleri kullanmayın ve kendi tekrar kullanılabilir alternatiflerinizi kullanın, örneğin alışveriş için bir bez çanta tercih edebilirsiniz. [Görsel: Kendi tekrar kullanılabilir alışveriş çantanızı kullanmak]";
+  String task_name2 = "Sürdürülebilir Ulaşım";
+  String task_description2 = "Bugün toplu taşıma veya bisiklet gibi sürdürülebilir ulaşım yöntemlerini tercih edin. Kullandığınız ulaşım aracının fotoğrafını çekerek görevi tamamlayın. [Görsel: Toplu taşıma aracı veya bisiklet]";
+  String task_name3 = "Çevre Temizliği";
+  String task_description3 = "Bugün çevrenizdeki atıkları temizleyerek doğaya katkıda bulunun. Çevre temizliği yaptığınız bir fotoğraf paylaşın. [Görsel: Çevre temizliği yapılan bir alan]";
+  String task_name4 = "Doğa Yürüyüşü";
+  String task_description4 = "Bugün doğa yürüyüşü yaparak doğayla bağlantı kurun. Doğada çektiğiniz bir fotoğrafı paylaşın. [Görsel: Doğada yapılan bir yürüyüşten bir manzara fotoğrafı]";
+  String task_name5 = "İklim Değişikliği Etkinlikleri";
+  String task_description5 = "İklim değişikliği ile mücadele konusunda okumalar yapın. Örneğin, iklim değişikliği paneline katılabilir veya iklim eylemi organizasyonlarına destek verebilirsiniz. [Görsel: Bu adımı nasıl gerçekleştirdiğiniz ile ilgili bir görsel paylaşın]";
+  String task_name6 = "Doğal Yaşam Alanı";
+  String task_description6 = "Ev veya bahçenizde doğal yaşam alanları oluşturun. Kuş evleri, böcek otelleri veya su havuzları gibi doğal yaşam alanlarının fotoğrafını paylaşın. [Görsel: Doğal yaşam alanlarının bulunduğu bir ortam]";
+  String task_name7 = "Sürdürülebilir İçecekler";
+  String task_description7 = "Sürdürülebilir içecekler konusunda farkındalık yaratmak için kullanıcılarına evde veya dışarıda sürdürülebilir içecekler yapmalarını teşvik edin. Örneğin, evde kendi doğal meyve suyunuzu hazırlayabilir veya dışarıda kahve zincirlerinde tek kullanımlık bardak kullanmak yerine kendi termosunuzu kullanabilirsiniz. [Görsel: Bu adımı nasıl gerçekleştirdiğiniz ile ilgili bir görsel paylaşın]";
+  String task_name8 = "Yeniden Kullanım";
+  String task_description8 = "Bugün atılacak bir eşyayı yeniden kullanmaya çalışın. Yaratıcı bir şekilde eşyayı kullanarak yapılan bir fotoğraf paylaşın. [Görsel: Yaratıcı bir şekilde yeniden kullanılan bir eşya]";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -1530,7 +1548,11 @@ class FilePickerDemo extends StatelessWidget {
             if (result != null) {
               List<PlatformFile> files = result.files;
               for (PlatformFile file in files) {
-                print(file.name);
+                if (kDebugMode) {
+                  if (kDebugMode) {
+                    print(file.name);
+                  }
+                }
               }
             } else {
               // User canceled the picker

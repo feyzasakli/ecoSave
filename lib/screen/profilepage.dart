@@ -390,6 +390,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         var data = snapshot.data as Map<String, dynamic>;
                         var aqi = data['list'][0]['main']['aqi'];
                         var backgroundImage = getBackgroundImage(aqi);
+                        // ignore: unused_local_variable
                         var airQuality = getAirQuality(aqi);
 
                         return Container(

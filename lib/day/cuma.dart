@@ -1,10 +1,14 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CumaPage extends StatefulWidget {
   const CumaPage({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _CumaPageState createState() => _CumaPageState();
 }
 
@@ -216,6 +220,23 @@ class _CumaPageState extends State<CumaPage> {
       });
     }
   }
+
+  String task_name1 = "5 Dakika Doğal Aydınlatma";
+  String task_description1 = "Gün ışığından en iyi şekilde faydalanmak için bugün en az 5 dakika açık havada vakit geçirin. Bir yürüyüş yapabilir, bir parkta oturabilir veya bahçe işleriyle uğraşabilirsiniz. [Görsel: Açık havada yürüyüş yapan birisi]";
+  String task_name2 = "Su Kahramanı";
+  String task_description2 = "Su tüketimini azaltmak için bugün daha bilinçli bir şekilde su kullanın. Musluğu dişlerinizi fırçalarken kapalı tutun ve daha kısa süreli duş alın. Fotoğrafınızı paylaşın. [Görsel: Musluğu kapalı tutan birisi]";
+  String task_name3 = "Dijital Dönüşüm";
+  String task_description3 = "Faturalarınızı kağıt yerine dijital olarak almayı tercih edin ve gereksiz belge veya kağıt kullanımını azaltın. [Görsel: Bir bilgisayar ekranında dijital fatura]";
+  String task_name4 = "Sürdürülebilir Moda";
+  String task_description4 = "Sürdürülebilir moda markalarını tercih ederek etik ve çevre dostu giyim seçeneklerine yönelin. [Görsel: Sürdürülebilir moda ürünleri]";
+  String task_name5 = "Doğa Temizliği";
+  String task_description5 = "Bugün doğa temizliği yaparak çevrenizdeki atıkları toplayın ve doğaya katkıda bulunun. Çevre temizliği yaptığınız bir fotoğraf paylaşın. [Görsel: Çevre temizliği yapılan bir alan]";
+  String task_name6 = "Geri Dönüşüm Kahramanı";
+  String task_description6 = "Evde geri dönüştürülebilir atıkları doğru bir şekilde ayırmak için bugün geri dönüşüm kutularını kullanın. Bir fotoğraf çekin ve paylaşın. [Görsel: Geri dönüştürülebilir atıkların ayrıştırıldığı kutular]";
+  String task_name7 = "Doğa Kampı";
+  String task_description7 = "Bir hafta sonu doğa kampına çıkarak doğayla daha yakından bağlantı kurun. Kamp yaparken doğal kaynakları koruma ve atıkları düzgün bir şekilde imha etme konularında bilinçli olun. [Görsel: Kamp ateşi çevresinde oturan insanlar]";
+  String task_name8 = "Elektronik Atıkları Geri Dönüştürme";
+  String task_description8 = "Kullanılmayan elektronik eşyaları doğru bir şekilde geri dönüştürün. Elektronik atık toplama noktalarına teslim edebilirsiniz. [Görsel: Elektronik atık geri dönüşüm kutusu]";
 
   @override
   Widget build(BuildContext context) {
@@ -1530,7 +1551,9 @@ class FilePickerDemo extends StatelessWidget {
             if (result != null) {
               List<PlatformFile> files = result.files;
               for (PlatformFile file in files) {
-                print(file.name);
+                if (kDebugMode) {
+                  print(file.name);
+                }
               }
             } else {
               // User canceled the picker
