@@ -254,7 +254,7 @@ class _SaliPageState extends State<SaliPage>
   void fetchTaskName() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     DocumentSnapshot snapshot =
-        await firestore.collection('task').doc('pzt1').get();
+        await firestore.collection('task').doc('sl1').get();
 
     if (snapshot.exists) {
       setState(() {
@@ -269,7 +269,7 @@ class _SaliPageState extends State<SaliPage>
   void fetchTaskName2() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     DocumentSnapshot snapshot =
-        await firestore.collection('task').doc('pzt2').get();
+        await firestore.collection('task').doc('sl2').get();
 
     if (snapshot.exists) {
       setState(() {
@@ -284,7 +284,7 @@ class _SaliPageState extends State<SaliPage>
   void fetchTaskName3() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     DocumentSnapshot snapshot =
-        await firestore.collection('task').doc('pzt3').get();
+        await firestore.collection('task').doc('sl3').get();
 
     if (snapshot.exists) {
       setState(() {
@@ -299,7 +299,7 @@ class _SaliPageState extends State<SaliPage>
   void fetchTaskName4() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     DocumentSnapshot snapshot =
-        await firestore.collection('task').doc('pzt4').get();
+        await firestore.collection('task').doc('sl4').get();
 
     if (snapshot.exists) {
       setState(() {
@@ -314,7 +314,7 @@ class _SaliPageState extends State<SaliPage>
   void fetchTaskName5() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     DocumentSnapshot snapshot =
-        await firestore.collection('task').doc('pzt5').get();
+        await firestore.collection('task').doc('sl5').get();
 
     if (snapshot.exists) {
       setState(() {
@@ -329,7 +329,7 @@ class _SaliPageState extends State<SaliPage>
   void fetchTaskName6() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     DocumentSnapshot snapshot =
-        await firestore.collection('task').doc('pzt6').get();
+        await firestore.collection('task').doc('sl6').get();
 
     if (snapshot.exists) {
       setState(() {
@@ -344,7 +344,7 @@ class _SaliPageState extends State<SaliPage>
   void fetchTaskName7() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     DocumentSnapshot snapshot =
-        await firestore.collection('task').doc('pzt7').get();
+        await firestore.collection('task').doc('sl7').get();
 
     if (snapshot.exists) {
       setState(() {
@@ -359,7 +359,7 @@ class _SaliPageState extends State<SaliPage>
   void fetchTaskName8() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     DocumentSnapshot snapshot =
-        await firestore.collection('task').doc('pzt8').get();
+        await firestore.collection('task').doc('sl8').get();
 
     if (snapshot.exists) {
       setState(() {

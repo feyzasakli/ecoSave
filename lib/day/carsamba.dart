@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CarsambaPage extends StatefulWidget {
@@ -12,7 +12,8 @@ class CarsambaPage extends StatefulWidget {
   _CarsambaPageState createState() => _CarsambaPageState();
 }
 
-class _CarsambaPageState extends State<CarsambaPage> {
+class _CarsambaPageState extends State<CarsambaPage>
+    with SingleTickerProviderStateMixin {
   bool _isExpanded1 = false;
   bool _isExpanded2 = false;
   bool _isExpanded3 = false;
@@ -221,72 +222,161 @@ class _CarsambaPageState extends State<CarsambaPage> {
     }
   }
 
-  String task_name1 = "5 Dakika Doğal Aydınlatma";
-  String task_description1 = "Gün ışığından en iyi şekilde faydalanmak için bugün en az 5 dakika açık havada vakit geçirin. Bir yürüyüş yapabilir, bir parkta oturabilir veya bahçe işleriyle uğraşabilirsiniz. [Görsel: Açık havada yürüyüş yapan birisi]";
-  String task_name2 = "Sürdürülebilir Alışveriş Listesi";
-  String task_description2 = "Alışveriş yaparken bugün sürdürülebilir bir alışveriş listesi kullanın. Organik, yerel ve paketsiz ürünlere öncelik verin. [Görsel: Bir alışveriş listesi]";
-  String task_name3 = "Sıfır Atık Mutfak";
-  String task_description3 = "Sıfır atık mutfak konusunda araştırma yapın. Evde yiyecek atıklarını azaltma, kompostlama veya geri dönüşüm yöntemlerinden deneyimleyin. [Görsel: Bu adımı nasıl gerçekleştirdiğiniz ile ilgili bir görsel paylaşın]";
-  String task_name4 = "Doğa Temizliği";
-  String task_description4 = "Bugün doğa temizliği yaparak çevrenizdeki atıkları toplayın ve doğaya katkıda bulunun. Çevre temizliği yaptığınız bir fotoğraf paylaşın. [Görsel: Çevre temizliği yapılan bir alan]";
-  String task_name5 = "İklim Değişikliği Etkinlikleri";
-  String task_description5 = "İklim değişikliği ile mücadele konusunda okumalar yapın. Örneğin, iklim değişikliği paneline katılabilir veya iklim eylemi organizasyonlarına destek verebilirsiniz. [Görsel: Bu adımı nasıl gerçekleştirdiğiniz ile ilgili bir görsel paylaşın]";
-  String task_name6 = "Bitki Dostu Öğle Yemeği";
-  String task_description6 = "Bugün öğle yemeğinde bitki bazlı bir seçenek tercih edin. Et veya hayvansal ürünler yerine sebzeleri ve tahılları içeren bir öğün hazırlayın ve fotoğrafını paylaşın. [Görsel: Bitki bazlı bir öğle yemeği]";
-  String task_name7 = "Çevre Temizliği";
-  String task_description7 = "Bugün çevrenizdeki atıkları temizleyerek doğaya katkıda bulunun. Çevre temizliği yaptığınız bir fotoğraf paylaşın. [Görsel: Çevre temizliği yapılan bir alan]";
-  String task_name8 = "Doğa Yürüyüşü";
-  String task_description8 = "Bugün doğa yürüyüşü yaparak doğayla bağlantı kurun. Doğada çektiğiniz bir fotoğrafı paylaşın. [Görsel: Doğada yapılan bir yürüyüşten bir manzara fotoğrafı]";
+  String task_name = "";
+  String task_description = "";
+  String task_name2 = "";
+  String task_description2 = "";
+  String task_name3 = "";
+  String task_description3 = "";
+  String task_name4 = "";
+  String task_description4 = "";
+  String task_name5 = "";
+  String task_description5 = "";
+  String task_name6 = "";
+  String task_description6 = "";
+  String task_name7 = "";
+  String task_description7 = "";
+  String task_name8 = "";
+  String task_description8 = "";
+  @override
+  void initState() {
+    super.initState();
+    fetchTaskName();
+    fetchTaskName2();
+    fetchTaskName3();
+    fetchTaskName4();
+    fetchTaskName5();
+    fetchTaskName6();
+    fetchTaskName7();
+    fetchTaskName8();
+  }
+
+  void fetchTaskName() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    DocumentSnapshot snapshot =
+        await firestore.collection('task').doc('sl1').get();
+
+    if (snapshot.exists) {
+      setState(() {
+        task_name =
+            (snapshot.data() as Map<String, dynamic>)['task_name'] as String;
+        task_description = (snapshot.data()
+            as Map<String, dynamic>)['task_description'] as String;
+      });
+    }
+  }
+
+  void fetchTaskName2() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    DocumentSnapshot snapshot =
+        await firestore.collection('task').doc('sl2').get();
+
+    if (snapshot.exists) {
+      setState(() {
+        task_name2 =
+            (snapshot.data() as Map<String, dynamic>)['task_name'] as String;
+        task_description2 = (snapshot.data()
+            as Map<String, dynamic>)['task_description'] as String;
+      });
+    }
+  }
+
+  void fetchTaskName3() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    DocumentSnapshot snapshot =
+        await firestore.collection('task').doc('sl3').get();
+
+    if (snapshot.exists) {
+      setState(() {
+        task_name3 =
+            (snapshot.data() as Map<String, dynamic>)['task_name'] as String;
+        task_description3 = (snapshot.data()
+            as Map<String, dynamic>)['task_description'] as String;
+      });
+    }
+  }
+
+  void fetchTaskName4() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    DocumentSnapshot snapshot =
+        await firestore.collection('task').doc('sl4').get();
+
+    if (snapshot.exists) {
+      setState(() {
+        task_name4 =
+            (snapshot.data() as Map<String, dynamic>)['task_name'] as String;
+        task_description4 = (snapshot.data()
+            as Map<String, dynamic>)['task_description'] as String;
+      });
+    }
+  }
+
+  void fetchTaskName5() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    DocumentSnapshot snapshot =
+        await firestore.collection('task').doc('sl5').get();
+
+    if (snapshot.exists) {
+      setState(() {
+        task_name5 =
+            (snapshot.data() as Map<String, dynamic>)['task_name'] as String;
+        task_description5 = (snapshot.data()
+            as Map<String, dynamic>)['task_description'] as String;
+      });
+    }
+  }
+
+  void fetchTaskName6() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    DocumentSnapshot snapshot =
+        await firestore.collection('task').doc('sl6').get();
+
+    if (snapshot.exists) {
+      setState(() {
+        task_name6 =
+            (snapshot.data() as Map<String, dynamic>)['task_name'] as String;
+        task_description6 = (snapshot.data()
+            as Map<String, dynamic>)['task_description'] as String;
+      });
+    }
+  }
+
+  void fetchTaskName7() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    DocumentSnapshot snapshot =
+        await firestore.collection('task').doc('sl7').get();
+
+    if (snapshot.exists) {
+      setState(() {
+        task_name7 =
+            (snapshot.data() as Map<String, dynamic>)['task_name'] as String;
+        task_description7 = (snapshot.data()
+            as Map<String, dynamic>)['task_description'] as String;
+      });
+    }
+  }
+
+  void fetchTaskName8() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    DocumentSnapshot snapshot =
+        await firestore.collection('task').doc('sl8').get();
+
+    if (snapshot.exists) {
+      setState(() {
+        task_name8 =
+            (snapshot.data() as Map<String, dynamic>)['task_name'] as String;
+        task_description8 = (snapshot.data()
+            as Map<String, dynamic>)['task_description'] as String;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color(0xFF17A3A2), // #17A3A2 on the left
-                Color(0xFF52C077), // #52C077 on the right
-              ],
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-            ),
-          ),
-        ),
-        title: const Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                Icon(Icons.check),
-                SizedBox(width: 5),
-                Text(
-                  'Tamamlanan: 5',
-                  style: TextStyle(fontSize: 16),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Icon(Icons.view_day),
-                SizedBox(width: 5),
-                Text(
-                  'Kalan: 2',
-                  style: TextStyle(fontSize: 16),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Icon(Icons.stars),
-                SizedBox(width: 5),
-                Text('8'),
-              ],
-            ),
-          ],
-        ),
+        title: const Text('Pazartesi Page'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -297,7 +387,7 @@ class _CarsambaPageState extends State<CarsambaPage> {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const Text(
-              'Çarşamba sayfası içeriği',
+              'Pazartesi sayfası içeriği',
               style: TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
@@ -327,11 +417,13 @@ class _CarsambaPageState extends State<CarsambaPage> {
               ),
             ),
             const SizedBox(height: 10),
-            GestureDetector(
+            InkWell(
               onTap: _toggleBoxHeight1,
-              child: Container(
+              child: AnimatedContainer(
                 width: 300,
-                height: 80,
+                height: _isExpanded1 ? 270 : 80,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     colors: [
@@ -355,10 +447,10 @@ class _CarsambaPageState extends State<CarsambaPage> {
                             fillColor: MaterialStateProperty.all(Colors.white),
                           ),
                           const SizedBox(width: 8.0),
-                          const Expanded(
+                          Expanded(
                             child: Text(
-                              'Görev 1',
-                              style: TextStyle(
+                              'Görev: $task_name',
+                              style: const TextStyle(
                                 fontSize: 16.0,
                                 color: Colors.white,
                               ),
@@ -372,113 +464,122 @@ class _CarsambaPageState extends State<CarsambaPage> {
                         ],
                       ),
                     ),
-                    if (_isExpanded1)
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 16.0,
-                          right: 16.0,
-                          bottom: 16.0,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(height: 8.0),
-                            const Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    'Görev Açıklama',
-                                    style: TextStyle(
-                                      fontSize: 16.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 8.0),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text(
-                                  'Görev Puan:',
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Row(
-                                  children: [
-                                    if (_fileSelected1)
-                                      ElevatedButton(
-                                        onPressed: () {
-// Handle file submission logic
-                                        },
-                                        child: const Text(
-                                          'Dosya Gönder',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    if (!_fileSelected1)
-                                      ElevatedButton(
-                                        onPressed: _selectFile1,
-                                        child: const Text(
-                                          'Dosya Seç',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            if (_fileSelected1)
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: ListView.builder(
-                                  shrinkWrap: true,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  itemCount: _selectedFiles1?.length ?? 0,
-                                  itemBuilder: (context, index) {
-                                    PlatformFile file = _selectedFiles1![index];
-                                    return ListTile(
-                                      title: Text(
-                                        file.name,
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      trailing: IconButton(
-                                        onPressed: () {
-// Handle file removal logic
-                                        },
-                                        icon: const Icon(
-                                          Icons.remove_circle,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ),
+                    AnimatedSize(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                      child: _isExpanded1
+                          ? Padding(
+                              padding: const EdgeInsets.only(
+                                left: 16.0,
+                                right: 16.0,
+                                bottom: 16.0,
                               ),
-                          ],
-                        ),
-                      ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const SizedBox(height: 8.0),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'Görev Açıklama: $task_description',
+                                          style: const TextStyle(
+                                            fontSize: 13.0,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 8.0),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Text(
+                                        'Görev Puan:',
+                                        style: TextStyle(
+                                          fontSize: 16.0,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          if (_fileSelected1)
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                // Handle file submission logic
+                                              },
+                                              child: const Text(
+                                                'Dosya Gönder',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          if (!_fileSelected1)
+                                            ElevatedButton(
+                                              onPressed: _selectFile1,
+                                              child: const Text(
+                                                'Dosya Seç',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  if (_fileSelected1)
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: ListView.builder(
+                                        shrinkWrap: true,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        itemCount: _selectedFiles1?.length ?? 0,
+                                        itemBuilder: (context, index) {
+                                          PlatformFile file =
+                                              _selectedFiles1![index];
+                                          return ListTile(
+                                            title: Text(
+                                              file.name,
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            trailing: IconButton(
+                                              onPressed: () {
+                                                // Handle file removal logic
+                                              },
+                                              icon: const Icon(
+                                                Icons.remove_circle,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            )
+                          : const SizedBox.shrink(),
+                    ),
                   ],
                 ),
               ),
             ),
             const SizedBox(height: 10),
-// Görev 2
-            GestureDetector(
+            InkWell(
               onTap: _toggleBoxHeight2,
-              child: Container(
+              child: AnimatedContainer(
                 width: 300,
-                height: 80,
+                height: _isExpanded2 ? 270 : 80,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     colors: [
@@ -502,10 +603,10 @@ class _CarsambaPageState extends State<CarsambaPage> {
                             fillColor: MaterialStateProperty.all(Colors.white),
                           ),
                           const SizedBox(width: 8.0),
-                          const Expanded(
+                          Expanded(
                             child: Text(
-                              'Görev 2',
-                              style: TextStyle(
+                              'Görev: $task_name2',
+                              style: const TextStyle(
                                 fontSize: 16.0,
                                 color: Colors.white,
                               ),
@@ -519,113 +620,122 @@ class _CarsambaPageState extends State<CarsambaPage> {
                         ],
                       ),
                     ),
-                    if (_isExpanded2)
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 16.0,
-                          right: 16.0,
-                          bottom: 16.0,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(height: 8.0),
-                            const Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    'Görev Açıklama',
-                                    style: TextStyle(
-                                      fontSize: 16.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 8.0),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text(
-                                  'Görev Puan:',
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Row(
-                                  children: [
-                                    if (_fileSelected2)
-                                      ElevatedButton(
-                                        onPressed: () {
-// Handle file submission logic
-                                        },
-                                        child: const Text(
-                                          'Dosya Gönder',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    if (!_fileSelected2)
-                                      ElevatedButton(
-                                        onPressed: _selectFile2,
-                                        child: const Text(
-                                          'Dosya Seç',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            if (_fileSelected2)
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: ListView.builder(
-                                  shrinkWrap: true,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  itemCount: _selectedFiles2?.length ?? 0,
-                                  itemBuilder: (context, index) {
-                                    PlatformFile file = _selectedFiles2![index];
-                                    return ListTile(
-                                      title: Text(
-                                        file.name,
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      trailing: IconButton(
-                                        onPressed: () {
-// Handle file removal logic
-                                        },
-                                        icon: const Icon(
-                                          Icons.remove_circle,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ),
+                    AnimatedSize(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                      child: _isExpanded2
+                          ? Padding(
+                              padding: const EdgeInsets.only(
+                                left: 16.0,
+                                right: 16.0,
+                                bottom: 16.0,
                               ),
-                          ],
-                        ),
-                      ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const SizedBox(height: 8.0),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'Görev Açıklama: $task_description2',
+                                          style: const TextStyle(
+                                            fontSize: 13.0,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 8.0),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Text(
+                                        'Görev Puan:',
+                                        style: TextStyle(
+                                          fontSize: 16.0,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          if (_fileSelected2)
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                // Handle file submission logic
+                                              },
+                                              child: const Text(
+                                                'Dosya Gönder',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          if (!_fileSelected2)
+                                            ElevatedButton(
+                                              onPressed: _selectFile2,
+                                              child: const Text(
+                                                'Dosya Seç',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  if (_fileSelected2)
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: ListView.builder(
+                                        shrinkWrap: true,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        itemCount: _selectedFiles2?.length ?? 0,
+                                        itemBuilder: (context, index) {
+                                          PlatformFile file =
+                                              _selectedFiles2![index];
+                                          return ListTile(
+                                            title: Text(
+                                              file.name,
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            trailing: IconButton(
+                                              onPressed: () {
+                                                // Handle file removal logic
+                                              },
+                                              icon: const Icon(
+                                                Icons.remove_circle,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            )
+                          : const SizedBox.shrink(),
+                    ),
                   ],
                 ),
               ),
             ),
             const SizedBox(height: 10),
-// Görev 3
-            GestureDetector(
+            InkWell(
               onTap: _toggleBoxHeight3,
-              child: Container(
+              child: AnimatedContainer(
                 width: 300,
-                height: 80,
+                height: _isExpanded3 ? 270 : 80,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     colors: [
@@ -649,10 +759,10 @@ class _CarsambaPageState extends State<CarsambaPage> {
                             fillColor: MaterialStateProperty.all(Colors.white),
                           ),
                           const SizedBox(width: 8.0),
-                          const Expanded(
+                          Expanded(
                             child: Text(
-                              'Görev 3',
-                              style: TextStyle(
+                              'Görev: $task_name3',
+                              style: const TextStyle(
                                 fontSize: 16.0,
                                 color: Colors.white,
                               ),
@@ -666,113 +776,122 @@ class _CarsambaPageState extends State<CarsambaPage> {
                         ],
                       ),
                     ),
-                    if (_isExpanded3)
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 16.0,
-                          right: 16.0,
-                          bottom: 16.0,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(height: 8.0),
-                            const Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    'Görev Açıklama',
-                                    style: TextStyle(
-                                      fontSize: 16.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 8.0),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text(
-                                  'Görev Puan:',
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Row(
-                                  children: [
-                                    if (_fileSelected3)
-                                      ElevatedButton(
-                                        onPressed: () {
-// Handle file submission logic
-                                        },
-                                        child: const Text(
-                                          'Dosya Gönder',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    if (!_fileSelected3)
-                                      ElevatedButton(
-                                        onPressed: _selectFile3,
-                                        child: const Text(
-                                          'Dosya Seç',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            if (_fileSelected3)
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: ListView.builder(
-                                  shrinkWrap: true,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  itemCount: _selectedFiles3?.length ?? 0,
-                                  itemBuilder: (context, index) {
-                                    PlatformFile file = _selectedFiles3![index];
-                                    return ListTile(
-                                      title: Text(
-                                        file.name,
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      trailing: IconButton(
-                                        onPressed: () {
-// Handle file removal logic
-                                        },
-                                        icon: const Icon(
-                                          Icons.remove_circle,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ),
+                    AnimatedSize(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                      child: _isExpanded3
+                          ? Padding(
+                              padding: const EdgeInsets.only(
+                                left: 16.0,
+                                right: 16.0,
+                                bottom: 16.0,
                               ),
-                          ],
-                        ),
-                      ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const SizedBox(height: 8.0),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'Görev Açıklama: $task_description3',
+                                          style: const TextStyle(
+                                            fontSize: 13.0,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 8.0),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Text(
+                                        'Görev Puan:',
+                                        style: TextStyle(
+                                          fontSize: 16.0,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          if (_fileSelected3)
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                // Handle file submission logic
+                                              },
+                                              child: const Text(
+                                                'Dosya Gönder',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          if (!_fileSelected3)
+                                            ElevatedButton(
+                                              onPressed: _selectFile3,
+                                              child: const Text(
+                                                'Dosya Seç',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  if (_fileSelected3)
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: ListView.builder(
+                                        shrinkWrap: true,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        itemCount: _selectedFiles3?.length ?? 0,
+                                        itemBuilder: (context, index) {
+                                          PlatformFile file =
+                                              _selectedFiles3![index];
+                                          return ListTile(
+                                            title: Text(
+                                              file.name,
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            trailing: IconButton(
+                                              onPressed: () {
+                                                // Handle file removal logic
+                                              },
+                                              icon: const Icon(
+                                                Icons.remove_circle,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            )
+                          : const SizedBox.shrink(),
+                    ),
                   ],
                 ),
               ),
             ),
             const SizedBox(height: 10),
-// Görev 4
-            GestureDetector(
+            InkWell(
               onTap: _toggleBoxHeight4,
-              child: Container(
+              child: AnimatedContainer(
                 width: 300,
-                height: 80,
+                height: _isExpanded4 ? 270 : 80,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     colors: [
@@ -796,10 +915,10 @@ class _CarsambaPageState extends State<CarsambaPage> {
                             fillColor: MaterialStateProperty.all(Colors.white),
                           ),
                           const SizedBox(width: 8.0),
-                          const Expanded(
+                          Expanded(
                             child: Text(
-                              'Görev 4',
-                              style: TextStyle(
+                              'Görev: $task_name4',
+                              style: const TextStyle(
                                 fontSize: 16.0,
                                 color: Colors.white,
                               ),
@@ -813,113 +932,122 @@ class _CarsambaPageState extends State<CarsambaPage> {
                         ],
                       ),
                     ),
-                    if (_isExpanded4)
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 16.0,
-                          right: 16.0,
-                          bottom: 16.0,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(height: 8.0),
-                            const Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    'Görev Açıklama',
-                                    style: TextStyle(
-                                      fontSize: 16.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 8.0),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text(
-                                  'Görev Puan:',
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Row(
-                                  children: [
-                                    if (_fileSelected4)
-                                      ElevatedButton(
-                                        onPressed: () {
-// Handle file submission logic
-                                        },
-                                        child: const Text(
-                                          'Dosya Gönder',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    if (!_fileSelected4)
-                                      ElevatedButton(
-                                        onPressed: _selectFile4,
-                                        child: const Text(
-                                          'Dosya Seç',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            if (_fileSelected4)
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: ListView.builder(
-                                  shrinkWrap: true,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  itemCount: _selectedFiles4?.length ?? 0,
-                                  itemBuilder: (context, index) {
-                                    PlatformFile file = _selectedFiles4![index];
-                                    return ListTile(
-                                      title: Text(
-                                        file.name,
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      trailing: IconButton(
-                                        onPressed: () {
-// Handle file removal logic
-                                        },
-                                        icon: const Icon(
-                                          Icons.remove_circle,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ),
+                    AnimatedSize(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                      child: _isExpanded4
+                          ? Padding(
+                              padding: const EdgeInsets.only(
+                                left: 16.0,
+                                right: 16.0,
+                                bottom: 16.0,
                               ),
-                          ],
-                        ),
-                      ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const SizedBox(height: 8.0),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'Görev Açıklama: $task_description4',
+                                          style: const TextStyle(
+                                            fontSize: 13.0,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 8.0),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Text(
+                                        'Görev Puan:',
+                                        style: TextStyle(
+                                          fontSize: 16.0,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          if (_fileSelected4)
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                // Handle file submission logic
+                                              },
+                                              child: const Text(
+                                                'Dosya Gönder',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          if (!_fileSelected4)
+                                            ElevatedButton(
+                                              onPressed: _selectFile4,
+                                              child: const Text(
+                                                'Dosya Seç',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  if (_fileSelected4)
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: ListView.builder(
+                                        shrinkWrap: true,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        itemCount: _selectedFiles4?.length ?? 0,
+                                        itemBuilder: (context, index) {
+                                          PlatformFile file =
+                                              _selectedFiles4![index];
+                                          return ListTile(
+                                            title: Text(
+                                              file.name,
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            trailing: IconButton(
+                                              onPressed: () {
+                                                // Handle file removal logic
+                                              },
+                                              icon: const Icon(
+                                                Icons.remove_circle,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            )
+                          : const SizedBox.shrink(),
+                    ),
                   ],
                 ),
               ),
             ),
             const SizedBox(height: 10),
-// Görev 5
-            GestureDetector(
+            InkWell(
               onTap: _toggleBoxHeight5,
-              child: Container(
+              child: AnimatedContainer(
                 width: 300,
-                height: 80,
+                height: _isExpanded5 ? 270 : 80,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     colors: [
@@ -943,10 +1071,10 @@ class _CarsambaPageState extends State<CarsambaPage> {
                             fillColor: MaterialStateProperty.all(Colors.white),
                           ),
                           const SizedBox(width: 8.0),
-                          const Expanded(
+                          Expanded(
                             child: Text(
-                              'Görev 5',
-                              style: TextStyle(
+                              'Görev: $task_name5',
+                              style: const TextStyle(
                                 fontSize: 16.0,
                                 color: Colors.white,
                               ),
@@ -960,108 +1088,115 @@ class _CarsambaPageState extends State<CarsambaPage> {
                         ],
                       ),
                     ),
-                    if (_isExpanded5)
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 16.0,
-                          right: 16.0,
-                          bottom: 16.0,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(height: 8.0),
-                            const Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    'Görev Açıklama',
-                                    style: TextStyle(
-                                      fontSize: 16.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 8.0),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text(
-                                  'Görev Puan:',
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Row(
-                                  children: [
-                                    if (_fileSelected5)
-                                      ElevatedButton(
-                                        onPressed: () {
-// Handle file submission logic
-                                        },
-                                        child: const Text(
-                                          'Dosya Gönder',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    if (!_fileSelected5)
-                                      ElevatedButton(
-                                        onPressed: _selectFile5,
-                                        child: const Text(
-                                          'Dosya Seç',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            if (_fileSelected5)
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: ListView.builder(
-                                  shrinkWrap: true,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  itemCount: _selectedFiles5?.length ?? 0,
-                                  itemBuilder: (context, index) {
-                                    PlatformFile file = _selectedFiles5![index];
-                                    return ListTile(
-                                      title: Text(
-                                        file.name,
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      trailing: IconButton(
-                                        onPressed: () {
-// Handle file removal logic
-                                        },
-                                        icon: const Icon(
-                                          Icons.remove_circle,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ),
+                    AnimatedSize(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                      child: _isExpanded5
+                          ? Padding(
+                              padding: const EdgeInsets.only(
+                                left: 16.0,
+                                right: 16.0,
+                                bottom: 16.0,
                               ),
-                          ],
-                        ),
-                      ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const SizedBox(height: 8.0),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'Görev Açıklama: $task_description5',
+                                          style: const TextStyle(
+                                            fontSize: 13.0,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 8.0),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Text(
+                                        'Görev Puan:',
+                                        style: TextStyle(
+                                          fontSize: 16.0,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          if (_fileSelected5)
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                // Handle file submission logic
+                                              },
+                                              child: const Text(
+                                                'Dosya Gönder',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          if (!_fileSelected5)
+                                            ElevatedButton(
+                                              onPressed: _selectFile5,
+                                              child: const Text(
+                                                'Dosya Seç',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  if (_fileSelected5)
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: ListView.builder(
+                                        shrinkWrap: true,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        itemCount: _selectedFiles5?.length ?? 0,
+                                        itemBuilder: (context, index) {
+                                          PlatformFile file =
+                                              _selectedFiles5![index];
+                                          return ListTile(
+                                            title: Text(
+                                              file.name,
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            trailing: IconButton(
+                                              onPressed: () {
+                                                // Handle file removal logic
+                                              },
+                                              icon: const Icon(
+                                                Icons.remove_circle,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            )
+                          : const SizedBox.shrink(),
+                    ),
                   ],
                 ),
               ),
             ),
             const SizedBox(height: 10),
-
             const Padding(
               padding: EdgeInsets.all(16.0),
               child: Column(
@@ -1088,12 +1223,13 @@ class _CarsambaPageState extends State<CarsambaPage> {
               ),
             ),
             const SizedBox(height: 10),
-// Görev 6
-            GestureDetector(
+            InkWell(
               onTap: _toggleBoxHeight6,
-              child: Container(
+              child: AnimatedContainer(
                 width: 300,
-                height: 80,
+                height: _isExpanded6 ? 270 : 80,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     colors: [
@@ -1117,10 +1253,10 @@ class _CarsambaPageState extends State<CarsambaPage> {
                             fillColor: MaterialStateProperty.all(Colors.white),
                           ),
                           const SizedBox(width: 8.0),
-                          const Expanded(
+                          Expanded(
                             child: Text(
-                              'Görev 6',
-                              style: TextStyle(
+                              'Görev: $task_name6',
+                              style: const TextStyle(
                                 fontSize: 16.0,
                                 color: Colors.white,
                               ),
@@ -1134,113 +1270,122 @@ class _CarsambaPageState extends State<CarsambaPage> {
                         ],
                       ),
                     ),
-                    if (_isExpanded6)
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 16.0,
-                          right: 16.0,
-                          bottom: 16.0,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(height: 8.0),
-                            const Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    'Görev Açıklama',
-                                    style: TextStyle(
-                                      fontSize: 16.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 8.0),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text(
-                                  'Görev Puan:',
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Row(
-                                  children: [
-                                    if (_fileSelected6)
-                                      ElevatedButton(
-                                        onPressed: () {
-// Handle file submission logic
-                                        },
-                                        child: const Text(
-                                          'Dosya Gönder',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    if (!_fileSelected6)
-                                      ElevatedButton(
-                                        onPressed: _selectFile6,
-                                        child: const Text(
-                                          'Dosya Seç',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            if (_fileSelected6)
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: ListView.builder(
-                                  shrinkWrap: true,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  itemCount: _selectedFiles6?.length ?? 0,
-                                  itemBuilder: (context, index) {
-                                    PlatformFile file = _selectedFiles6![index];
-                                    return ListTile(
-                                      title: Text(
-                                        file.name,
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      trailing: IconButton(
-                                        onPressed: () {
-// Handle file removal logic
-                                        },
-                                        icon: const Icon(
-                                          Icons.remove_circle,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ),
+                    AnimatedSize(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                      child: _isExpanded6
+                          ? Padding(
+                              padding: const EdgeInsets.only(
+                                left: 16.0,
+                                right: 16.0,
+                                bottom: 16.0,
                               ),
-                          ],
-                        ),
-                      ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const SizedBox(height: 8.0),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'Görev Açıklama: $task_description6',
+                                          style: const TextStyle(
+                                            fontSize: 13.0,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 8.0),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Text(
+                                        'Görev Puan:',
+                                        style: TextStyle(
+                                          fontSize: 16.0,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          if (_fileSelected6)
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                // Handle file submission logic
+                                              },
+                                              child: const Text(
+                                                'Dosya Gönder',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          if (!_fileSelected6)
+                                            ElevatedButton(
+                                              onPressed: _selectFile6,
+                                              child: const Text(
+                                                'Dosya Seç',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  if (_fileSelected6)
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: ListView.builder(
+                                        shrinkWrap: true,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        itemCount: _selectedFiles6?.length ?? 0,
+                                        itemBuilder: (context, index) {
+                                          PlatformFile file =
+                                              _selectedFiles6![index];
+                                          return ListTile(
+                                            title: Text(
+                                              file.name,
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            trailing: IconButton(
+                                              onPressed: () {
+                                                // Handle file removal logic
+                                              },
+                                              icon: const Icon(
+                                                Icons.remove_circle,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            )
+                          : const SizedBox.shrink(),
+                    ),
                   ],
                 ),
               ),
             ),
             const SizedBox(height: 10),
-// Görev 7
-            GestureDetector(
+            InkWell(
               onTap: _toggleBoxHeight7,
-              child: Container(
+              child: AnimatedContainer(
                 width: 300,
-                height: 80,
+                height: _isExpanded7 ? 270 : 80,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     colors: [
@@ -1264,10 +1409,10 @@ class _CarsambaPageState extends State<CarsambaPage> {
                             fillColor: MaterialStateProperty.all(Colors.white),
                           ),
                           const SizedBox(width: 8.0),
-                          const Expanded(
+                          Expanded(
                             child: Text(
-                              'Görev 7',
-                              style: TextStyle(
+                              'Görev: $task_name7',
+                              style: const TextStyle(
                                 fontSize: 16.0,
                                 color: Colors.white,
                               ),
@@ -1281,113 +1426,122 @@ class _CarsambaPageState extends State<CarsambaPage> {
                         ],
                       ),
                     ),
-                    if (_isExpanded7)
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 16.0,
-                          right: 16.0,
-                          bottom: 16.0,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(height: 8.0),
-                            const Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    'Görev Açıklama',
-                                    style: TextStyle(
-                                      fontSize: 16.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 8.0),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text(
-                                  'Görev Puan:',
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Row(
-                                  children: [
-                                    if (_fileSelected7)
-                                      ElevatedButton(
-                                        onPressed: () {
-// Handle file submission logic
-                                        },
-                                        child: const Text(
-                                          'Dosya Gönder',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    if (!_fileSelected7)
-                                      ElevatedButton(
-                                        onPressed: _selectFile7,
-                                        child: const Text(
-                                          'Dosya Seç',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            if (_fileSelected7)
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: ListView.builder(
-                                  shrinkWrap: true,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  itemCount: _selectedFiles7?.length ?? 0,
-                                  itemBuilder: (context, index) {
-                                    PlatformFile file = _selectedFiles7![index];
-                                    return ListTile(
-                                      title: Text(
-                                        file.name,
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      trailing: IconButton(
-                                        onPressed: () {
-// Handle file removal logic
-                                        },
-                                        icon: const Icon(
-                                          Icons.remove_circle,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ),
+                    AnimatedSize(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                      child: _isExpanded7
+                          ? Padding(
+                              padding: const EdgeInsets.only(
+                                left: 16.0,
+                                right: 16.0,
+                                bottom: 16.0,
                               ),
-                          ],
-                        ),
-                      ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const SizedBox(height: 8.0),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'Görev Açıklama: $task_description7',
+                                          style: const TextStyle(
+                                            fontSize: 13.0,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 8.0),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Text(
+                                        'Görev Puan:',
+                                        style: TextStyle(
+                                          fontSize: 16.0,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          if (_fileSelected7)
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                // Handle file submission logic
+                                              },
+                                              child: const Text(
+                                                'Dosya Gönder',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          if (!_fileSelected7)
+                                            ElevatedButton(
+                                              onPressed: _selectFile7,
+                                              child: const Text(
+                                                'Dosya Seç',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  if (_fileSelected7)
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: ListView.builder(
+                                        shrinkWrap: true,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        itemCount: _selectedFiles7?.length ?? 0,
+                                        itemBuilder: (context, index) {
+                                          PlatformFile file =
+                                              _selectedFiles7![index];
+                                          return ListTile(
+                                            title: Text(
+                                              file.name,
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            trailing: IconButton(
+                                              onPressed: () {
+                                                // Handle file removal logic
+                                              },
+                                              icon: const Icon(
+                                                Icons.remove_circle,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            )
+                          : const SizedBox.shrink(),
+                    ),
                   ],
                 ),
               ),
             ),
             const SizedBox(height: 10),
-// Görev 8
-            GestureDetector(
+            InkWell(
               onTap: _toggleBoxHeight8,
-              child: Container(
+              child: AnimatedContainer(
                 width: 300,
-                height: 80,
+                height: _isExpanded8 ? 270 : 80,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
                     colors: [
@@ -1411,10 +1565,10 @@ class _CarsambaPageState extends State<CarsambaPage> {
                             fillColor: MaterialStateProperty.all(Colors.white),
                           ),
                           const SizedBox(width: 8.0),
-                          const Expanded(
+                          Expanded(
                             child: Text(
-                              'Görev 8',
-                              style: TextStyle(
+                              'Görev: $task_name8',
+                              style: const TextStyle(
                                 fontSize: 16.0,
                                 color: Colors.white,
                               ),
@@ -1428,138 +1582,115 @@ class _CarsambaPageState extends State<CarsambaPage> {
                         ],
                       ),
                     ),
-                    if (_isExpanded8)
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 16.0,
-                          right: 16.0,
-                          bottom: 16.0,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(height: 8.0),
-                            const Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    'Görev Açıklama',
-                                    style: TextStyle(
-                                      fontSize: 16.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 8.0),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text(
-                                  'Görev Puan:',
-                                  style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Row(
-                                  children: [
-                                    if (_fileSelected8)
-                                      ElevatedButton(
-                                        onPressed: () {
-// Handle file submission logic
-                                        },
-                                        child: const Text(
-                                          'Dosya Gönder',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    if (!_fileSelected8)
-                                      ElevatedButton(
-                                        onPressed: _selectFile8,
-                                        child: const Text(
-                                          'Dosya Seç',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            if (_fileSelected8)
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: ListView.builder(
-                                  shrinkWrap: true,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  itemCount: _selectedFiles8?.length ?? 0,
-                                  itemBuilder: (context, index) {
-                                    PlatformFile file = _selectedFiles8![index];
-                                    return ListTile(
-                                      title: Text(
-                                        file.name,
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      trailing: IconButton(
-                                        onPressed: () {
-// Handle file removal logic
-                                        },
-                                        icon: const Icon(
-                                          Icons.remove_circle,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ),
+                    AnimatedSize(
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                      child: _isExpanded8
+                          ? Padding(
+                              padding: const EdgeInsets.only(
+                                left: 16.0,
+                                right: 16.0,
+                                bottom: 16.0,
                               ),
-                          ],
-                        ),
-                      ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const SizedBox(height: 8.0),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          'Görev Açıklama: $task_description8',
+                                          style: const TextStyle(
+                                            fontSize: 13.0,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 8.0),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Text(
+                                        'Görev Puan:',
+                                        style: TextStyle(
+                                          fontSize: 16.0,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          if (_fileSelected8)
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                // Handle file submission logic
+                                              },
+                                              child: const Text(
+                                                'Dosya Gönder',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                          if (!_fileSelected8)
+                                            ElevatedButton(
+                                              onPressed: _selectFile8,
+                                              child: const Text(
+                                                'Dosya Seç',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  if (_fileSelected8)
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8.0),
+                                      child: ListView.builder(
+                                        shrinkWrap: true,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        itemCount: _selectedFiles8?.length ?? 0,
+                                        itemBuilder: (context, index) {
+                                          PlatformFile file =
+                                              _selectedFiles8![index];
+                                          return ListTile(
+                                            title: Text(
+                                              file.name,
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                            trailing: IconButton(
+                                              onPressed: () {
+                                                // Handle file removal logic
+                                              },
+                                              icon: const Icon(
+                                                Icons.remove_circle,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            )
+                          : const SizedBox.shrink(),
+                    ),
                   ],
                 ),
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class FilePickerDemo extends StatelessWidget {
-  const FilePickerDemo({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('File Picker Demo'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () async {
-            FilePickerResult? result = await FilePicker.platform.pickFiles();
-
-            if (result != null) {
-              List<PlatformFile> files = result.files;
-              for (PlatformFile file in files) {
-                if (kDebugMode) {
-                  print(file.name);
-                }
-              }
-            } else {
-              // User canceled the picker
-            }
-          },
-          child: const Text('Open File Picker'),
         ),
       ),
     );
