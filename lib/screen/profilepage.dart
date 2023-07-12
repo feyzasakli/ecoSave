@@ -7,7 +7,6 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:geolocator/geolocator.dart';
 
-
 class ProfilePage extends StatefulWidget {
   final String uploadedImageUrl;
 
@@ -130,7 +129,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           color: Colors.white,
                         ),
                         child: Image.network(
-                          widget.uploadedImageUrl,
+                          'https://media.istockphoto.com/id/982539874/tr/foto%C4%9Fraf/vesikal%C4%B1k-foto%C4%9Fraf-asya-g%C3%BCl%C3%BCmseyen-kad%C4%B1n-portresi.jpg?s=170667a&w=0&k=20&c=2Dz3DGTozYZDd2Tt5-1Qi25bduWum3g2Ej-Vq53F_bc=',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -203,7 +202,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       gradient: LinearGradient(
                         colors: const [
                           Color(0xFF17A3A2),// Soldaki renk
-                      Color(0xFF52C077), // Sağdaki renk
+                          Color(0xFF52C077), // Sağdaki renk
                         ],
                       ),
                     ),
@@ -383,6 +382,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 Positioned(
                   top: 0.780 * MediaQuery.of(context).size.height,
                   left: 0.073 * MediaQuery.of(context).size.width,
+
                   child: FutureBuilder(
                     future: _getAirPollutionData(),
                     builder: (context, snapshot) {
@@ -435,7 +435,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     },
                   ),
                 ),
-
               ],
             ),
           ),

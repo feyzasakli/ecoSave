@@ -135,7 +135,7 @@ class ShopPage extends StatelessWidget {
                       const SizedBox(height: 10),
                       ElevatedButton(
                         onPressed: () {
-                          _showCouponDialog2(context, 'Coupon Code 2');
+                          _showCouponDialog2(context, 'MAVİ25PUAN                                                                                                                                     50-70 arası puanı olanlar bu kupon kodundan yararlanabilir: PUANINIZ YETERLİ DEĞİL!');
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.green,
@@ -174,7 +174,7 @@ class ShopPage extends StatelessWidget {
                       const SizedBox(height: 10),
                       ElevatedButton(
                         onPressed: () {
-                          _showCouponDialog3(context, 'Coupon Code 3');
+                          _showCouponDialog3(context, 're-clo30PUAN              70-80 arası puanı olanlar bu kupon kodundan yararlanabilir: PUANINIZ YETERLİ DEĞİL!');
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.green,
@@ -208,7 +208,7 @@ class ShopPage extends StatelessWidget {
                       const SizedBox(height: 10),
                       ElevatedButton(
                         onPressed: () {
-                          _showCouponDialog4(context, 'Coupon Code 4');
+                          _showCouponDialog4(context, 'WWF40PUAN                     80-90 arası puanı olanlar bu kupon kodundan yararlanabilir: PUANINIZ YETERLİ DEĞİL!');
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.green,
@@ -303,7 +303,7 @@ class ShopPage extends StatelessWidget {
             ),
             title: const Text('Uyarı'),
             content: const Text(
-                'Bu kupon kodunu kullanabilmeniz için toplam puanınız 10\'dan fazla olmalıdır.'),
+                'Bu kupon kodunu kullanabilmeniz için toplam puanınız 50\'dan fazla olmalıdır.'),
             actions: [
               TextButton(
                 onPressed: () {
