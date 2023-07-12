@@ -7,7 +7,6 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:geolocator/geolocator.dart';
 
-
 class ProfilePage extends StatefulWidget {
   final String uploadedImageUrl;
 
@@ -86,6 +85,22 @@ class _ProfilePageState extends State<ProfilePage> {
     }
   }
 
+  String getBackgroundImage(int aqi) {
+    if (aqi <= 50) {
+      return 'images/temiz2.png';
+    } else if (aqi <= 100) {
+      return 'images/temiz.png';
+    } else if (aqi <= 150) {
+      return 'images/orta.png';
+    } else if (aqi <= 200) {
+      return 'images/kötü.png';
+    } else if (aqi <= 300) {
+      return 'images/Adsız tasarım.png';
+    } else {
+      return 'images/tehlikeli.png';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,7 +129,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           color: Colors.white,
                         ),
                         child: Image.network(
-                          widget.uploadedImageUrl,
+                          'https://media.istockphoto.com/id/982539874/tr/foto%C4%9Fraf/vesikal%C4%B1k-foto%C4%9Fraf-asya-g%C3%BCl%C3%BCmseyen-kad%C4%B1n-portresi.jpg?s=170667a&w=0&k=20&c=2Dz3DGTozYZDd2Tt5-1Qi25bduWum3g2Ej-Vq53F_bc=',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -187,7 +202,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       gradient: LinearGradient(
                         colors: const [
                           Color(0xFF17A3A2),// Soldaki renk
-                      Color(0xFF52C077), // Sağdaki renk
+                          Color(0xFF52C077), // Sağdaki renk
                         ],
                       ),
                     ),
@@ -367,54 +382,58 @@ class _ProfilePageState extends State<ProfilePage> {
                 Positioned(
                   top: 0.780 * MediaQuery.of(context).size.height,
                   left: 0.073 * MediaQuery.of(context).size.width,
-                  child: Container(
-                    width: 0.850 * MediaQuery.of(context).size.width,
-                    height: 0.300 * MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.0),
-                      color: Colors.white.withOpacity(0.5),
-                      image: const DecorationImage(
-                        image: AssetImage('images/nature2.png'),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    child: FutureBuilder(
-                      future: _getAirPollutionData(),
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          // Handle the received data
-                          var data = snapshot.data as Map<String, dynamic>;
-                          var aqi = data['list'][0]['main']['aqi'];
-                          return Center(
-                            child: Text(
-                                'Hava Kirliliği Endeksi: $aqi\nHava Kalitesi: ${getAirQuality(aqi)}',
-                                style: const TextStyle(
-                                  color: Color.fromARGB(255, 255, 255, 255),
-                                    fontSize: 24.0,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+
+                  child: FutureBuilder(
+                    future: _getAirPollutionData(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        var data = snapshot.data as Map<String, dynamic>;
+                        var aqi = data['list'][0]['main']['aqi'];
+                        var backgroundImage = getBackgroundImage(aqi);
+                        // ignore: unused_local_variable
+                        var airQuality = getAirQuality(aqi);
+
+                        return Container(
+                          width: 0.850 * MediaQuery.of(context).size.width,
+                          height: 0.300 * MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20.0),
+                            color: Colors.green.withOpacity(0.5),
+                            image: DecorationImage(
+                              image: AssetImage(backgroundImage),
+                              fit: BoxFit.cover,
                             ),
-                                );
-                            } else if (snapshot.hasError) {
-                            // Handle error
-                            return const Center(
+                          ),
+                          child: Center(
                             child: Text(
+                              '                $aqi\nHava Kalitesi: ${getAirQuality(aqi)}',
+                              style: const TextStyle(
+                                color: Color.fromARGB(255, 0, 0, 0),
+                                fontSize: 34.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        );
+                      } else if (snapshot.hasError) {
+                        // Handle error
+                        return Center(
+                          child: Text(
                             'Lütfen ayarlardan konum izni verin',
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.black,
                               fontSize: 22.0,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         );
-                        } else {
+                      } else {
                         // Show a loading spinner while waiting for the data
-                        return const Center(
-                        child: CircularProgressIndicator(),
+                        return Center(
+                          child: CircularProgressIndicator(),
                         );
-                        }
-                      },
-                    ),
+                      }
+                    },
                   ),
                 ),
               ],
@@ -440,4 +459,6 @@ class _ProfilePageState extends State<ProfilePage> {
 
     return jsonData;
   }
+
+
 }

@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously, prefer_const_constructors
-
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -7,6 +5,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SettingsPage extends StatefulWidget {
   final Color backgroundColor;
@@ -23,7 +22,6 @@ class SettingsPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  // ignore: library_private_types_in_public_api
   _SettingsPageState createState() => _SettingsPageState();
 }
 
@@ -37,8 +35,6 @@ class _SettingsPageState extends State<SettingsPage> {
   final TextEditingController sifreController = TextEditingController();
   final TextEditingController yeniSifreController = TextEditingController();
 
-
-
   @override
   void initState() {
     super.initState();
@@ -48,17 +44,32 @@ class _SettingsPageState extends State<SettingsPage> {
 
   Future<void> saveDataToFirestore(BuildContext context) async {
     try {
-      await _firestore.collection('users').doc('kullanici_id').set({
-        'ad': adController.text,
-        'kullanici_adi': kullaniciAdiController.text,
-        'eposta': epostaController.text,
-        'sifre': sifreController.text,
-        'yeni_sifre': yeniSifreController.text,
-      });
+      String currentPassword = sifreController.text;
+      String newPassword = yeniSifreController.text;
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Veri kaydedildi')),
-      );
+      // Firebase Authentication kullanarak kullanıcının şifresini güncelle
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        // Kullanıcının şifresini güncelleme isteği gönder
+        await user.updatePassword(newPassword);
+
+        // Firestore'da diğer verileri kaydet
+        await _firestore.collection('users').doc('kullanici_id').set({
+          'ad': adController.text,
+          'kullanici_adi': kullaniciAdiController.text,
+          'eposta': epostaController.text,
+          'sifre': currentPassword,
+          'yeni_sifre': newPassword,
+        });
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Veri kaydedildi')),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Kullanıcı oturumu açık değil')),
+        );
+      }
     } catch (e) {
       if (kDebugMode) {
         print('Hata: $e');
@@ -82,7 +93,6 @@ class _SettingsPageState extends State<SettingsPage> {
         final TaskSnapshot uploadTask = await storageRef.putFile(file);
 
         final String downloadURL = await uploadTask.ref.getDownloadURL();
-
 
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Dosya başarıyla yüklendi')),
@@ -113,8 +123,6 @@ class _SettingsPageState extends State<SettingsPage> {
     setState(() {
       uploadedImageUrl = downloadURL;
     });
-
-
   }
 
   Future<void> getDataFromFirestore() async {
@@ -147,6 +155,17 @@ class _SettingsPageState extends State<SettingsPage> {
         print('Hata: $e');
       }
     }
+  }
+
+  bool validatePasswords() {
+    String currentPassword = sifreController.text;
+    String newPassword = yeniSifreController.text;
+
+    // Şifreleri doğrulama mantığını buraya ekleyin
+    // Örneğin, şifrenin belirli bir uzunlukta olması veya özel bir karakter içermesi gerekebilir
+
+    // Geçerli ise true, aksi takdirde false döndürün
+    return true;
   }
 
   @override
@@ -193,7 +212,13 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        saveDataToFirestore(context);
+                        if (validatePasswords()) {
+                          saveDataToFirestore(context);
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Geçerli şifre gereklidir')),
+                          );
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         elevation: 8,
@@ -267,7 +292,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 SizedBox(height: 16),
                 TextField(
                   controller: adController,
-                  decoration:InputDecoration(
+                  decoration: InputDecoration(
                     labelText: 'Ad',
                     border: OutlineInputBorder(),
                   ),
@@ -295,6 +320,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     labelText: 'Şifre',
                     border: OutlineInputBorder(),
                   ),
+                  obscureText: true, // Şifre alanını gizlemek için
                 ),
                 SizedBox(height: 8),
                 TextField(
@@ -303,6 +329,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     labelText: 'Yeni Şifre',
                     border: OutlineInputBorder(),
                   ),
+                  obscureText: true, // Şifre alanını gizlemek için
                 ),
               ],
             ),

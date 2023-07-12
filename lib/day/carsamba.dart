@@ -1,10 +1,14 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CarsambaPage extends StatefulWidget {
   const CarsambaPage({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _CarsambaPageState createState() => _CarsambaPageState();
 }
 
@@ -216,6 +220,23 @@ class _CarsambaPageState extends State<CarsambaPage> {
       });
     }
   }
+
+  String task_name1 = "5 Dakika Doğal Aydınlatma";
+  String task_description1 = "Gün ışığından en iyi şekilde faydalanmak için bugün en az 5 dakika açık havada vakit geçirin. Bir yürüyüş yapabilir, bir parkta oturabilir veya bahçe işleriyle uğraşabilirsiniz. [Görsel: Açık havada yürüyüş yapan birisi]";
+  String task_name2 = "Sürdürülebilir Alışveriş Listesi";
+  String task_description2 = "Alışveriş yaparken bugün sürdürülebilir bir alışveriş listesi kullanın. Organik, yerel ve paketsiz ürünlere öncelik verin. [Görsel: Bir alışveriş listesi]";
+  String task_name3 = "Sıfır Atık Mutfak";
+  String task_description3 = "Sıfır atık mutfak konusunda araştırma yapın. Evde yiyecek atıklarını azaltma, kompostlama veya geri dönüşüm yöntemlerinden deneyimleyin. [Görsel: Bu adımı nasıl gerçekleştirdiğiniz ile ilgili bir görsel paylaşın]";
+  String task_name4 = "Doğa Temizliği";
+  String task_description4 = "Bugün doğa temizliği yaparak çevrenizdeki atıkları toplayın ve doğaya katkıda bulunun. Çevre temizliği yaptığınız bir fotoğraf paylaşın. [Görsel: Çevre temizliği yapılan bir alan]";
+  String task_name5 = "İklim Değişikliği Etkinlikleri";
+  String task_description5 = "İklim değişikliği ile mücadele konusunda okumalar yapın. Örneğin, iklim değişikliği paneline katılabilir veya iklim eylemi organizasyonlarına destek verebilirsiniz. [Görsel: Bu adımı nasıl gerçekleştirdiğiniz ile ilgili bir görsel paylaşın]";
+  String task_name6 = "Bitki Dostu Öğle Yemeği";
+  String task_description6 = "Bugün öğle yemeğinde bitki bazlı bir seçenek tercih edin. Et veya hayvansal ürünler yerine sebzeleri ve tahılları içeren bir öğün hazırlayın ve fotoğrafını paylaşın. [Görsel: Bitki bazlı bir öğle yemeği]";
+  String task_name7 = "Çevre Temizliği";
+  String task_description7 = "Bugün çevrenizdeki atıkları temizleyerek doğaya katkıda bulunun. Çevre temizliği yaptığınız bir fotoğraf paylaşın. [Görsel: Çevre temizliği yapılan bir alan]";
+  String task_name8 = "Doğa Yürüyüşü";
+  String task_description8 = "Bugün doğa yürüyüşü yaparak doğayla bağlantı kurun. Doğada çektiğiniz bir fotoğrafı paylaşın. [Görsel: Doğada yapılan bir yürüyüşten bir manzara fotoğrafı]";
 
   @override
   Widget build(BuildContext context) {
@@ -1530,7 +1551,9 @@ class FilePickerDemo extends StatelessWidget {
             if (result != null) {
               List<PlatformFile> files = result.files;
               for (PlatformFile file in files) {
-                print(file.name);
+                if (kDebugMode) {
+                  print(file.name);
+                }
               }
             } else {
               // User canceled the picker
