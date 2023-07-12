@@ -222,7 +222,6 @@ class _PazartesiPageState extends State<PazartesiPage>
     }
   }
 
-<<<<<<< HEAD
   String task_name = "";
   String task_description = "";
   String task_name2 = "";
@@ -239,25 +238,7 @@ class _PazartesiPageState extends State<PazartesiPage>
   String task_description7 = "";
   String task_name8 = "";
   String task_description8 = "";
-=======
-  String task_name = "5 Dakika Doğal Aydınlatma";
-  String task_description = " Gün ışığından en iyi şekilde faydalanmak için bugün en az 5 dakika açık havada vakit geçirin. Bir yürüyüş yapabilir, bir parkta oturabilir veya bahçe işleriyle uğraşabilirsiniz. [Görsel: Açık havada yürüyüş yapan birisi]";
-  String task_name2 = "Tek Kullanımlık Plastikleri Reddetme";
-  String task_description2 = "Bugün tek kullanımlık plastiklerden kaçının. Dışarıda alışveriş yaparken plastik poşet veya plastik bardak gibi ürünleri kullanmayın ve kendi tekrar kullanılabilir alternatiflerinizi kullanın, örneğin alışveriş için bir bez çanta tercih edebilirsiniz. [Görsel: Kendi tekrar kullanılabilir alışveriş çantanızı kullanmak]";
-  String task_name3 = "Sürdürülebilir Okuma";
-  String task_description3 = "Kitap veya dergi almak yerine kütüphaneleri tercih edin veya dijital olarak okuma yapın. Okuduğunuz bir kitabın fotoğrafını çekerek görevi tamamlayın. [Görsel: Bir kitabın veya dijital okuma cihazının fotoğrafı]";
-  String task_name4 = "Su Kahramanı";
-  String task_description4 = "Su tüketimini azaltmak için bugün daha bilinçli bir şekilde su kullanın. Musluğu dişlerinizi fırçalarken kapalı tutun ve daha kısa süreli duş alın. Fotoğrafınızı paylaşın. [Görsel: Musluğu kapalı tutan birisi]";
-  String task_name5 = "Yerel Üretim";
-  String task_description5 = "Bugün yerel üreticilerden alışveriş yaparak yerel ekonomiyi destekleyin. Yerel ürünleri ve alışveriş yaptığınız yerin fotoğrafını çekin. [Görsel: Yerel üreticilerden alınan taze ürünler]";
-  String task_name6 = "Bisikletle Gitme";
-  String task_description6 = "Bugün gideceğiniz bir yere bisikletle gitmeyi deneyin. Ulaşım için bisiklet kullanmak, hem sağlığınıza katkıda bulunur hem de karbon salınımını azaltır. [Görsel: Bir bisiklet sürücüsü]";
-  String task_name7 = "Bitki Dostu Öğle Yemeği";
-  String task_description7 = "Bugün öğle yemeğinde bitki bazlı bir seçenek tercih edin. Et veya hayvansal ürünler yerine sebzeleri ve tahılları içeren bir öğün hazırlayın ve fotoğrafını paylaşın. [Görsel: Bitki bazlı bir öğle yemeği]";
-  String task_name8 = "Doğa Yürüyüşü";
-  String task_description8 = "Bugün doğa yürüyüşü yaparak doğayla bağlantı kurun. Doğada çektiğiniz bir fotoğrafı paylaşın. [Görsel: Doğada yapılan bir yürüyüşten bir manzara fotoğrafı]";
 
->>>>>>> 8518c1fb444896f354ca7912b0d80904d421011e
   @override
   void initState() {
     super.initState();

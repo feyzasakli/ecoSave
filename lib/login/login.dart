@@ -240,7 +240,6 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 10),
                     GestureDetector(
                       onTap: () {
                         emailIleGirisYap(email, password);
@@ -287,7 +286,7 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 3),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
