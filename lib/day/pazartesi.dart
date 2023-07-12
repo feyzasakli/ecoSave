@@ -223,17 +223,35 @@ class _PazartesiPageState extends State<PazartesiPage>
   String task_description = "";
   String task_name2 = "";
   String task_description2 = "";
+  String task_name3 = "";
+  String task_description3 = "";
+  String task_name4 = "";
+  String task_description4 = "";
+  String task_name5 = "";
+  String task_description5 = "";
+  String task_name6 = "";
+  String task_description6 = "";
+  String task_name7 = "";
+  String task_description7 = "";
+  String task_name8 = "";
+  String task_description8 = "";
   @override
   void initState() {
     super.initState();
     fetchTaskName();
     fetchTaskName2();
+    fetchTaskName3();
+    fetchTaskName4();
+    fetchTaskName5();
+    fetchTaskName6();
+    fetchTaskName7();
+    fetchTaskName8();
   }
 
   void fetchTaskName() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     DocumentSnapshot snapshot =
-        await firestore.collection('tasks').doc('jepjTw2bzLdkBtzL0NdR').get();
+        await firestore.collection('task').doc('pzt1').get();
 
     if (snapshot.exists) {
       setState(() {
@@ -248,13 +266,103 @@ class _PazartesiPageState extends State<PazartesiPage>
   void fetchTaskName2() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     DocumentSnapshot snapshot =
-        await firestore.collection('tasks').doc('iPzgGFy0CEJgi7kLQK1T').get();
+        await firestore.collection('task').doc('pzt2').get();
 
     if (snapshot.exists) {
       setState(() {
         task_name2 =
             (snapshot.data() as Map<String, dynamic>)['task_name'] as String;
         task_description2 = (snapshot.data()
+            as Map<String, dynamic>)['task_description'] as String;
+      });
+    }
+  }
+
+  void fetchTaskName3() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    DocumentSnapshot snapshot =
+        await firestore.collection('task').doc('pzt3').get();
+
+    if (snapshot.exists) {
+      setState(() {
+        task_name3 =
+            (snapshot.data() as Map<String, dynamic>)['task_name'] as String;
+        task_description3 = (snapshot.data()
+            as Map<String, dynamic>)['task_description'] as String;
+      });
+    }
+  }
+
+  void fetchTaskName4() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    DocumentSnapshot snapshot =
+        await firestore.collection('task').doc('pzt4').get();
+
+    if (snapshot.exists) {
+      setState(() {
+        task_name4 =
+            (snapshot.data() as Map<String, dynamic>)['task_name'] as String;
+        task_description4 = (snapshot.data()
+            as Map<String, dynamic>)['task_description'] as String;
+      });
+    }
+  }
+
+  void fetchTaskName5() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    DocumentSnapshot snapshot =
+        await firestore.collection('task').doc('pzt5').get();
+
+    if (snapshot.exists) {
+      setState(() {
+        task_name5 =
+            (snapshot.data() as Map<String, dynamic>)['task_name'] as String;
+        task_description5 = (snapshot.data()
+            as Map<String, dynamic>)['task_description'] as String;
+      });
+    }
+  }
+
+  void fetchTaskName6() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    DocumentSnapshot snapshot =
+        await firestore.collection('task').doc('pzt6').get();
+
+    if (snapshot.exists) {
+      setState(() {
+        task_name6 =
+            (snapshot.data() as Map<String, dynamic>)['task_name'] as String;
+        task_description6 = (snapshot.data()
+            as Map<String, dynamic>)['task_description'] as String;
+      });
+    }
+  }
+
+  void fetchTaskName7() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    DocumentSnapshot snapshot =
+        await firestore.collection('task').doc('pzt7').get();
+
+    if (snapshot.exists) {
+      setState(() {
+        task_name7 =
+            (snapshot.data() as Map<String, dynamic>)['task_name'] as String;
+        task_description7 = (snapshot.data()
+            as Map<String, dynamic>)['task_description'] as String;
+      });
+    }
+  }
+
+  void fetchTaskName8() async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    DocumentSnapshot snapshot =
+        await firestore.collection('task').doc('pzt8').get();
+
+    if (snapshot.exists) {
+      setState(() {
+        task_name8 =
+            (snapshot.data() as Map<String, dynamic>)['task_name'] as String;
+        task_description8 = (snapshot.data()
             as Map<String, dynamic>)['task_description'] as String;
       });
     }
@@ -276,7 +384,7 @@ class _PazartesiPageState extends State<PazartesiPage>
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const Text(
-              'Salı sayfası içeriği',
+              'Pazartesi sayfası içeriği',
               style: TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
@@ -373,7 +481,7 @@ class _PazartesiPageState extends State<PazartesiPage>
                                         child: Text(
                                           'Görev Açıklama: $task_description',
                                           style: const TextStyle(
-                                            fontSize: 16.0,
+                                            fontSize: 13.0,
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
                                           ),
@@ -529,7 +637,7 @@ class _PazartesiPageState extends State<PazartesiPage>
                                         child: Text(
                                           'Görev Açıklama: $task_description2',
                                           style: const TextStyle(
-                                            fontSize: 16.0,
+                                            fontSize: 13.0,
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
                                           ),
@@ -648,10 +756,10 @@ class _PazartesiPageState extends State<PazartesiPage>
                             fillColor: MaterialStateProperty.all(Colors.white),
                           ),
                           const SizedBox(width: 8.0),
-                          const Expanded(
+                          Expanded(
                             child: Text(
-                              'Görev 3',
-                              style: TextStyle(
+                              'Görev: $task_name3',
+                              style: const TextStyle(
                                 fontSize: 16.0,
                                 color: Colors.white,
                               ),
@@ -679,13 +787,13 @@ class _PazartesiPageState extends State<PazartesiPage>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const SizedBox(height: 8.0),
-                                  const Row(
+                                  Row(
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          'Görev Açıklama',
-                                          style: TextStyle(
-                                            fontSize: 16.0,
+                                          'Görev Açıklama: $task_description3',
+                                          style: const TextStyle(
+                                            fontSize: 13.0,
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
                                           ),
@@ -804,10 +912,10 @@ class _PazartesiPageState extends State<PazartesiPage>
                             fillColor: MaterialStateProperty.all(Colors.white),
                           ),
                           const SizedBox(width: 8.0),
-                          const Expanded(
+                          Expanded(
                             child: Text(
-                              'Görev 4',
-                              style: TextStyle(
+                              'Görev: $task_name4',
+                              style: const TextStyle(
                                 fontSize: 16.0,
                                 color: Colors.white,
                               ),
@@ -835,13 +943,13 @@ class _PazartesiPageState extends State<PazartesiPage>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const SizedBox(height: 8.0),
-                                  const Row(
+                                  Row(
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          'Görev Açıklama',
-                                          style: TextStyle(
-                                            fontSize: 16.0,
+                                          'Görev Açıklama: $task_description4',
+                                          style: const TextStyle(
+                                            fontSize: 13.0,
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
                                           ),
@@ -960,10 +1068,10 @@ class _PazartesiPageState extends State<PazartesiPage>
                             fillColor: MaterialStateProperty.all(Colors.white),
                           ),
                           const SizedBox(width: 8.0),
-                          const Expanded(
+                          Expanded(
                             child: Text(
-                              'Görev 5',
-                              style: TextStyle(
+                              'Görev: $task_name5',
+                              style: const TextStyle(
                                 fontSize: 16.0,
                                 color: Colors.white,
                               ),
@@ -991,13 +1099,13 @@ class _PazartesiPageState extends State<PazartesiPage>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const SizedBox(height: 8.0),
-                                  const Row(
+                                  Row(
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          'Görev Açıklama',
-                                          style: TextStyle(
-                                            fontSize: 16.0,
+                                          'Görev Açıklama: $task_description5',
+                                          style: const TextStyle(
+                                            fontSize: 13.0,
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
                                           ),
@@ -1142,10 +1250,10 @@ class _PazartesiPageState extends State<PazartesiPage>
                             fillColor: MaterialStateProperty.all(Colors.white),
                           ),
                           const SizedBox(width: 8.0),
-                          const Expanded(
+                          Expanded(
                             child: Text(
-                              'Görev 6',
-                              style: TextStyle(
+                              'Görev: $task_name6',
+                              style: const TextStyle(
                                 fontSize: 16.0,
                                 color: Colors.white,
                               ),
@@ -1173,13 +1281,13 @@ class _PazartesiPageState extends State<PazartesiPage>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const SizedBox(height: 8.0),
-                                  const Row(
+                                  Row(
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          'Görev Açıklama',
-                                          style: TextStyle(
-                                            fontSize: 16.0,
+                                          'Görev Açıklama: $task_description6',
+                                          style: const TextStyle(
+                                            fontSize: 13.0,
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
                                           ),
@@ -1298,10 +1406,10 @@ class _PazartesiPageState extends State<PazartesiPage>
                             fillColor: MaterialStateProperty.all(Colors.white),
                           ),
                           const SizedBox(width: 8.0),
-                          const Expanded(
+                          Expanded(
                             child: Text(
-                              'Görev 7',
-                              style: TextStyle(
+                              'Görev: $task_name7',
+                              style: const TextStyle(
                                 fontSize: 16.0,
                                 color: Colors.white,
                               ),
@@ -1329,13 +1437,13 @@ class _PazartesiPageState extends State<PazartesiPage>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const SizedBox(height: 8.0),
-                                  const Row(
+                                  Row(
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          'Görev Açıklama',
-                                          style: TextStyle(
-                                            fontSize: 16.0,
+                                          'Görev Açıklama: $task_description7',
+                                          style: const TextStyle(
+                                            fontSize: 13.0,
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
                                           ),
@@ -1454,10 +1562,10 @@ class _PazartesiPageState extends State<PazartesiPage>
                             fillColor: MaterialStateProperty.all(Colors.white),
                           ),
                           const SizedBox(width: 8.0),
-                          const Expanded(
+                          Expanded(
                             child: Text(
-                              'Görev 8',
-                              style: TextStyle(
+                              'Görev: $task_name8',
+                              style: const TextStyle(
                                 fontSize: 16.0,
                                 color: Colors.white,
                               ),
@@ -1485,13 +1593,13 @@ class _PazartesiPageState extends State<PazartesiPage>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const SizedBox(height: 8.0),
-                                  const Row(
+                                  Row(
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          'Görev Açıklama',
-                                          style: TextStyle(
-                                            fontSize: 16.0,
+                                          'Görev Açıklama: $task_description8',
+                                          style: const TextStyle(
+                                            fontSize: 13.0,
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
                                           ),

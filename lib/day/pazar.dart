@@ -276,7 +276,7 @@ class _PazarPageState extends State<PazarPage> {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const Text(
-              'Pazartesi sayfası içeriği',
+              'Pazar sayfası içeriği',
               style: TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),

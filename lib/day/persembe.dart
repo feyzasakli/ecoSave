@@ -276,7 +276,7 @@ class _PersembePageState extends State<PersembePage> {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const Text(
-              'Pazartesi sayfası içeriği',
+              'Perşembe sayfası içeriği',
               style: TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),

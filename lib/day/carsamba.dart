@@ -276,7 +276,7 @@ class _CarsambaPageState extends State<CarsambaPage> {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const Text(
-              'Pazartesi sayfası içeriği',
+              'Çarşamba sayfası içeriği',
               style: TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),

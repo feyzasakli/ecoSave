@@ -276,7 +276,7 @@ class _CumaPageState extends State<CumaPage> {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const Text(
-              'Pazartesi sayfası içeriği',
+              'Cuma sayfası içeriği',
               style: TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),

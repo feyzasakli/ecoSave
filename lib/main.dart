@@ -40,7 +40,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static final List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     const ShopPage(),
-    const ProfilePage(uploadedImageUrl: '',),
+    const ProfilePage(
+      uploadedImageUrl: '',
+    ),
   ];
 
   void _onItemTapped(int index) {
@@ -81,17 +83,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             ),
             Row(
               children: [
-                Icon(Icons.view_day),
-                SizedBox(width: 5),
+                Icon(Icons.stars),
                 Text(
-                  'Kalan: 2',
+                  'Toplam:',
                   style: TextStyle(fontSize: 16),
                 ),
-              ],
-            ),
-            Row(
-              children: [
-                Icon(Icons.stars),
                 SizedBox(width: 5),
                 Text('8'),
               ],

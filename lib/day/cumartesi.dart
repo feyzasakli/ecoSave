@@ -276,7 +276,7 @@ class _CumartesiPageState extends State<CumartesiPage> {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const Text(
-              'Pazartesi sayfası içeriği',
+              'Cumartesi sayfası içeriği',
               style: TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
