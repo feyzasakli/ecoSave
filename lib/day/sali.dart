@@ -376,7 +376,7 @@ class _SaliPageState extends State<SaliPage>
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: const Text('Pazartesi Page'),
+        title: const Text('Salı Page'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -387,7 +387,7 @@ class _SaliPageState extends State<SaliPage>
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const Text(
-              'Pazartesi sayfası içeriği',
+              'Salı sayfası içeriği',
               style: TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),

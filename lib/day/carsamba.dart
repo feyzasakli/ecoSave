@@ -254,7 +254,7 @@ class _CarsambaPageState extends State<CarsambaPage>
   void fetchTaskName() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     DocumentSnapshot snapshot =
-        await firestore.collection('task').doc('sl1').get();
+        await firestore.collection('task').doc('crsmb1').get();
 
     if (snapshot.exists) {
       setState(() {
@@ -269,7 +269,7 @@ class _CarsambaPageState extends State<CarsambaPage>
   void fetchTaskName2() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     DocumentSnapshot snapshot =
-        await firestore.collection('task').doc('sl2').get();
+        await firestore.collection('task').doc('crsmb2').get();
 
     if (snapshot.exists) {
       setState(() {
@@ -284,7 +284,7 @@ class _CarsambaPageState extends State<CarsambaPage>
   void fetchTaskName3() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     DocumentSnapshot snapshot =
-        await firestore.collection('task').doc('sl3').get();
+        await firestore.collection('task').doc('crsmb3').get();
 
     if (snapshot.exists) {
       setState(() {
@@ -299,7 +299,7 @@ class _CarsambaPageState extends State<CarsambaPage>
   void fetchTaskName4() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     DocumentSnapshot snapshot =
-        await firestore.collection('task').doc('sl4').get();
+        await firestore.collection('task').doc('crsmb4').get();
 
     if (snapshot.exists) {
       setState(() {
@@ -314,7 +314,7 @@ class _CarsambaPageState extends State<CarsambaPage>
   void fetchTaskName5() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     DocumentSnapshot snapshot =
-        await firestore.collection('task').doc('sl5').get();
+        await firestore.collection('task').doc('crsmb5').get();
 
     if (snapshot.exists) {
       setState(() {
@@ -329,7 +329,7 @@ class _CarsambaPageState extends State<CarsambaPage>
   void fetchTaskName6() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     DocumentSnapshot snapshot =
-        await firestore.collection('task').doc('sl6').get();
+        await firestore.collection('task').doc('crsmb6').get();
 
     if (snapshot.exists) {
       setState(() {
@@ -344,7 +344,7 @@ class _CarsambaPageState extends State<CarsambaPage>
   void fetchTaskName7() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     DocumentSnapshot snapshot =
-        await firestore.collection('task').doc('sl7').get();
+        await firestore.collection('task').doc('crsmb7').get();
 
     if (snapshot.exists) {
       setState(() {
@@ -359,7 +359,7 @@ class _CarsambaPageState extends State<CarsambaPage>
   void fetchTaskName8() async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     DocumentSnapshot snapshot =
-        await firestore.collection('task').doc('sl8').get();
+        await firestore.collection('task').doc('crsmb8').get();
 
     if (snapshot.exists) {
       setState(() {
@@ -376,7 +376,7 @@ class _CarsambaPageState extends State<CarsambaPage>
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: const Text('Pazartesi Page'),
+        title: const Text('Çarşamba Page'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -387,7 +387,7 @@ class _CarsambaPageState extends State<CarsambaPage>
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const Text(
-              'Pazartesi sayfası içeriği',
+              'Çarşamba sayfası içeriği',
               style: TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
