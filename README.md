@@ -89,7 +89,7 @@ https://trello.com/b/QeXDpgyY/ecosave
 - **Ürün Durumu**: Ekran görüntüleri:
 
 
--  <img width="769" alt="Ekran görüntüsü 2023-06-17 035855" src="https://github.com/feyzasakli/ecoSave/assets/113036134/5a2c5cf1-6cfd-4f84-9ca5-e5372e41a6b8">
+<img width="769" alt="Ekran görüntüsü 2023-06-17 035855" src="https://github.com/feyzasakli/ecoSave/assets/113036134/5a2c5cf1-6cfd-4f84-9ca5-e5372e41a6b8">
 
 
 
@@ -174,3 +174,34 @@ Bu retrospektif toplantısında, neleri başarıyla tamamladığımızı, karş�
 ---
 
 # Sprint 3
+**Sprint Notları**: Sprint 3, ecoSave uygulamasının final aşamasıdır ve kullanıcıların tamamladıkları görevleri fotoğraf kanıtlarıyla paylaşabilecekleri bir sistem oluşturmayı hedefler.
+
+- **Sprint içinde tamamlanması tahmin edilen puan**: Sprint 3 için tahmin edilen tamamlanma puanı yine 100 puandır.
+
+- **Puan tamamlama mantığı**: Toplamda 300 puanlık backlog'un üçüncü sprintte kalan 100 puanının tamamlanmasıdır. Hedef, tüm özelliklerin ve görevlerin bu sprintte tamamlanarak projeyi başarıyla sonlandırmaktır.
+
+
+- **Backlog düzeni ve Story seçimleri**: Sprint 3 için yapılacak görevler ve hedeflenen user story'ler, ürünün tamamlanmasına yönelik bir sıralama ile düzenlenmiştir. Öncelikli ve kritik görevler önce gelmek üzere, diğer görevler bu sıralamaya göre yer almaktadır.
+
+- **Daily Scrum**:Daily Scrum toplantılarının zamansal sebeplerden ötürü Whatsapp üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği word olarak Readme'de tarafımızdan paylaşılmaktadır.[Uploading DailyScrumMeetingNotesSprint3.docx.rtf…]()
+
+
+
+
+- **Sprint board update**: <img width="944" alt="sprint3" src="https://github.com/feyzasakli/ecoSave/assets/113036134/a06272a5-e7a9-487d-be86-9f1886c5fb4f">
+
+
+
+
+- **Ürün Durumu**: Ekran görüntüleri:
+
+
+
+
+  
+
+- **Sprint Review**: EcoSave uygulamasının son aşamasında, kullanıcıların tamamladıkları görevleri fotoğraf kanıtlarıyla paylaşabilecekleri bir sistem oluşturulamadı. Ancak bu süreçte, takımımız kullanıcı geri bildirimlerini analiz etme ve kullanıcı deneyimini iyileştirme konusunda önemli bilgiler edindi. 
+
+- **Sprint Retrospective**: Sprint 3'ün tamamlanmasıyla ilgili olarak hedeflediğimiz puanlara ulaşamadık ve bazı özellikleri gerçekleştiremedik.  Veritabanı bazlı işlemlerde performans sorunları yaşandı. Veritabanı sorgularını optimize etme ve daha verimli hale getirme konusunda daha fazla çalışmaya ihtiyacımız var. Bazı görevleri tamamlamak için beklenenden daha fazla zaman harcadık ve hedeflerimize ulaşmak için daha iyi bir zaman yönetimi planlaması yapmamız gerekiyor. Fotoğraf kanıt sistemi oluşturma ve sürdürülebilirlik skalası ekleme gibi hedeflediğimiz özellikleri gerçekleştiremedik. Bu zorluklarla karşılaşmamızın ardından yapılacak işlerde daha iyi bir performans sergilemek için ekibimiz, daha etkili bir planlama yapma, işleri önceliklendirme ve iletişimi güçlendirme konularında gelişim gösterme fırsatı yakaladı. Bu deneyimler, gelecekteki projelerde daha başarılı bir şekilde hedeflere ulaşmamızı sağlamak için bize değerli bir deneyim oldu.
+
+
