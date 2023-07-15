@@ -183,7 +183,9 @@ Bu retrospektif toplantısında, neleri başarıyla tamamladığımızı, karş�
 
 - **Backlog düzeni ve Story seçimleri**: Sprint 3 için yapılacak görevler ve hedeflenen user story'ler, ürünün tamamlanmasına yönelik bir sıralama ile düzenlenmiştir. Öncelikli ve kritik görevler önce gelmek üzere, diğer görevler bu sıralamaya göre yer almaktadır.
 
-- **Daily Scrum**:Daily Scrum toplantılarının zamansal sebeplerden ötürü Whatsapp üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği word olarak Readme'de tarafımızdan paylaşılmaktadır.[Uploading DailyScrumMeetingNotesSprint3.docx.rtf…]()
+- **Daily Scrum**:Daily Scrum toplantılarının zamansal sebeplerden ötürü Whatsapp üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği word olarak Readme'de tarafımızdan paylaşılmaktadır.[DailyScrumMeetingNotesSprint3.pdf](https://github.com/feyzasakli/ecoSave/files/12059500/DailyScrumMeetingNotesSprint3.pdf)
+
+
 
 
 
