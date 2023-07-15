@@ -4,10 +4,27 @@ import 'package:eco/screen/profilepage.dart';
 import 'package:eco/screen/shoppage.dart';
 import 'package:firebase_core/firebase_core.dart'; // Firebase Core eklenmeli
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(); // Firebase'i başlat
+
+  var storageStatus = await Permission.storage.request();
+  if (storageStatus.isGranted) {
+    // Depolama kullanılabilir.
+  } else {
+    // Depolama kullanılamaz.
+  }
+
+
+  var location = await Permission.location.request();
+  if (location.isGranted) {
+    // Depolama kullanılabilir.
+  } else {
+    // Depolama kullanılamaz.
+  }
 
   runApp(const MyApp());
 }
