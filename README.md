@@ -197,6 +197,9 @@ Bu retrospektif toplantısında, neleri başarıyla tamamladığımızı, karş�
 
 - **Ürün Durumu**: Ekran görüntüleri:
 
+  <img width="548" alt="Ekran görüntüsü 2023-07-16 002051" src="https://github.com/feyzasakli/ecoSave/assets/113036134/d7e39b3c-bcb0-4d09-9983-44b180636a1b">
+
+
 
 
 
