@@ -76,173 +76,175 @@ class _ProfilePageState extends State<ProfilePage> {
                     endIndent: 0,
                   ),
                   const SizedBox(height: 5),
-                  GridView.count(
-                    crossAxisCount: 2,
-                    shrinkWrap: true,
+                  SingleChildScrollView(
                     physics: const NeverScrollableScrollPhysics(),
-                    childAspectRatio: 1.5, // Adjust this value to modify the height
-                    children: [
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        padding: const EdgeInsets.all(8.0),
-                        margin: const EdgeInsets.all(8.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
-                            ),
-                          ],
+                    child: GridView.count(
+                      crossAxisCount: 2,
+                      shrinkWrap: true,
+                      childAspectRatio: 1.5,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          padding: const EdgeInsets.all(8.0),
+                          margin: const EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(0, 3),
+                              ),
+                            ],
+                          ),
+                          child: const Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(height: 8),
+                              Row(
+                                children: [
+                                  Icon(Icons.check_circle, color: Colors.blue),
+                                  SizedBox(width: 8),
+                                  Text(
+                                      "2",
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(fontSize: 20)
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Text(
+                                "Günlük Seri",
+                                textAlign: TextAlign.start,
+                                style: TextStyle(fontSize: 20,color: Colors.grey,),
+                              ),
+                            ],
+                          ),
                         ),
-                        child: const Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(height: 8),
-                            Row(
-                              children: [
-                                Icon(Icons.check_circle, color: Colors.blue),
-                                SizedBox(width: 8),
-                                Text(
-                                    "2",
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(fontSize: 20)
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 4),
-                            Text(
-                              "Günlük Seri",
-                              textAlign: TextAlign.start,
-                              style: TextStyle(fontSize: 20,color: Colors.grey,),
-                            ),
-                          ],
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          padding: const EdgeInsets.all(8.0),
+                          margin: const EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(0, 3),
+                              ),
+                            ],
+                          ),
+                          child: const Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(height: 8),
+                              Row(
+                                children: [
+                                  Icon(Icons.check_circle, color: Colors.blue),
+                                  SizedBox(width: 8),
+                                  Text(
+                                      "8",
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(fontSize: 20)
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Text(
+                                "Toplam Puan",
+                                textAlign: TextAlign.start,
+                                style: TextStyle(fontSize: 20,color: Colors.grey,),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        padding: const EdgeInsets.all(8.0),
-                        margin: const EdgeInsets.all(8.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
-                            ),
-                          ],
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          padding: const EdgeInsets.all(8.0),
+                          margin: const EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(0, 3),
+                              ),
+                            ],
+                          ),
+                          child: const Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(height: 8),
+                              Row(
+                                children: [
+                                  Icon(Icons.check_circle, color: Colors.blue),
+                                  SizedBox(width: 8),
+                                  Text(
+                                      "5",
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(fontSize: 20)
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Text(
+                                "Tamamlanan Görev",
+                                textAlign: TextAlign.start,
+                                style: TextStyle(fontSize: 20,color: Colors.grey,),
+                              ),
+                            ],
+                          ),
                         ),
-                        child: const Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(height: 8),
-                            Row(
-                              children: [
-                                Icon(Icons.check_circle, color: Colors.blue),
-                                SizedBox(width: 8),
-                                Text(
-                                    "8",
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(fontSize: 20)
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 4),
-                            Text(
-                              "Toplam Puan",
-                              textAlign: TextAlign.start,
-                              style: TextStyle(fontSize: 20,color: Colors.grey,),
-                            ),
-                          ],
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          padding: const EdgeInsets.all(8.0),
+                          margin: const EdgeInsets.all(8.0),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(0, 3),
+                              ),
+                            ],
+                          ),
+                          child: const Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(height: 8),
+                              Row(
+                                children: [
+                                  Icon(Icons.check_circle, color: Colors.blue),
+                                  SizedBox(width: 8),
+                                  Text(
+                                      "3",
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(fontSize: 20)
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 4),
+                              Text(
+                                "Sıralama",
+                                textAlign: TextAlign.start,
+                                style: TextStyle(fontSize: 20,color: Colors.grey,),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        padding: const EdgeInsets.all(8.0),
-                        margin: const EdgeInsets.all(8.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: const Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(height: 8),
-                            Row(
-                              children: [
-                                Icon(Icons.check_circle, color: Colors.blue),
-                                SizedBox(width: 8),
-                                Text(
-                                    "5",
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(fontSize: 20)
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 4),
-                            Text(
-                              "Tamamlanan Görev",
-                              textAlign: TextAlign.start,
-                              style: TextStyle(fontSize: 20,color: Colors.grey,),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.4,
-                        padding: const EdgeInsets.all(8.0),
-                        margin: const EdgeInsets.all(8.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 5,
-                              offset: const Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: const Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(height: 8),
-                            Row(
-                              children: [
-                                Icon(Icons.check_circle, color: Colors.blue),
-                                SizedBox(width: 8),
-                                Text(
-                                    "3",
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(fontSize: 20)
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 4),
-                            Text(
-                              "Sıralama",
-                              textAlign: TextAlign.start,
-                              style: TextStyle(fontSize: 20,color: Colors.grey,),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   Container(
                     width: double.infinity,
