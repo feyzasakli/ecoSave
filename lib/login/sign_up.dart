@@ -176,7 +176,7 @@ class _SignUpState extends State<SignUp> {
               height: MediaQuery.of(context).size.height * 0.2,
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('images/sude2.png'),
+                  image: AssetImage('images/login2.png'),
                   fit: BoxFit.fill,
                 ),
               ),

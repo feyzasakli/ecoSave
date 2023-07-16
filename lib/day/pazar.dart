@@ -395,7 +395,7 @@ class _PazarPageState extends State<PazarPage>
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
-        title: const Text('Cumartesi Page'),
+        title: const Text('Pazar Page'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -406,7 +406,7 @@ class _PazarPageState extends State<PazarPage>
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const Text(
-              'Cumartesi sayfası içeriği',
+              'Pazar sayfası içeriği',
               style: TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),

@@ -134,7 +134,7 @@ class _LoginState extends State<Login> {
                 height: MediaQuery.of(context).size.height * 0.4,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/sude.png'),
+                    image: AssetImage('images/login1.png'),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -303,12 +303,19 @@ class _LoginState extends State<Login> {
                             ),
                           ),
                         ),
-                        const Text(
-                          'Google ile Giriş Yapın ',
-                          style: TextStyle(
-                            color: Color.fromRGBO(239, 31, 112, 1),
+                        GestureDetector(
+                          onTap: () {
+                            googleSignIn();
+                          },
+                          child: const Text(
+                            'Google İle Giriş Yapın',
+                            style: TextStyle(
+                              color: Color.fromRGBO(239, 31, 112, 1),
+                            ),
                           ),
                         ),
+
+
                       ],
                     ),
                   ],
