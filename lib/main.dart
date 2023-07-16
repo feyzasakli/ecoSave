@@ -1,6 +1,7 @@
 import 'package:eco/login/login.dart';
 import 'package:eco/screen/homepage.dart';
-import 'package:eco/screen/profilepage.dart';
+import 'package:eco/screen/profile_page.dart';
+
 import 'package:eco/screen/shoppage.dart';
 import 'package:firebase_core/firebase_core.dart'; // Firebase Core eklenmeli
 import 'package:flutter/material.dart';
@@ -57,7 +58,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static final List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     const ShopPage(),
-    const ProfilePage(
+    ProfilePage(
       uploadedImageUrl: '',
     ),
   ];
