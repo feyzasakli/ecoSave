@@ -277,11 +277,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 "Tamamlanan Görev",
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
-<<<<<<< Updated upstream
                                   fontSize: 15,
-=======
-                                  fontSize: 20,
->>>>>>> Stashed changes
                                   color: Colors.grey,
                                 ),
                               ),
