@@ -1,13 +1,16 @@
 import 'dart:convert';
+
+import 'package:eco/screen/settings.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:geolocator/geolocator.dart';
+import 'package:http/http.dart' as http;
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class ProfilePage extends StatefulWidget {
   final String uploadedImageUrl;
 
-  const ProfilePage({Key? key, required this.uploadedImageUrl}) : super(key: key);
+  const ProfilePage({Key? key, required this.uploadedImageUrl})
+      : super(key: key);
 
   @override
   _ProfilePageState createState() => _ProfilePageState();
@@ -16,6 +19,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   Position? _currentPosition;
   int _havaKalitesi = 0;
+  final IconData settingsIcon = Icons.settings;
 
   @override
   void initState() {
@@ -47,8 +51,10 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Future<void> _getWeatherData(double latitude, double longitude) async {
-    final apiKey = "ef04ae610d6f7c3e159bcc92aea64e15"; // OpenWeather API anahtarınızı buraya ekleyin
-    final apiUrl = "http://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey";
+    const apiKey =
+        "ef04ae610d6f7c3e159bcc92aea64e15"; // OpenWeather API anahtarınızı buraya ekleyin
+    final apiUrl =
+        "http://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey";
 
     final response = await http.get(Uri.parse(apiUrl));
 
@@ -80,7 +86,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: 15,),
+                        SizedBox(
+                          height: 15,
+                        ),
                         Text(
                           'test',
                           style: TextStyle(
@@ -98,7 +106,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
                   CircleAvatar(
-                    radius:44,
+                    radius: 44,
                     backgroundImage: AssetImage('images/profile_picture.jpg'),
                   ),
                 ],
@@ -109,15 +117,32 @@ class _ProfilePageState extends State<ProfilePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Row(
+                  Row(
                     children: [
-                      Icon(Icons.access_time),
-                      SizedBox(width: 8),
-                      Text(
+                      const Icon(Icons.access_time),
+                      const SizedBox(width: 8),
+                      const Text(
                         'Katılma Tarihi: Temmuz 2023',
                         style: TextStyle(
                           fontSize: 12,
                         ),
+                      ),
+                      const SizedBox(width: 80),
+                      IconButton(
+                        icon: Icon(settingsIcon),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SettingsPage(
+                                backgroundColor: Colors.green,
+                                gradientColors: [],
+                                titleText: '',
+                                labelText: '',
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
@@ -160,18 +185,19 @@ class _ProfilePageState extends State<ProfilePage> {
                                 children: [
                                   Icon(Icons.check_circle, color: Colors.blue),
                                   SizedBox(width: 8),
-                                  Text(
-                                      "2",
+                                  Text("2",
                                       textAlign: TextAlign.start,
-                                      style: TextStyle(fontSize: 20)
-                                  ),
+                                      style: TextStyle(fontSize: 20)),
                                 ],
                               ),
                               SizedBox(height: 4),
                               Text(
                                 "Günlük Seri",
                                 textAlign: TextAlign.start,
-                                style: TextStyle(fontSize: 20,color: Colors.grey,),
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.grey,
+                                ),
                               ),
                             ],
                           ),
@@ -200,18 +226,19 @@ class _ProfilePageState extends State<ProfilePage> {
                                 children: [
                                   Icon(Icons.check_circle, color: Colors.blue),
                                   SizedBox(width: 8),
-                                  Text(
-                                      "8",
+                                  Text("8",
                                       textAlign: TextAlign.start,
-                                      style: TextStyle(fontSize: 20)
-                                  ),
+                                      style: TextStyle(fontSize: 20)),
                                 ],
                               ),
                               SizedBox(height: 4),
                               Text(
                                 "Toplam Puan",
                                 textAlign: TextAlign.start,
-                                style: TextStyle(fontSize: 20,color: Colors.grey,),
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.grey,
+                                ),
                               ),
                             ],
                           ),
@@ -240,18 +267,19 @@ class _ProfilePageState extends State<ProfilePage> {
                                 children: [
                                   Icon(Icons.check_circle, color: Colors.blue),
                                   SizedBox(width: 8),
-                                  Text(
-                                      "5",
+                                  Text("5",
                                       textAlign: TextAlign.start,
-                                      style: TextStyle(fontSize: 20)
-                                  ),
+                                      style: TextStyle(fontSize: 20)),
                                 ],
                               ),
                               SizedBox(height: 4),
                               Text(
                                 "Tamamlanan Görev",
                                 textAlign: TextAlign.start,
-                                style: TextStyle(fontSize: 20,color: Colors.grey,),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.grey,
+                                ),
                               ),
                             ],
                           ),
@@ -280,18 +308,19 @@ class _ProfilePageState extends State<ProfilePage> {
                                 children: [
                                   Icon(Icons.check_circle, color: Colors.blue),
                                   SizedBox(width: 8),
-                                  Text(
-                                      "3",
+                                  Text("3",
                                       textAlign: TextAlign.start,
-                                      style: TextStyle(fontSize: 20)
-                                  ),
+                                      style: TextStyle(fontSize: 20)),
                                 ],
                               ),
                               SizedBox(height: 4),
                               Text(
                                 "Sıralama",
                                 textAlign: TextAlign.start,
-                                style: TextStyle(fontSize: 20,color: Colors.grey,),
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.grey,
+                                ),
                               ),
                             ],
                           ),
@@ -328,14 +357,30 @@ class _ProfilePageState extends State<ProfilePage> {
                                 minimum: 0,
                                 maximum: 5,
                                 ranges: <GaugeRange>[
-                                  GaugeRange(startValue: 0, endValue: 1, color: Colors.red),
-                                  GaugeRange(startValue: 1, endValue: 2, color: Colors.orange),
-                                  GaugeRange(startValue: 2, endValue: 3, color: Colors.yellow),
-                                  GaugeRange(startValue: 3, endValue: 4, color: Colors.green),
-                                  GaugeRange(startValue: 4, endValue: 5, color: Colors.blue),
+                                  GaugeRange(
+                                      startValue: 0,
+                                      endValue: 1,
+                                      color: Colors.red),
+                                  GaugeRange(
+                                      startValue: 1,
+                                      endValue: 2,
+                                      color: Colors.orange),
+                                  GaugeRange(
+                                      startValue: 2,
+                                      endValue: 3,
+                                      color: Colors.yellow),
+                                  GaugeRange(
+                                      startValue: 3,
+                                      endValue: 4,
+                                      color: Colors.green),
+                                  GaugeRange(
+                                      startValue: 4,
+                                      endValue: 5,
+                                      color: Colors.blue),
                                 ],
                                 pointers: <GaugePointer>[
-                                  NeedlePointer(value: _havaKalitesi.toDouble()),
+                                  NeedlePointer(
+                                      value: _havaKalitesi.toDouble()),
                                 ],
                               ),
                             ],
@@ -345,7 +390,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           top: 90,
                           child: Text(
                             'Hava Kalitesi',
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                         ),
                       ],
