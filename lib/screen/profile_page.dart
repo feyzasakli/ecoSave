@@ -1,4 +1,7 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:geolocator/geolocator.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -11,6 +14,56 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  Position? _currentPosition;
+  int _havaKalitesi = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _getCurrentLocation();
+  }
+
+  Future<void> _getCurrentLocation() async {
+    try {
+      LocationPermission permission = await Geolocator.requestPermission();
+
+      if (permission == LocationPermission.denied ||
+          permission == LocationPermission.deniedForever) {
+        // Kullanıcı konum iznini vermezse, varsayılan olarak İstanbul konumunu kullanabilirsiniz veya uygun bir hata işleme yapabilirsiniz.
+        // Bu örnek için İstanbul konumu kullanıyoruz:
+        _getWeatherData(41.0082, 28.9784);
+      } else {
+        Position position = await Geolocator.getCurrentPosition();
+        setState(() {
+          _currentPosition = position;
+        });
+
+        _getWeatherData(position.latitude, position.longitude);
+      }
+    } catch (e) {
+      // Hata durumunda burada uygun bir hata işleme mekanizması ekleyebilirsiniz.
+      print("Konum alınamadı: $e");
+    }
+  }
+
+  Future<void> _getWeatherData(double latitude, double longitude) async {
+    final apiKey = "ef04ae610d6f7c3e159bcc92aea64e15"; // OpenWeather API anahtarınızı buraya ekleyin
+    final apiUrl = "http://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey";
+
+    final response = await http.get(Uri.parse(apiUrl));
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      final airQuality = data["main"]["aqi"];
+      setState(() {
+        _havaKalitesi = airQuality;
+      });
+    } else {
+      // Veri alınamazsa veya API'den hata dönerse burada bir hata işleme mekanizması ekleyebilirsiniz.
+      print("API'den veri alınamadı: ${response.statusCode}");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -281,8 +334,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                   GaugeRange(startValue: 3, endValue: 4, color: Colors.green),
                                   GaugeRange(startValue: 4, endValue: 5, color: Colors.blue),
                                 ],
-                                pointers: const <GaugePointer>[
-                                  NeedlePointer(value: 3),
+                                pointers: <GaugePointer>[
+                                  NeedlePointer(value: _havaKalitesi.toDouble()),
                                 ],
                               ),
                             ],
