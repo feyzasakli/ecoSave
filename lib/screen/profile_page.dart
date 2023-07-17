@@ -147,7 +147,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     ],
                   ),
                   const Divider(
-                    color: Colors.black,
+                    color: Colors.grey,
                     height: 20,
                     thickness: 1,
                     indent: 0,
@@ -277,7 +277,11 @@ class _ProfilePageState extends State<ProfilePage> {
                                 "Tamamlanan Görev",
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
+<<<<<<< Updated upstream
                                   fontSize: 15,
+=======
+                                  fontSize: 20,
+>>>>>>> Stashed changes
                                   color: Colors.grey,
                                 ),
                               ),
