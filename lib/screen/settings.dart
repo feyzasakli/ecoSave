@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class SettingsPage extends StatefulWidget {
   final Color backgroundColor;
@@ -86,9 +86,8 @@ class _SettingsPageState extends State<SettingsPage> {
         final File file = File(selectedFileName!);
         final String fileName = file.path.split('/').last;
 
-        final Reference storageRef = FirebaseStorage.instance
-            .ref()
-            .child('profil_resimleri/$fileName');
+        final Reference storageRef =
+            FirebaseStorage.instance.ref().child('profil_resimleri/$fileName');
 
         final TaskSnapshot uploadTask = await storageRef.putFile(file);
 
@@ -174,9 +173,9 @@ class _SettingsPageState extends State<SettingsPage> {
       appBar: AppBar(
         backgroundColor: widget.backgroundColor,
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: const [
+              colors: [
                 Color(0xFF17A3A2), // #17A3A2 on the left
                 Color(0xFF52C077), // #52C077 on the right
               ],
@@ -203,7 +202,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
+                    const Text(
                       'Hesap',
                       style: TextStyle(
                         fontSize: 16,
@@ -216,7 +215,8 @@ class _SettingsPageState extends State<SettingsPage> {
                           saveDataToFirestore(context);
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Geçerli şifre gereklidir')),
+                            const SnackBar(
+                                content: Text('Geçerli şifre gereklidir')),
                           );
                         }
                       },
@@ -227,7 +227,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Kaydet',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -236,17 +236,17 @@ class _SettingsPageState extends State<SettingsPage> {
                     ),
                   ],
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Row(
                   children: [
-                    Text(
+                    const Text(
                       'Profil Resmi',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     ElevatedButton(
                       onPressed: _selectAndUploadFile,
                       style: ElevatedButton.styleFrom(
@@ -256,7 +256,7 @@ class _SettingsPageState extends State<SettingsPage> {
                           borderRadius: BorderRadius.circular(8),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Resim Seç',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
@@ -276,56 +276,56 @@ class _SettingsPageState extends State<SettingsPage> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Yükle',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 if (selectedFileName != null)
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Text('Seçilen dosya: $selectedFileName'),
                   ),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 TextField(
                   controller: adController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Ad',
                     border: OutlineInputBorder(),
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 TextField(
                   controller: kullaniciAdiController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Kullanıcı Adı',
                     border: OutlineInputBorder(),
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 TextField(
                   controller: epostaController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'E-posta',
                     border: OutlineInputBorder(),
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 TextField(
                   controller: sifreController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Şifre',
                     border: OutlineInputBorder(),
                   ),
                   obscureText: true, // Şifre alanını gizlemek için
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 TextField(
                   controller: yeniSifreController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Yeni Şifre',
                     border: OutlineInputBorder(),
                   ),
@@ -343,26 +343,27 @@ class _SettingsPageState extends State<SettingsPage> {
 class ProfilePage extends StatelessWidget {
   final String uploadedImageUrl;
 
-  const ProfilePage({Key? key, required this.uploadedImageUrl}) : super(key: key);
+  const ProfilePage({Key? key, required this.uploadedImageUrl})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profil Sayfası'),
+        title: const Text('Profil Sayfası'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Profil Resmi',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             if (uploadedImageUrl.isNotEmpty)
               Image.network(
                 uploadedImageUrl,

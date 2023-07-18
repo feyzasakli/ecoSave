@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:eco/screen/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
@@ -17,56 +16,53 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  Position? _currentPosition;
-  int _havaKalitesi = 0;
-  final IconData settingsIcon = Icons.settings;
+  String? pollutionData;
+  String? airQuality;
 
   @override
   void initState() {
     super.initState();
-    _getCurrentLocation();
+    fetchPollutionData();
   }
 
-  Future<void> _getCurrentLocation() async {
+  Future<void> fetchPollutionData() async {
     try {
-      LocationPermission permission = await Geolocator.requestPermission();
+      // Konumu al
+      Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
 
-      if (permission == LocationPermission.denied ||
-          permission == LocationPermission.deniedForever) {
-        // Kullanıcı konum iznini vermezse, varsayılan olarak İstanbul konumunu kullanabilirsiniz veya uygun bir hata işleme yapabilirsiniz.
-        // Bu örnek için İstanbul konumu kullanıyoruz:
-        _getWeatherData(41.0082, 28.9784);
-      } else {
-        Position position = await Geolocator.getCurrentPosition();
-        setState(() {
-          _currentPosition = position;
-        });
+      // Hava kirliliği verilerini API'den al
+      String apiUrl =
+          'https://api.openweathermap.org/data/2.5/air_pollution?lat=${position.latitude}&lon=${position.longitude}&appid=ef04ae610d6f7c3e159bcc92aea64e15';
+      http.Response response = await http.get(Uri.parse(apiUrl));
+      Map<String, dynamic> jsonData = json.decode(response.body);
 
-        _getWeatherData(position.latitude, position.longitude);
+      // Hava kirliliği verisini işle ve state'i güncelle
+      int aqi = jsonData['list'][0]['main']['aqi'];
+
+      String airQuality = getAirQuality(
+          aqi); // Hava kalitesi endeksine göre temiz/kötü ifadesini al
+
+      List<Map<String, dynamic>> pollutants = jsonData['list'][0]['components'];
+      String formattedPollutionData = '';
+
+      // Ayrıntılı hava kirliliği verilerini oluştur
+      for (var pollutant in pollutants) {
+        String name = pollutant['name'];
+        double value = pollutant['value'];
+        String unit = pollutant['unit'];
+        formattedPollutionData += '$name: $value $unit\n';
       }
-    } catch (e) {
-      // Hata durumunda burada uygun bir hata işleme mekanizması ekleyebilirsiniz.
-      print("Konum alınamadı: $e");
-    }
-  }
 
-  Future<void> _getWeatherData(double latitude, double longitude) async {
-    const apiKey =
-        "ef04ae610d6f7c3e159bcc92aea64e15"; // OpenWeather API anahtarınızı buraya ekleyin
-    final apiUrl =
-        "http://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey";
-
-    final response = await http.get(Uri.parse(apiUrl));
-
-    if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
-      final airQuality = data["main"]["aqi"];
       setState(() {
-        _havaKalitesi = airQuality;
+        pollutionData =
+            'Hava Kirliliği Endeksi: $aqi\nHava Kalitesi: $airQuality\n\n$formattedPollutionData';
       });
-    } else {
-      // Veri alınamazsa veya API'den hata dönerse burada bir hata işleme mekanizması ekleyebilirsiniz.
-      print("API'den veri alınamadı: ${response.statusCode}");
+    } catch (e) {
+      if (kDebugMode) {
+        print('Lütfen ayarlardan konum izni verin: $e');
+      }
     }
   }
 
@@ -117,37 +113,20 @@ class _ProfilePageState extends State<ProfilePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
+                  const Row(
                     children: [
-                      const Icon(Icons.access_time),
-                      const SizedBox(width: 8),
-                      const Text(
+                      Icon(Icons.access_time),
+                      SizedBox(width: 8),
+                      Text(
                         'Katılma Tarihi: Temmuz 2023',
                         style: TextStyle(
                           fontSize: 12,
                         ),
                       ),
-                      const SizedBox(width: 80),
-                      IconButton(
-                        icon: Icon(settingsIcon),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const SettingsPage(
-                                backgroundColor: Colors.green,
-                                gradientColors: [],
-                                titleText: '',
-                                labelText: '',
-                              ),
-                            ),
-                          );
-                        },
-                      ),
                     ],
                   ),
                   const Divider(
-                    color: Colors.grey,
+                    color: Colors.black,
                     height: 20,
                     thickness: 1,
                     indent: 0,
@@ -277,7 +256,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 "Tamamlanan Görev",
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 20,
                                   color: Colors.grey,
                                 ),
                               ),
@@ -379,8 +358,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       color: Colors.blue),
                                 ],
                                 pointers: <GaugePointer>[
-                                  NeedlePointer(
-                                      value: _havaKalitesi.toDouble()),
+                                  NeedlePointer(value: airQuality),
                                 ],
                               ),
                             ],
